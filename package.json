@@ -1,0 +1,14 @@
+{
+  "name": "banner-generator",
+  "version": "1.0.0",
+  "description": "Generate banner images for PIxEL Workshops",
+  "main": "generate.js",
+  "scripts": {
+    "generate": ""
+  },
+  "author": "Ethan Lee",
+  "license": "MIT",
+  "dependencies": {
+    "canvas-prebuilt": "^1.6.0"
+  }
+}
