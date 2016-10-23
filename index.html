@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Sparkplug</title>
     <style>
-      @font-face {
-        font-family: 'Lato';
-        src: url('fonts/Lato-Bold.ttf');
-      }
-      * {
+      body {
         font-family: 'Lato';
       }
     </style>
@@ -15,16 +12,15 @@
     <h1>Sparkplug</h1>
     <p>Enter color values and Workshop details below.</p>
     <form id="values">
-      <input type="text" placeholder="Name of Workshop">
-      <input type="text" placeholder="Date of Workshop">
-      <input type="color" placeholder="Heading Color">
-      <input type="color" placeholder="Background Color">
-      <input type="color" placeholder="Gradient Stop 1">
-      <input type="color" placeholder="Gradient Stop 2">
-      <input type="submit" value="Generate">
+      <input type="text" placeholder="Name of Workshop" value="Web Workshop 1">
+      <input type="text" placeholder="Date of Workshop" value="September 1, 2016">
+      <input type="color" title="Heading Color" value="#ffffff">
+      <input type="color" title="Background Color" value="#000000">
+      <input type="color" title="Gradient Stop 1" value="#ff0000">
+      <input type="color" title="Gradient Stop 2" value="#ffff00">
     </form>
     <canvas id="preview" width="800" height="200"></canvas>
-    <div id="logo" style="display: none">
+    <template id="logo">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    viewBox="0 0 1024 396" enable-background="new 0 0 1024 396" xml:space="preserve">
       <g>
@@ -40,7 +36,8 @@
         578.4,364 602.3,382.2 766.9,382.2 766.9,364 790.8,382.2 1011.3,382.2 1011.3,305.7 942.1,233.9 942.1,105 863.5,20.5 240.1,20.5 
         212.8,52.9 173.5,20.5 11.5,20.5 "/>
       </svg>
-    </div>
+    </template>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
     <script src="generate-web.js"></script>
   </body>
 </html>

@@ -1,11 +1,12 @@
-function generate(e) {
-  e.preventDefault();
-  const values = Array.from(document.querySelectorAll('input')).map(i => i.value);
+const canvas = document.querySelector('#preview');
+const logo = document.querySelector('#logo');
+const form = document.querySelector('#values');
+const ctx = canvas.getContext('2d');
+
+function generate() {
+  const values = [...form.children].map(i => i.value);
   const [name, date, headingColor, backgroundColor, stop1, stop2] = values;
 
-  let canvas = document.querySelector('#preview');
-  let logo = document.querySelector('#logo').innerHTML;
-  let ctx = canvas.getContext('2d');
   ctx.textBaseline = 'top';
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -20,7 +21,7 @@ function generate(e) {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 170, 800, 30);
 
-  let coloredLogo = logo.replace(/\${COLOR}/g, headingColor);
+  let coloredLogo = logo.innerHTML.replace(/\${COLOR}/g, headingColor);
   let logoSource = 'data:image/svg+xml;base64,' + btoa(coloredLogo);
   let logoImg = new Image();
   logoImg.src = logoSource;
@@ -35,4 +36,13 @@ function generate(e) {
   ctx.fillText(name, 440, 80);
 }
 
-document.querySelector('#values').addEventListener('submit', generate);
+form.addEventListener('input', generate);
+
+WebFont.load({
+  google: {
+    families: ['Lato']
+  },
+  active: () => {
+    generate();
+  }
+});
