@@ -2,24 +2,73 @@
 <html>
   <head>
     <title>Sparkplug</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
       body {
         font-family: 'Lato';
       }
+      canvas {
+        width: 100%;
+      }
+      input[type=color] {
+        background-color: transparent;
+        border: 0;
+        outline: none;
+        height: 3rem;
+        width: 100%;
+        margin: 0 0 20px 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      label {
+        text-overflow: ellipsis;
+      }
     </style>
   </head>
   <body>
-    <h1>Sparkplug</h1>
-    <p>Enter color values and Workshop details below.</p>
-    <form id="values">
-      <input type="text" placeholder="Name of Workshop" value="Web Workshop 1">
-      <input type="text" placeholder="Date of Workshop" value="September 1, 2016">
-      <input type="color" title="Heading Color" value="#ffffff">
-      <input type="color" title="Background Color" value="#000000">
-      <input type="color" title="Gradient Stop 1" value="#ff0000">
-      <input type="color" title="Gradient Stop 2" value="#ffff00">
-    </form>
-    <canvas id="preview" width="800" height="200"></canvas>
+    <div class="container">
+      <h1>Sparkplug</h1>
+      <p>Enter color values and Workshop details below.</p>
+      <form id="values">
+        <div class="row">
+          <div class="input-field col s4">
+            <input type="text" id="name" value="Web Workshop 1">
+            <label for="name">Name of Workshop</label>
+          </div>
+          <div class="input-field col s4">
+            <input type="text" id="date" value="September 1, 2016">
+            <label for="date">Date of Workshop</label>
+          </div>
+          <div class="input-field col s1">
+            <input type="color" id="heading-color" value="#ffffff">
+            <label class="active" for="heading-color">Heading</label>
+          </div>
+          <div class="input-field col s1">
+            <input type="color" id="background-color" value="#000000">
+            <label class="active" for="background-color">Background</label>
+          </div>
+          <div class="input-field col s1">
+            <input type="color" id="gradient-1" value="#ff0000">
+            <label class="active" for="gradient-1">Gradient 1</label>
+          </div>
+          <div class="input-field col s1">
+            <input type="color" id="gradient-2" value="#ffff00">
+            <label class="active" for="gradient-2">Gradient 2</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10">
+            <canvas id="preview" width="800" height="200"></canvas>
+          </div>
+          <div class="col s2">
+            <button class="btn waves-effect waves-light" type="submit">
+              Submit <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
     <template id="logo">
       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
    viewBox="0 0 1024 396" enable-background="new 0 0 1024 396" xml:space="preserve">
@@ -39,5 +88,7 @@
     </template>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
     <script src="generate-web.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
   </body>
 </html>
