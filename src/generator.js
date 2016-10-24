@@ -27,6 +27,13 @@ export default function generate() {
   ctx.fillStyle = backgroundColor;
   ctx.fillRect(0, 0, 800, 200);
 
+  let coloredLogo = logo.innerHTML.replace(/\${COLOR}/g, headingColor);
+  svgToImage(coloredLogo).then(logoImg => {
+    ctx.imageSmoothingQuality = 'high';
+    ctx.imageSmoothingEnabled = true;
+    ctx.drawImage(logoImg, 55, 55, logoImg.width * 0.6, logoImg.height * 0.6);
+  });
+
   let gradient = ctx.createLinearGradient(0, 0, 800, 0);
   gradient.addColorStop(0, stop1);
   gradient.addColorStop(1, stop2);
@@ -34,18 +41,13 @@ export default function generate() {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 170, 800, 30);
 
-  let coloredLogo = logo.innerHTML.replace(/\${COLOR}/g, headingColor);
-  svgToImage(coloredLogo).then(logoImg => {
-    ctx.drawImage(logoImg, 55, 55, logoImg.width * 0.6, logoImg.height * 0.6);
+  ctx.font = '700 20pt Lato';
+  ctx.fillStyle = stop2;
+  ctx.fillText(date, 400, 50);
 
-    ctx.font = '700 20pt Lato';
-    ctx.fillStyle = stop2;
-    ctx.fillText(date, 400, 50);
-
-    ctx.font = '700 30pt Lato';
-    ctx.fillStyle = headingColor;
-    ctx.fillText(name, 400, 80);
-  });
+  ctx.font = '700 30pt Lato';
+  ctx.fillStyle = headingColor;
+  ctx.fillText(name, 400, 80);
 }
 
 form.addEventListener('input', generate);
