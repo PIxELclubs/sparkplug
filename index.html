@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf8">
     <title>Sparkplug</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
@@ -41,36 +43,36 @@
       <p>Enter color values and Workshop details below.</p>
       <form id="values">
         <div class="row">
-          <div class="input-field col s4">
+          <div class="input-field col l4 s6">
             <input type="text" id="name" value="Web Workshop 1">
             <label for="name">Name of Workshop</label>
           </div>
-          <div class="input-field col s4">
+          <div class="input-field col l4 s6">
             <input type="date" id="date" class="datepicker">
             <label class="active" for="date">Date of Workshop</label>
           </div>
-          <div class="input-field col s1">
+          <div class="input-field col l1 s3">
             <input type="color" id="heading-color" value="#ffffff">
             <label class="active" for="heading-color">Heading</label>
           </div>
-          <div class="input-field col s1">
+          <div class="input-field col l1 s3">
             <input type="color" id="background-color" value="#000000">
             <label class="active" for="background-color">Background</label>
           </div>
-          <div class="input-field col s1">
+          <div class="input-field col l1 s3">
             <input type="color" id="gradient-1" value="#ff0000">
             <label class="active" for="gradient-1">Gradient 1</label>
           </div>
-          <div class="input-field col s1">
+          <div class="input-field col l1 s3">
             <input type="color" id="gradient-2" value="#ffff00">
             <label class="active" for="gradient-2">Gradient 2</label>
           </div>
         </div>
         <div class="row">
-          <div class="col s10">
+          <div class="col m10 s12">
             <canvas id="preview" width="800" height="200"></canvas>
           </div>
-          <div class="col s2">
+          <div class="col m2 s12">
             <button class="btn waves-effect waves-light" type="submit">
               Submit <i class="material-icons right">send</i>
             </button>
