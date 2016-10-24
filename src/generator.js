@@ -53,3 +53,5 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   generate();
 });
+
+window.addEventListener('fontsloaded', generate);

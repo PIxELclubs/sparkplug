@@ -358,12 +358,14 @@ form.addEventListener('submit', function (e) {
   generate();
 });
 
+window.addEventListener('fontsloaded', generate);
+
 webfontloader.load({
   google: {
     families: ['Lato', 'Lato:bold']
   },
   active: function active() {
-    generate();
+    window.dispatchEvent(new Event('fontsloaded'));
   }
 });
 

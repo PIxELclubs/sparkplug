@@ -10,6 +10,6 @@ WebFont.load({
     families: ['Lato', 'Lato:bold']
   },
   active: () => {
-    generate();
+    window.dispatchEvent(new Event('fontsloaded'));
   }
 });
