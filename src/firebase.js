@@ -12,6 +12,12 @@ export const config = Object.freeze({
 export let user;
 
 export function toggleLogin() {
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    Materialze.toast(`Unfortunately, iOS sucks. It is therefore very unlikely
+    that the login will actually work. If it does work on your device, it is
+    considered a bug, so please report it.`);
+  }
+
   if (!firebase.auth().currentUser) {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
@@ -35,7 +41,7 @@ firebase.auth().getRedirectResult().then(() => {
 }).catch(err => {
   window.dispatchEvent(new CustomEvent('log-in-failed', {
     detail: {
-      message: 'Unknown error',
+      message: err.message,
       err
     }
   }));

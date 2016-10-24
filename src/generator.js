@@ -33,7 +33,7 @@ export default function generate() {
   svgToImage(coloredLogo).then(logoImg => {
     ctx.imageSmoothingQuality = 'high';
     ctx.imageSmoothingEnabled = true;
-    ctx.drawImage(logoImg, 55, 55, logoImg.width * 0.6, logoImg.height * 0.6);
+    ctx.drawImage(logoImg, 55, 55, 180, 69.6);
   });
 
   let gradient = ctx.createLinearGradient(0, 0, 800, 0);

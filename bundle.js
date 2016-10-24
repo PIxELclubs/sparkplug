@@ -303,6 +303,10 @@ var config = Object.freeze({
 exports.user = void 0;
 
 function toggleLogin() {
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    Materialze.toast('Unfortunately, iOS sucks. It is therefore very unlikely\n    that the login will actually work. If it does work on your device, it is\n    considered a bug, so please report it.');
+  }
+
   if (!firebase.auth().currentUser) {
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
@@ -326,7 +330,7 @@ firebase.auth().getRedirectResult().then(function () {
 }).catch(function (err) {
   window.dispatchEvent(new CustomEvent('log-in-failed', {
     detail: {
-      message: 'Unknown error',
+      message: err.message,
       err: err
     }
   }));
@@ -401,7 +405,7 @@ function generate() {
   svgToImage(coloredLogo).then(function (logoImg) {
     ctx.imageSmoothingQuality = 'high';
     ctx.imageSmoothingEnabled = true;
-    ctx.drawImage(logoImg, 55, 55, logoImg.width * 0.6, logoImg.height * 0.6);
+    ctx.drawImage(logoImg, 55, 55, 180, 69.6);
   });
 
   var gradient = ctx.createLinearGradient(0, 0, 800, 0);
