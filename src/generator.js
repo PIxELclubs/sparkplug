@@ -1,3 +1,5 @@
+import firebase from './firebase.js';
+
 export const logo = document.querySelector('#logo');
 export const form = document.querySelector('#values');
 export const canvas = document.querySelector('#preview');

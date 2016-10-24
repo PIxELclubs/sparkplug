@@ -291,6 +291,72 @@ var toConsumableArray = function (arr) {
   picker.set('select', new Date());
 });
 
+var firebase = window.firebase;
+var config = Object.freeze({
+  apiKey: 'AIzaSyB_NVhYdoJVw1xAhQvX7opeXo6OIgKJNQs',
+  authDomain: 'sparkplug-cf508.firebaseapp.com',
+  databaseURL: 'https://sparkplug-cf508.firebaseio.com',
+  storageBucket: 'sparkplug-cf508.appspot.com',
+  messagingSenderId: '880163842790'
+});
+
+exports.user = void 0;
+
+function toggleLogin() {
+  if (!firebase.auth().currentUser) {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      hd: 'pixelclubs.org'
+    });
+    firebase.auth().signInWithRedirect(provider);
+  } else {
+    firebase.auth().signOut();
+  }
+}
+
+var accountBtn = document.querySelector('#account');
+var initing = true;
+
+firebase.initializeApp(config);
+
+accountBtn.addEventListener('click', toggleLogin);
+
+firebase.auth().getRedirectResult().then(function () {
+  accountBtn.classList.remove('hidden');
+}).catch(function (err) {
+  window.dispatchEvent(new CustomEvent('log-in-failed', {
+    detail: {
+      message: 'Unknown error',
+      err: err
+    }
+  }));
+});
+
+firebase.auth().onAuthStateChanged(function (user_) {
+  exports.user = user_;
+
+  if (exports.user) {
+    if (!exports.user.email.endsWith('@pixelclubs.org')) {
+      exports.user = null;
+      firebase.auth().signOut();
+      accountBtn.textContent = 'Sign in';
+      window.dispatchEvent(new CustomEvent('log-in-failed', {
+        detail: {
+          message: 'Please sign in with a pixelclubs.org account'
+        }
+      }));
+    } else {
+      accountBtn.textContent = 'Sign out';
+      window.dispatchEvent(new CustomEvent('logged-in'));
+    }
+  } else if (!initing) {
+    accountBtn.textContent = 'Sign in';
+    window.dispatchEvent(new CustomEvent('logged-out'));
+  }
+
+  initing = false;
+});
+
 var logo = document.querySelector('#logo');
 var form = document.querySelector('#values');
 var canvas = document.querySelector('#preview');
@@ -371,7 +437,26 @@ webfontloader.load({
   }
 });
 
+window.addEventListener('logged-in', function () {
+  console.log('logged-in');
+  Materialize.toast('Logged in as ' + exports.user.displayName, 3000);
+});
+
+window.addEventListener('logged-out', function () {
+  console.log('logged-out');
+  Materialize.toast('Logged out successfully', 3000);
+});
+
+window.addEventListener('log-in-failed', function (e) {
+  Materialize.toast('Login failed: ' + e.detail.message, 3000);
+  if (e.detail.err) {
+    console.error(e.detail.err);
+  }
+});
+
 exports.generate = generate;
+exports.firebase = generate;
+exports.toggleLogin = toggleLogin;
 exports.logo = logo;
 exports.form = form;
 exports.canvas = canvas;
