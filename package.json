@@ -8,7 +8,6 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "moment": "^2.15.1",
     "webfontloader": "^1.6.26"
   },
   "devDependencies": {
