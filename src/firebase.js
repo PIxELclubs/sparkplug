@@ -27,43 +27,49 @@ export function toggleLogin() {
   }
 }
 
-const accountBtn = document.querySelector('#account');
-let initing = true;
+export function getUser() {
+  return firebase.auth().currentUser;
+}
 
-firebase.initializeApp(config);
+export function init() {
+  const accountBtn = document.querySelector('#account');
+  let initing = true;
 
-accountBtn.addEventListener('click', toggleLogin);
+  firebase.initializeApp(config);
 
-firebase.auth().getRedirectResult().then(() => {
-  accountBtn.classList.remove('hidden');
-}).catch(err => {
-  window.dispatchEvent(new CustomEvent('log-in-failed', {
-    detail: {
-      message: err.message,
-      err
-    }
-  }));
-});
+  accountBtn.addEventListener('click', toggleLogin);
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    if (!user.email.endsWith('@pixelclubs.org')) {
-      user = null;
-      firebase.auth().signOut();
+  firebase.auth().getRedirectResult().then(() => {
+    accountBtn.classList.remove('hidden');
+  }).catch(err => {
+    window.dispatchEvent(new CustomEvent('log-in-failed', {
+      detail: {
+        message: err.message,
+        err
+      }
+    }));
+  });
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      if (!user.email.endsWith('@pixelclubs.org')) {
+        user = null;
+        firebase.auth().signOut();
+        accountBtn.textContent = 'Sign in';
+        window.dispatchEvent(new CustomEvent('log-in-failed', {
+          detail: {
+            message: 'Please sign in with a pixelclubs.org account'
+          }
+        }));
+      } else {
+        accountBtn.textContent = 'Sign out';
+        window.dispatchEvent(new CustomEvent('logged-in'));
+      }
+    } else if (!initing) {
       accountBtn.textContent = 'Sign in';
-      window.dispatchEvent(new CustomEvent('log-in-failed', {
-        detail: {
-          message: 'Please sign in with a pixelclubs.org account'
-        }
-      }));
-    } else {
-      accountBtn.textContent = 'Sign out';
-      window.dispatchEvent(new CustomEvent('logged-in'));
+      window.dispatchEvent(new CustomEvent('logged-out'));
     }
-  } else if (!initing) {
-    accountBtn.textContent = 'Sign in';
-    window.dispatchEvent(new CustomEvent('logged-out'));
-  }
 
-  initing = false;
-});
+    initing = false;
+  });
+}

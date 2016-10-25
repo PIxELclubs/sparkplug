@@ -28,8 +28,13 @@
         padding: 0;
         box-shadow: none;
       }
-      label {
-        text-overflow: ellipsis;
+      .toast {
+        word-break: inherit;
+      }
+      @media only screen and (min-width: 993px) {
+        .toast {
+          max-width: 568px;
+        }
       }
       .hidden {
         visibility: hidden;

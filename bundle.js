@@ -26,6 +26,16 @@ function Ea(a){for(var b=a.f.length,c=0;c<b;c++){var d=a.f[c].split(":"),e=d[0].
 g,0<d.length&&(d=Aa[d[0]])&&(a.c[e]=d));}a.c[e]||(d=Aa[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new H(e,f[d]));}}function Fa(a,b){this.c=a;this.a=b;}var Ga={Arimo:!0,Cousine:!0,Tinos:!0};Fa.prototype.load=function(a){var b=new C,c=this.c,d=new va(this.a.api,z(c),this.a.text),e=this.a.families;xa(d,e);var f=new za(e);Ea(f);A(c,ya(d),D(b));F(b,function(){a(f.a,f.c,Ga);});};function Ha(a,b){this.c=a;this.a=b;}Ha.prototype.load=function(a){var b=this.a.id,c=this.c.m;b?B(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],k=b[f+1],h=0;h<k.length;h++)e.push(new H(g,k[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0});}catch(m){}a(e);}},2E3):a([]);};function Ia(a,b){this.c=a;this.f=b;this.a=[];}Ia.prototype.load=function(a){var b=this.f.id,c=this.c.m,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,k=c.fonts.length;g<k;++g){var h=c.fonts[g];d.a.push(new H(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)));}a(d.a);},B(this.c,z(this.c)+(this.f.api||"//f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([]);})):a([]);};var Y=new pa(window);Y.a.c.custom=function(a,b){return new ua(b,a)};Y.a.c.fontdeck=function(a,b){return new Ia(b,a)};Y.a.c.monotype=function(a,b){return new sa(b,a)};Y.a.c.typekit=function(a,b){return new Ha(b,a)};Y.a.c.google=function(a,b){return new Fa(b,a)};var Z={load:p(Y.load,Y)};"function"===typeof define&&define.amd?define(function(){return Z}):"undefined"!==typeof module&&module.exports?module.exports=Z:(window.WebFont=Z,window.WebFontConfig&&Y.load(window.WebFontConfig));}());
 });
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -276,20 +286,26 @@ var toConsumableArray = function (arr) {
   }
 };
 
-[].concat(toConsumableArray(document.querySelectorAll('.datepicker'))).forEach(function (el) {
-  var $el = $(el);
-  var form = $el.parents('form')[0];
-  var picker = $el.pickadate({
-    select: new Date(),
-    format: 'mmmm d, yyyy',
-    onSet: function onSet() {
-      // better than nothing
-      form.dispatchEvent(new Event('input'));
-    }
-  }).pickadate('picker');
+function init() {
+  [].concat(toConsumableArray(document.querySelectorAll('.datepicker'))).forEach(function (el) {
+    var $el = $(el);
+    var form = $el.parents('form')[0];
+    var picker = $el.pickadate({
+      select: new Date(),
+      format: 'mmmm d, yyyy',
+      onSet: function onSet() {
+        // better than nothing
+        form.dispatchEvent(new Event('input'));
+      }
+    }).pickadate('picker');
 
-  picker.set('select', new Date());
-});
+    picker.set('select', new Date());
+  });
+}
+
+function getDate(el) {
+  return $(el).data('pickadate').get('select').obj;
+}
 
 var firebase = window.firebase;
 var config = Object.freeze({
@@ -316,61 +332,159 @@ function toggleLogin() {
   }
 }
 
-var accountBtn = document.querySelector('#account');
-var initing = true;
+function getUser() {
+  return firebase.auth().currentUser;
+}
 
-firebase.initializeApp(config);
+function init$2() {
+  var accountBtn = document.querySelector('#account');
+  var initing = true;
 
-accountBtn.addEventListener('click', toggleLogin);
+  firebase.initializeApp(config);
 
-firebase.auth().getRedirectResult().then(function () {
-  accountBtn.classList.remove('hidden');
-}).catch(function (err) {
-  window.dispatchEvent(new CustomEvent('log-in-failed', {
-    detail: {
-      message: err.message,
-      err: err
-    }
-  }));
-});
+  accountBtn.addEventListener('click', toggleLogin);
 
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    if (!user.email.endsWith('@pixelclubs.org')) {
-      user = null;
-      firebase.auth().signOut();
+  firebase.auth().getRedirectResult().then(function () {
+    accountBtn.classList.remove('hidden');
+  }).catch(function (err) {
+    window.dispatchEvent(new CustomEvent('log-in-failed', {
+      detail: {
+        message: err.message,
+        err: err
+      }
+    }));
+  });
+
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      if (!user.email.endsWith('@pixelclubs.org')) {
+        user = null;
+        firebase.auth().signOut();
+        accountBtn.textContent = 'Sign in';
+        window.dispatchEvent(new CustomEvent('log-in-failed', {
+          detail: {
+            message: 'Please sign in with a pixelclubs.org account'
+          }
+        }));
+      } else {
+        accountBtn.textContent = 'Sign out';
+        window.dispatchEvent(new CustomEvent('logged-in'));
+      }
+    } else if (!initing) {
       accountBtn.textContent = 'Sign in';
-      window.dispatchEvent(new CustomEvent('log-in-failed', {
-        detail: {
-          message: 'Please sign in with a pixelclubs.org account'
-        }
-      }));
-    } else {
-      accountBtn.textContent = 'Sign out';
-      window.dispatchEvent(new CustomEvent('logged-in'));
+      window.dispatchEvent(new CustomEvent('logged-out'));
     }
-  } else if (!initing) {
-    accountBtn.textContent = 'Sign in';
-    window.dispatchEvent(new CustomEvent('logged-out'));
+
+    initing = false;
+  });
+}
+
+var root = 'https://api.github.com/repos/PIxELclubs/static-assets/contents/';
+
+function getLogin() {
+  if (!getUser()) {
+    return Promise.reject(new Error('You need to sign in first before you can upload'));
   }
 
-  initing = false;
-});
+  return firebase.database().ref('/tokens/github').once('value').then(function (r) {
+    return r.val();
+  });
+}
+
+function blobToBase64(blob) {
+  return new Promise(function (resolve, reject) {
+    var reader = new FileReader();
+    reader.addEventListener('load', function () {
+      var result = reader.result;
+
+      resolve(result.substr(result.indexOf(',') + 1));
+    });
+    reader.addEventListener('error', function () {
+      reject(reader.error);
+    });
+    reader.readAsDataURL(blob);
+  });
+}
+
+var pad = function pad(num) {
+  return (num < 10 ? '0' : '') + num;
+};
+function dateToYYYYMMDD(date) {
+  return date.getFullYear() + '-' + pad(date.getMonth()) + '-' + pad(date.getDate());
+}
+
+function upload(blob, date, shouldConfirm) {
+  return Promise.all([getLogin(), blobToBase64(blob)]).then(function (_ref) {
+    var _ref2 = slicedToArray(_ref, 2);
+
+    var _ref2$ = _ref2[0];
+    var user = _ref2$.user;
+    var token = _ref2$.token;
+    var b64 = _ref2[1];
+
+    var dateStr = dateToYYYYMMDD(date);
+    var auth = btoa(user + ':' + token);
+    var path = 'sparkplug/' + dateStr + '-banner.png';
+
+    if (shouldConfirm && !confirm('Are you sure you want to upload the image now?')) {
+      return;
+    }
+
+    return fetch('' + root + path, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'Basic ' + auth,
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify({
+        path: path,
+        message: 'Add banner for ' + dateStr + ' meeting',
+        content: b64
+      })
+    });
+  }).then(function (res) {
+    if (!res.ok) {
+      var _ret = function () {
+        if (res.status === 422) {
+          throw new Error('Target file already exists on the server');
+        }
+
+        var errMsg = res.statusText;
+        return {
+          v: res.json().then(function (_ref3) {
+            var message = _ref3.message;
+
+            if (message) {
+              errMsg += '; ' + message;
+            }
+          }, function (err) {
+            // ignored
+          }).then(function () {
+            throw new Error(errMsg);
+          })
+        };
+      }();
+
+      if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+    }
+  });
+}
 
 var logo = document.querySelector('#logo');
 var form = document.querySelector('#values');
+var date = document.querySelector('#date');
 var canvas = document.querySelector('#preview');
 var ctx = canvas.getContext('2d');
 
 function svgToImage(svg) {
   var DOMURL = window.URL || window.webkitURL || window;
 
-  return new Promise(function (fulfill) {
+  return new Promise(function (resolve) {
     var img = new Image();
     var blob = new Blob([svg], { type: 'image/svg+xml' });
     var url = DOMURL.createObjectURL(blob);
     img.onload = function () {
-      fulfill(img);
+      resolve(img);
       DOMURL.revokeObjectURL(url);
     };
     img.src = url;
@@ -385,7 +499,7 @@ function generate() {
   var _values = slicedToArray(values, 6);
 
   var name = _values[0];
-  var date = _values[1];
+  var dateStr = _values[1];
   var headingColor = _values[2];
   var backgroundColor = _values[3];
   var stop1 = _values[4];
@@ -398,7 +512,7 @@ function generate() {
   ctx.fillRect(0, 0, 800, 200);
 
   var coloredLogo = logo.innerHTML.replace(/\${COLOR}/g, headingColor);
-  svgToImage(coloredLogo).then(function (logoImg) {
+  var svgPromise = svgToImage(coloredLogo).then(function (logoImg) {
     ctx.imageSmoothingQuality = 'high';
     ctx.imageSmoothingEnabled = true;
     ctx.drawImage(logoImg, 55, 55, 180, 69.6);
@@ -413,20 +527,86 @@ function generate() {
 
   ctx.font = '700 20pt Lato';
   ctx.fillStyle = stop2;
-  ctx.fillText(date, 400, 50);
+  ctx.fillText(dateStr, 400, 50);
 
   ctx.font = '700 30pt Lato';
   ctx.fillStyle = headingColor;
   ctx.fillText(name, 400, 80);
+
+  return svgPromise;
 }
 
-form.addEventListener('input', generate);
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  generate();
+function canvasToBlob() {
+  return new Promise(function (resolve) {
+    canvas.toBlob(resolve, 'image/png');
+  });
+}
+
+function init$1() {
+  form.addEventListener('input', generate);
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    generate().then(function () {
+      return canvasToBlob();
+    }).then(function (blob) {
+      return upload(blob, getDate(date), true);
+    }).then(function () {
+      window.dispatchEvent(new CustomEvent('upload-success'));
+    }).catch(function (err) {
+      window.dispatchEvent(new CustomEvent('upload-error', {
+        detail: {
+          message: err.message,
+          err: err
+        }
+      }));
+    });
+  });
+
+  window.addEventListener('fontsloaded', generate);
+}
+
+window.addEventListener('logged-in', function () {
+  console.log('logged-in');
+  Materialize.toast('Logged in as ' + getUser().displayName, 3000);
 });
 
-window.addEventListener('fontsloaded', generate);
+window.addEventListener('logged-out', function () {
+  console.log('logged-out');
+  Materialize.toast('Logged out', 3000);
+});
+
+window.addEventListener('log-in-failed', function (_ref) {
+  var _ref$detail = _ref.detail;
+  var message = _ref$detail.message;
+  var err = _ref$detail.err;
+
+  Materialize.toast('Login failed: ' + message, 3000);
+  if (err) {
+    console.error(err);
+  }
+});
+
+window.addEventListener('upload-success', function () {
+  Materialize.toast('Upload succeeded', 3000);
+});
+
+window.addEventListener('upload-error', function (_ref2) {
+  var _ref2$detail = _ref2.detail;
+  var message = _ref2$detail.message;
+  var err = _ref2$detail.err;
+
+  var span = document.createElement('span');
+  span.innerText = 'Upload failed: ' + message;
+  Materialize.toast(span.innerHTML, 3000);
+  if (err) {
+    console.error(err);
+  }
+});
+
+init();
+init$1();
+init$2();
 
 webfontloader.load({
   google: {
@@ -437,26 +617,10 @@ webfontloader.load({
   }
 });
 
-window.addEventListener('logged-in', function () {
-  console.log('logged-in');
-  Materialize.toast('Logged in as ' + firebase.auth().currentUser.displayName, 3000);
-});
-
-window.addEventListener('logged-out', function () {
-  console.log('logged-out');
-  Materialize.toast('Logged out successfully', 3000);
-});
-
-window.addEventListener('log-in-failed', function (e) {
-  Materialize.toast('Login failed: ' + e.detail.message, 3000);
-  if (e.detail.err) {
-    console.error(e.detail.err);
-  }
-});
-
 exports.generate = generate;
 exports.firebase = firebase;
 exports.toggleLogin = toggleLogin;
+exports.upload = upload;
 exports.logo = logo;
 exports.form = form;
 exports.canvas = canvas;
