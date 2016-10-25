@@ -300,8 +300,6 @@ var config = Object.freeze({
   messagingSenderId: '880163842790'
 });
 
-exports.user = void 0;
-
 function toggleLogin() {
   if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
     Materialze.toast('Unfortunately, iOS sucks. It is therefore very unlikely\n    that the login will actually work. If it does work on your device, it is\n    considered a bug, so please report it.');
@@ -336,12 +334,10 @@ firebase.auth().getRedirectResult().then(function () {
   }));
 });
 
-firebase.auth().onAuthStateChanged(function (user_) {
-  exports.user = user_;
-
-  if (exports.user) {
-    if (!exports.user.email.endsWith('@pixelclubs.org')) {
-      exports.user = null;
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    if (!user.email.endsWith('@pixelclubs.org')) {
+      user = null;
       firebase.auth().signOut();
       accountBtn.textContent = 'Sign in';
       window.dispatchEvent(new CustomEvent('log-in-failed', {
@@ -443,7 +439,7 @@ webfontloader.load({
 
 window.addEventListener('logged-in', function () {
   console.log('logged-in');
-  Materialize.toast('Logged in as ' + exports.user.displayName, 3000);
+  Materialize.toast('Logged in as ' + firebase.auth().currentUser.displayName, 3000);
 });
 
 window.addEventListener('logged-out', function () {
@@ -459,7 +455,7 @@ window.addEventListener('log-in-failed', function (e) {
 });
 
 exports.generate = generate;
-exports.firebase = generate;
+exports.firebase = firebase;
 exports.toggleLogin = toggleLogin;
 exports.logo = logo;
 exports.form = form;

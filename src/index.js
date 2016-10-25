@@ -2,10 +2,9 @@ import WebFont from 'webfontloader';
 import './datepicker.js';
 import generate from './generator';
 export * from './generator';
-import firebase from './generator';
-import {toggleLogin, user} from './firebase';
+import firebase, {toggleLogin} from './firebase';
 
-export {generate, firebase, toggleLogin, user};
+export {generate, firebase, toggleLogin};
 
 WebFont.load({
   google: {
@@ -18,7 +17,7 @@ WebFont.load({
 
 window.addEventListener('logged-in', () => {
   console.log('logged-in');
-  Materialize.toast(`Logged in as ${user.displayName}`, 3000);
+  Materialize.toast(`Logged in as ${firebase.auth().currentUser.displayName}`, 3000);
 });
 
 window.addEventListener('logged-out', () => {

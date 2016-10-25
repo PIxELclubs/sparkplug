@@ -9,8 +9,6 @@ export const config = Object.freeze({
   messagingSenderId: '880163842790'
 });
 
-export let user;
-
 export function toggleLogin() {
   if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
     Materialze.toast(`Unfortunately, iOS sucks. It is therefore very unlikely
@@ -47,9 +45,7 @@ firebase.auth().getRedirectResult().then(() => {
   }));
 });
 
-firebase.auth().onAuthStateChanged(user_ => {
-  user = user_;
-
+firebase.auth().onAuthStateChanged(user => {
   if (user) {
     if (!user.email.endsWith('@pixelclubs.org')) {
       user = null;
