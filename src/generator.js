@@ -74,6 +74,10 @@ export function init() {
     }).then(() => {
       window.dispatchEvent(new CustomEvent('upload-success'));
     }).catch(err => {
+      if (err === 'not an error') {
+        return;
+      }
+
       window.dispatchEvent(new CustomEvent('upload-error', {
         detail: {
           message: err.message,

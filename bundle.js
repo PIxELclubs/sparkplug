@@ -427,7 +427,7 @@ function upload(blob, date, shouldConfirm) {
     var path = 'sparkplug/' + dateStr + '-banner.png';
 
     if (shouldConfirm && !confirm('Are you sure you want to upload the image now?')) {
-      return;
+      throw 'not an error';
     }
 
     return fetch('' + root + path, {
@@ -554,6 +554,10 @@ function init$1() {
     }).then(function () {
       window.dispatchEvent(new CustomEvent('upload-success'));
     }).catch(function (err) {
+      if (err === 'not an error') {
+        return;
+      }
+
       window.dispatchEvent(new CustomEvent('upload-error', {
         detail: {
           message: err.message,

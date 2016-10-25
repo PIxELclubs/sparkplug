@@ -40,7 +40,7 @@ export default function upload(blob, date, shouldConfirm) {
     const path = `sparkplug/${dateStr}-banner.png`;
 
     if (shouldConfirm && !confirm('Are you sure you want to upload the image now?')) {
-      return;
+      throw 'not an error';
     }
 
     return fetch(`${root}${path}`, {
