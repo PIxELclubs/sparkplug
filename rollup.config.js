@@ -2,7 +2,7 @@ import json from 'rollup-plugin-json';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
-import modify from 'modify-babel-preset';
+import replace from 'rollup-plugin-replace';
 
 export default {
   entry: 'src/index.js',
@@ -22,9 +22,14 @@ export default {
     babel({
       exclude: 'node_modules/**',
       presets: [
-        'es2015-rollup'
+        'es2015-rollup',
+        'react',
+        'stage-3'
       ]
     }),
+    replace({
+      'process.env.NODE_ENV': '"development"'
+    })
   ],
   dest: 'bundle.js'
 };

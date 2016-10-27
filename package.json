@@ -5,17 +5,29 @@
   "author": "The PIxEL Foundation",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c"
+    "build": "node-sass styles/index.scss > index.css && rollup -c"
   },
   "dependencies": {
+    "material-ui": "^0.16.1",
+    "materialize-css": "^0.97.7",
+    "react": "^15.3.2",
+    "react-color": "^2.4.0",
+    "react-dom": "^15.3.2",
+    "react-tap-event-plugin": "^1.0.0",
     "webfontloader": "^1.6.26"
   },
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "node-sass": "^3.10.1",
     "rollup": "^0.36.3",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^5.0.5",
     "rollup-plugin-json": "^2.0.2",
-    "rollup-plugin-node-resolve": "^2.0.0"
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-watch": "^2.5.0",
+    "sass-module-importer": "^1.2.1"
   }
 }
