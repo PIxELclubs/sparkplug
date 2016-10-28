@@ -18,16 +18,16 @@ export default class App extends React.Component {
         stop2: '#fad38d'
       }
     };
-
-    this.handleChange = (e, props) => {
-      this.setState({
-        form: {
-          ...this.state.form,
-          ...props
-        }
-      });
-    };
   }
+
+  handleChange = (e, props) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        ...props
+      }
+    });
+  };
 
   render() {
     return <div>

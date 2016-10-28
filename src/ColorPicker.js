@@ -51,29 +51,10 @@ const getStyles = (props, context, state) => {
 export default class ColorPicker extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       isFocused: false,
       anchorEl: null
-    };
-
-    this.focus = () => {
-      this.setState({
-        isFocused: true
-      });
-    };
-
-    this.blur = () => {
-      this.setState({
-        isFocused: false
-      });
-    };
-
-    this.handleTouchTap = e => {
-      e.preventDefault();
-      this.setState({
-        isFocused: true,
-        anchorEl: e.currentTarget
-      });
     };
 
     this.controlled = this.props.value !== undefined;
@@ -92,6 +73,48 @@ export default class ColorPicker extends React.Component {
       };
     }
   }
+
+  static contextTypes = {
+    muiTheme: React.PropTypes.object.isRequired
+  };
+
+  static defaultProps = {
+    disabled: false,
+    fullWidth: false,
+    disableAlpha: false
+  };
+
+  static propTypes = {
+    value: React.PropTypes.string,
+    defaultValue: React.PropTypes.string,
+    className: React.PropTypes.string,
+    disabled: React.PropTypes.bool,
+    fullWidth: React.PropTypes.bool,
+    floatingLabelText: React.PropTypes.string,
+    onChange: React.PropTypes.func,
+
+    disableAlpha: React.PropTypes.bool
+  };
+
+  focus = () => {
+    this.setState({
+      isFocused: true
+    });
+  };
+
+  blur = () => {
+    this.setState({
+      isFocused: false
+    });
+  };
+
+  handleTouchTap = e => {
+    e.preventDefault();
+    this.setState({
+      isFocused: true,
+      anchorEl: e.currentTarget
+    });
+  };
 
   render() {
     const {
@@ -153,25 +176,3 @@ export default class ColorPicker extends React.Component {
     );
   }
 }
-
-ColorPicker.contextTypes = {
-  muiTheme: React.PropTypes.object.isRequired
-};
-
-ColorPicker.defaultProps = {
-  disabled: false,
-  fullWidth: false,
-  disableAlpha: false
-};
-
-ColorPicker.propTypes = {
-  value: React.PropTypes.string,
-  defaultValue: React.PropTypes.string,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  fullWidth: React.PropTypes.bool,
-  floatingLabelText: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-
-  disableAlpha: React.PropTypes.bool
-};

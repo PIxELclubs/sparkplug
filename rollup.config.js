@@ -24,7 +24,7 @@ export default {
       presets: [
         'es2015-rollup',
         'react',
-        'stage-3'
+        'stage-2'
       ]
     }),
     replace({

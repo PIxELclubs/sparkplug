@@ -44694,11 +44694,6 @@ var ColorPicker = function (_React$Component) {
 
     var _this = possibleConstructorReturn$2(this, (ColorPicker.__proto__ || Object.getPrototypeOf(ColorPicker)).call(this, props));
 
-    _this.state = {
-      isFocused: false,
-      anchorEl: null
-    };
-
     _this.focus = function () {
       _this.setState({
         isFocused: true
@@ -44717,6 +44712,11 @@ var ColorPicker = function (_React$Component) {
         isFocused: true,
         anchorEl: e.currentTarget
       });
+    };
+
+    _this.state = {
+      isFocused: false,
+      anchorEl: null
     };
 
     _this.controlled = _this.props.value !== undefined;
@@ -44805,13 +44805,11 @@ var ColorPicker = function (_React$Component) {
 ColorPicker.contextTypes = {
   muiTheme: react.PropTypes.object.isRequired
 };
-
 ColorPicker.defaultProps = {
   disabled: false,
   fullWidth: false,
   disableAlpha: false
 };
-
 ColorPicker.propTypes = {
   value: react.PropTypes.string,
   defaultValue: react.PropTypes.string,
@@ -44827,17 +44825,22 @@ ColorPicker.propTypes = {
 var Form = function (_React$Component) {
   inherits$2(Form, _React$Component);
 
-  function Form(props) {
+  function Form() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     classCallCheck$2(this, Form);
 
-    var _this = possibleConstructorReturn$2(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
 
-    _this.notifyParent = function (e, obj) {
+    return _ret = (_temp = (_this = possibleConstructorReturn$2(this, (_ref = Form.__proto__ || Object.getPrototypeOf(Form)).call.apply(_ref, [this].concat(args))), _this), _this.notifyParent = function (e, obj) {
       if (_this.props.onChange) {
         _this.props.onChange(e, obj);
       }
-    };
-    return _this;
+    }, _temp), possibleConstructorReturn$2(_this, _ret);
   }
 
   createClass$2(Form, [{
@@ -44956,6 +44959,10 @@ function svgToImage(svg) {
   });
 }
 
+var mediaQuery = function mediaQuery(scaleFactor) {
+  return 'screen and (resolution: ' + scaleFactor + 'dppx)';
+};
+
 var Output = function (_React$Component) {
   inherits$2(Output, _React$Component);
 
@@ -44964,14 +44971,28 @@ var Output = function (_React$Component) {
 
     var _this = possibleConstructorReturn$2(this, (Output.__proto__ || Object.getPrototypeOf(Output)).call(this, props));
 
-    _this.scaleFactor = window.devicePixelRatio || 1;
+    _this.mediaQueryListener = function (e) {
+      if (!e.match) {
+        _this.mediaQueryList.removeListener(_this.mediaQueryListener);
+        _this.setState({
+          scaleFactor: window.devicePixelRatio || 1
+        });
+        _this.listenMediaQuery();
+      }
+    };
 
-    // this.getPng = (w = 800, h = 200) => {
-    //   return svgToPng(this.svg.outerHTML, w, h);
-    // };
+    _this.listenMediaQuery = function () {
+      _this.mediaQueryList = window.matchMedia(mediaQuery(_this.state.scaleFactor));
+      _this.mediaQueryList.addListener(_this.mediaQueryListener);
+    };
 
-    _this.redraw = function () {
+    _this.redraw = function (ctx, scaleFactor) {
+      ctx = ctx || _this.ctx;
+      scaleFactor = scaleFactor || _this.state.scaleFactor;
+
       var _this$props = _this.props,
+          width = _this$props.width,
+          height = _this$props.height,
           formattedDate = _this$props.formattedDate,
           name = _this$props.name,
           stop2 = _this$props.stop2,
@@ -44979,21 +45000,45 @@ var Output = function (_React$Component) {
 
 
       var s = function s(num) {
-        return num * _this.scaleFactor;
+        return num * scaleFactor;
       };
 
-      svgToImage(_this.svg.outerHTML).then(function (img) {
-        _this.ctx.drawImage(img, 0, 0, s(800), s(200));
+      return svgToImage(_this.svg.outerHTML).then(function (img) {
+        ctx.drawImage(img, 0, 0, s(width), s(height));
 
-        _this.ctx.font = '700 ' + s(20) + 'pt Lato';
-        _this.ctx.fillStyle = stop2;
-        _this.ctx.fillText(formattedDate, s(350), s(76));
+        ctx.font = '700 ' + s(20) + 'pt Lato';
+        ctx.fillStyle = stop2;
+        ctx.fillText(formattedDate, s(350), s(76));
 
-        _this.ctx.font = '700 ' + s(30) + 'pt Lato';
-        _this.ctx.fillStyle = headingColor;
-        _this.ctx.fillText(name, s(350), s(118));
+        ctx.font = '700 ' + s(30) + 'pt Lato';
+        ctx.fillStyle = headingColor;
+        ctx.fillText(name, s(350), s(118));
       });
     };
+
+    _this.toBlob = function () {
+      var canvas = _this.canvas;
+      var promise = Promise.resolve();
+
+      if (_this.state.scaleFactor !== 1) {
+        canvas = document.createElement('canvas');
+        canvas.setAttribute('width', _this.props.width);
+        canvas.setAttribute('height', _this.props.height);
+        var ctx = canvas.getContext('2d');
+        promise = _this.redraw(ctx, 1);
+      }
+
+      return promise.then(function () {
+        return new Promise(function (resolve) {
+          canvas.toBlob(resolve);
+        });
+      });
+    };
+
+    _this.state = {
+      scaleFactor: window.devicePixelRatio || 1
+    };
+    _this.listenMediaQuery();
     return _this;
   }
 
@@ -45004,14 +45049,20 @@ var Output = function (_React$Component) {
 
       var logoPath1 = 'M86.54 122.58v-10.45h13.91l9.37 10.45h13.54V119l4.24 3.58h10.8V119l4.24 3.58h16.23v-3.22l4.24 3.22h29.17v-3.22l4.23 3.22h39.07v-13.55L223.32 96.3V73.46L209.39 58.5H98.93l-4.84 5.74-6.97-5.74h-28.7v52.31l12.37 11.78z';
       var logoPath2 = 'M94.02 71.35v27.22H77.27v8.56H65.08V63.91H84.8l9.22 7.44zm-12.2 19.83V74.44h-4.55v16.74h4.56zm30.24 15.95h-12.2V63.91h12.2v43.22zm5.84-43.22h12.25v17.42h4.55V63.91h12.2v24.93H140l6.9 6.77v11.52h-12.2V94.02h-4.55v13.11H117.9V86.5h6.9l-6.9-6.76V63.9zm63.72 43.22H152.7V63.91h28.93v10.53h-16.74v6.89h6.47v7.51h-6.47v7.76h16.75v10.53zm31.9 0h-26.05V63.91h12.2v32.7h13.85v10.52z';
+      var _props = this.props,
+          width = _props.width,
+          height = _props.height;
+      var scaleFactor = this.state.scaleFactor;
+
 
       return react.createElement(
         'div',
         null,
         react.createElement('canvas', { ref: function ref(node) {
             return _this2.canvas = node;
-          }, width: '800', height: '200', style: {
-            width: '100%'
+          }, width: scaleFactor * width, height: scaleFactor * height, style: {
+            width: width,
+            maxWidth: '100%'
           } }),
         react.createElement(
           'svg',
@@ -45038,10 +45089,16 @@ var Output = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var _this3 = this;
+
       this.ctx = this.canvas.getContext('2d');
       this.ctx.imageSmoothingQuality = 'high';
       this.ctx.imageSmoothingEnabled = true;
-      window.addEventListener('fontsloaded', this.redraw);
+      window.addEventListener('fontsloaded', function () {
+        _this3.redraw();
+      }, {
+        once: true
+      });
     }
   }, {
     key: 'componentDidUpdate',
@@ -45052,6 +45109,15 @@ var Output = function (_React$Component) {
   return Output;
 }(react.Component);
 
+Output.propTypes = {
+  width: react.PropTypes.number.isRequired,
+  height: react.PropTypes.number.isRequired
+};
+Output.defaultProps = {
+  width: 800,
+  height: 200
+};
+
 var App = function (_React$Component) {
   inherits$2(App, _React$Component);
 
@@ -45059,6 +45125,8 @@ var App = function (_React$Component) {
     classCallCheck$2(this, App);
 
     var _this = possibleConstructorReturn$2(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+    _initialiseProps.call(_this);
 
     var date = new Date();
     _this.state = {
@@ -45071,12 +45139,6 @@ var App = function (_React$Component) {
         stop1: '#ff0084',
         stop2: '#fad38d'
       }
-    };
-
-    _this.handleChange = function (e, props) {
-      _this.setState({
-        form: _extends$2({}, _this.state.form, props)
-      });
     };
     return _this;
   }
@@ -45112,6 +45174,16 @@ var App = function (_React$Component) {
   }]);
   return App;
 }(react.Component);
+
+var _initialiseProps = function _initialiseProps() {
+  var _this2 = this;
+
+  this.handleChange = function (e, props) {
+    _this2.setState({
+      form: _extends$2({}, _this2.state.form, props)
+    });
+  };
+};
 
 // import generate, {init as initGenerator} from './generator';
 // import firebase, {toggleLogin, getUser, init as initFirebase} from './firebase';

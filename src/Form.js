@@ -4,14 +4,15 @@ import ColorPicker from './ColorPicker';
 import DatePicker, {formatDate} from './DatePicker';
 
 export default class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.notifyParent = (e, obj) => {
-      if (this.props.onChange) {
-        this.props.onChange(e, obj);
-      }
-    };
-  }
+  static propTypes = {
+    onChange: React.PropTypes.func
+  };
+
+  notifyParent = (e, obj) => {
+    if (this.props.onChange) {
+      this.props.onChange(e, obj);
+    }
+  };
 
   shouldComponentUpdate(nextProps) {
     return this.props.name !== nextProps.name ||
@@ -84,7 +85,3 @@ export default class Form extends React.Component {
     </div>;
   }
 }
-
-Form.propTypes = {
-  onChange: React.PropTypes.func
-};

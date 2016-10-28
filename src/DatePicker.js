@@ -9,9 +9,9 @@ const dtf = new Intl.DateTimeFormat('en-US', {
 
 export const formatDate = date => dtf.format(date);
 
-export default class LongMonthDatePicker extends DatePicker {}
-
-LongMonthDatePicker.defaultProps = {
-  ...DatePicker.defaultProps,
-  formatDate
-};
+export default class LongMonthDatePicker extends DatePicker {
+  static defaultProps = {
+    ...DatePicker.defaultProps,
+    formatDate
+  };
+}
