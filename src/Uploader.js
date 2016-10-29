@@ -1,6 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog/Dialog';
-import FlatButton from 'material-ui/FlatButton/RaisedButton';
+import FlatButton from 'material-ui/FlatButton/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
 import firebase, {getUser} from './firebase';
 

@@ -1,15 +1,16 @@
 import FontFaceObserver from 'fontfaceobserver';
 import React from 'react';
 import HybridCanvas from './HybridCanvas.js';
+import {color} from './PropTypes.js';
 
 export default class Output extends React.Component {
   static propTypes = {
     formattedDate: React.PropTypes.string.isRequired,
     name: React.PropTypes.string.isRequired,
-    headingColor: React.PropTypes.string.isRequired,
-    backgroundColor: React.PropTypes.string.isRequired,
-    stop1: React.PropTypes.string.isRequired,
-    stop2: React.PropTypes.string.isRequired
+    headingColor: color,
+    backgroundColor: color,
+    stop1: color,
+    stop2: color
   };
 
   drawText = (ctx, scaleFactor) => {

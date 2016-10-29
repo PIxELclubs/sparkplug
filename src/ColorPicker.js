@@ -4,6 +4,7 @@ import Popover from 'material-ui/Popover/Popover';
 import TextFieldLabel from 'material-ui/TextField/TextFieldLabel';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 import {fade, darken} from 'material-ui/utils/colorManipulator';
+import {color} from './PropTypes.js';
 
 const getStyles = (props, context, state) => {
   const {
@@ -85,8 +86,8 @@ export default class ColorPicker extends React.Component {
   };
 
   static propTypes = {
-    value: React.PropTypes.string,
-    defaultValue: React.PropTypes.string,
+    value: color,
+    defaultValue: color,
     className: React.PropTypes.string,
     disabled: React.PropTypes.bool,
     fullWidth: React.PropTypes.bool,

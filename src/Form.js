@@ -2,16 +2,41 @@ import React from 'react';
 import TextField from 'material-ui/TextField/TextField';
 import ColorPicker from './ColorPicker';
 import DatePicker, {formatDate} from './DatePicker';
+import {color} from './PropTypes.js';
 
 export default class Form extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const createHandler = propName => {
+      return (e, val) => {
+        this.props.onChange && this.props.onChange(e, {
+          [propName]: val
+        });
+      };
+    };
+    this.handleName = createHandler('name');
+    this.handleHeadingColor = createHandler('headingColor');
+    this.handleBackgroundColor = createHandler('backgroundColor');
+    this.handleStop1 = createHandler('stop1');
+    this.handleStop2 = createHandler('stop2');
+  }
+
   static propTypes = {
+    name: React.PropTypes.string,
+    date: React.PropTypes.instanceOf(Date),
+    headingColor: color,
+    backgroundColor: color,
+    stop1: color,
+    stop2: color,
     onChange: React.PropTypes.func
   };
 
-  notifyParent = (e, obj) => {
-    if (this.props.onChange) {
-      this.props.onChange(e, obj);
-    }
+  handleDate = (e, date) => {
+    this.props.onChange && this.props.onChange(e, {
+      date,
+      formattedDate: formatDate(date)
+    });
   };
 
   shouldComponentUpdate(nextProps) {
@@ -29,7 +54,7 @@ export default class Form extends React.Component {
         <TextField
           floatingLabelText='Name of Workshop'
           value={this.props.name}
-          onChange={(e, name) => this.notifyParent(e, {name})}
+          onChange={this.handleName}
           fullWidth
         />
       </div>
@@ -37,12 +62,7 @@ export default class Form extends React.Component {
         <DatePicker
           floatingLabelText='Date of Workshop'
           value={this.props.date}
-          onChange={(e, date) => {
-            this.notifyParent(e, {
-              date,
-              formattedDate: formatDate(date)
-            });
-          }}
+          onChange={this.handleDate}
           fullWidth
         />
       </div>
@@ -50,7 +70,7 @@ export default class Form extends React.Component {
         <ColorPicker
           floatingLabelText='Heading'
           value={this.props.headingColor}
-          onChange={(e, headingColor) => this.notifyParent(e, {headingColor})}
+          onChange={this.handleHeadingColor}
           fullWidth
           disableAlpha
         />
@@ -59,7 +79,7 @@ export default class Form extends React.Component {
         <ColorPicker
           floatingLabelText='Background'
           value={this.props.backgroundColor}
-          onChange={(e, backgroundColor) => this.notifyParent(e, {backgroundColor})}
+          onChange={this.handleBackgroundColor}
           fullWidth
           disableAlpha
         />
@@ -68,7 +88,7 @@ export default class Form extends React.Component {
         <ColorPicker
           floatingLabelText='Gradient'
           value={this.props.stop1}
-          onChange={(e, stop1) => this.notifyParent(e, {stop1})}
+          onChange={this.handleStop1}
           fullWidth
           disableAlpha
         />
@@ -77,7 +97,7 @@ export default class Form extends React.Component {
         <ColorPicker
           floatingLabelText='Gradient'
           value={this.props.stop2}
-          onChange={(e, stop2) => this.notifyParent(e, {stop2})}
+          onChange={this.handleStop2}
           fullWidth
           disableAlpha
         />

@@ -37256,7 +37256,20 @@ var createClass$2 = function () {
 
 
 
+var defineProperty$7 = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
 
+  return obj;
+};
 
 var _extends$2 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -45149,6 +45162,45 @@ exports.default = (0, _common.ColorWrap)(Chrome);
 
 var ChromePicker = unwrapExports(Chrome_1);
 
+var noop = function noop() {};
+
+var color$2 = noop;
+
+// Copied from React
+function PropTypeError$1(message) {
+  this.message = message;
+  this.stack = '';
+}
+PropTypeError$1.prototype = Error.prototype;
+
+{
+  (function () {
+    var colorRe = /^#[0-9a-f]{3}([0-9a-f]{3})?$/i;
+    color$2 = function color$2() {
+      var _React$PropTypes;
+
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      var inherited = (_React$PropTypes = react.PropTypes).string.apply(_React$PropTypes, args);
+      if (inherited instanceof Error) {
+        return inherited;
+      }
+
+      var props = args[0],
+          propName = args[1],
+          componentName = args[2],
+          location = args[3],
+          propFullName = args[4];
+
+      if (props[propName] != null && !colorRe.test(props[propName])) {
+        return new PropTypeError$1('Invalid color ' + location + ' `' + (propFullName || propName) + '` supplied to `' + (componentName || '<<anonymous>>') + '`');
+      }
+    };
+  })();
+}
+
 var getStyles = function getStyles(props, context, state) {
   var _context$muiTheme = context.muiTheme,
       baseTheme = _context$muiTheme.baseTheme,
@@ -45226,16 +45278,16 @@ var ColorPicker = function (_React$Component) {
 
     _this.controlled = _this.props.value !== undefined;
     if (_this.controlled) {
-      _this.handleChange = function (color) {
+      _this.handleChange = function (color$$1) {
         if (_this.props.onChange) {
-          _this.props.onChange(null, color.hex);
+          _this.props.onChange(null, color$$1.hex);
         }
       };
     } else {
       _this.state.value = _this.props.defaultValue;
-      _this.handleChange = function (color) {
+      _this.handleChange = function (color$$1) {
         _this.setState({
-          value: color.hex
+          value: color$$1.hex
         });
       };
     }
@@ -45316,8 +45368,8 @@ ColorPicker.defaultProps = {
   disableAlpha: false
 };
 ColorPicker.propTypes = {
-  value: react.PropTypes.string,
-  defaultValue: react.PropTypes.string,
+  value: color$2,
+  defaultValue: color$2,
   className: react.PropTypes.string,
   disabled: react.PropTypes.bool,
   fullWidth: react.PropTypes.bool,
@@ -45330,22 +45382,29 @@ ColorPicker.propTypes = {
 var Form = function (_React$Component) {
   inherits$2(Form, _React$Component);
 
-  function Form() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
+  function Form(props) {
     classCallCheck$2(this, Form);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+    var _this = possibleConstructorReturn$2(this, (Form.__proto__ || Object.getPrototypeOf(Form)).call(this, props));
 
-    return _ret = (_temp = (_this = possibleConstructorReturn$2(this, (_ref = Form.__proto__ || Object.getPrototypeOf(Form)).call.apply(_ref, [this].concat(args))), _this), _this.notifyParent = function (e, obj) {
-      if (_this.props.onChange) {
-        _this.props.onChange(e, obj);
-      }
-    }, _temp), possibleConstructorReturn$2(_this, _ret);
+    _this.handleDate = function (e, date) {
+      _this.props.onChange && _this.props.onChange(e, {
+        date: date,
+        formattedDate: formatDate(date)
+      });
+    };
+
+    var createHandler = function createHandler(propName) {
+      return function (e, val) {
+        _this.props.onChange && _this.props.onChange(e, defineProperty$7({}, propName, val));
+      };
+    };
+    _this.handleName = createHandler('name');
+    _this.handleHeadingColor = createHandler('headingColor');
+    _this.handleBackgroundColor = createHandler('backgroundColor');
+    _this.handleStop1 = createHandler('stop1');
+    _this.handleStop2 = createHandler('stop2');
+    return _this;
   }
 
   createClass$2(Form, [{
@@ -45356,8 +45415,6 @@ var Form = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       return react.createElement(
         'div',
         { className: 'row' },
@@ -45367,9 +45424,7 @@ var Form = function (_React$Component) {
           react.createElement(TextField, {
             floatingLabelText: 'Name of Workshop',
             value: this.props.name,
-            onChange: function onChange(e, name) {
-              return _this2.notifyParent(e, { name: name });
-            },
+            onChange: this.handleName,
             fullWidth: true
           })
         ),
@@ -45379,12 +45434,7 @@ var Form = function (_React$Component) {
           react.createElement(LongMonthDatePicker, {
             floatingLabelText: 'Date of Workshop',
             value: this.props.date,
-            onChange: function onChange(e, date) {
-              _this2.notifyParent(e, {
-                date: date,
-                formattedDate: formatDate(date)
-              });
-            },
+            onChange: this.handleDate,
             fullWidth: true
           })
         ),
@@ -45394,9 +45444,7 @@ var Form = function (_React$Component) {
           react.createElement(ColorPicker, {
             floatingLabelText: 'Heading',
             value: this.props.headingColor,
-            onChange: function onChange(e, headingColor) {
-              return _this2.notifyParent(e, { headingColor: headingColor });
-            },
+            onChange: this.handleHeadingColor,
             fullWidth: true,
             disableAlpha: true
           })
@@ -45407,9 +45455,7 @@ var Form = function (_React$Component) {
           react.createElement(ColorPicker, {
             floatingLabelText: 'Background',
             value: this.props.backgroundColor,
-            onChange: function onChange(e, backgroundColor) {
-              return _this2.notifyParent(e, { backgroundColor: backgroundColor });
-            },
+            onChange: this.handleBackgroundColor,
             fullWidth: true,
             disableAlpha: true
           })
@@ -45420,9 +45466,7 @@ var Form = function (_React$Component) {
           react.createElement(ColorPicker, {
             floatingLabelText: 'Gradient',
             value: this.props.stop1,
-            onChange: function onChange(e, stop1) {
-              return _this2.notifyParent(e, { stop1: stop1 });
-            },
+            onChange: this.handleStop1,
             fullWidth: true,
             disableAlpha: true
           })
@@ -45433,9 +45477,7 @@ var Form = function (_React$Component) {
           react.createElement(ColorPicker, {
             floatingLabelText: 'Gradient',
             value: this.props.stop2,
-            onChange: function onChange(e, stop2) {
-              return _this2.notifyParent(e, { stop2: stop2 });
-            },
+            onChange: this.handleStop2,
             fullWidth: true,
             disableAlpha: true
           })
@@ -45447,6 +45489,12 @@ var Form = function (_React$Component) {
 }(react.Component);
 
 Form.propTypes = {
+  name: react.PropTypes.string,
+  date: react.PropTypes.instanceOf(Date),
+  headingColor: color$2,
+  backgroundColor: color$2,
+  stop1: color$2,
+  stop2: color$2,
   onChange: react.PropTypes.func
 };
 
@@ -45665,10 +45713,10 @@ var Output = function (_React$Component) {
 Output.propTypes = {
   formattedDate: react.PropTypes.string.isRequired,
   name: react.PropTypes.string.isRequired,
-  headingColor: react.PropTypes.string.isRequired,
-  backgroundColor: react.PropTypes.string.isRequired,
-  stop1: react.PropTypes.string.isRequired,
-  stop2: react.PropTypes.string.isRequired
+  headingColor: color$2,
+  backgroundColor: color$2,
+  stop1: color$2,
+  stop2: color$2
 };
 
 var _initialiseProps$1 = function _initialiseProps$1() {
