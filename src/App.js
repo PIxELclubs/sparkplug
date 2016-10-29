@@ -1,4 +1,6 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
+import ContentSend from 'material-ui/svg-icons/content/send';
 import {formatDate} from './DatePicker';
 import Form from './Form';
 import Output from './Output';
@@ -35,8 +37,19 @@ export default class App extends React.Component {
       <p>Enter color values and Workshop details below.</p>
       <Form onChange={this.handleChange} {...this.state.form} />
       <div className='row'>
-        <div className='col m9 s12'>
+        <div className='col l10 m9 s12'>
           <Output {...this.state.form} ref='output' />
+        </div>
+        <div className='col l2 m3 s12'>
+          <RaisedButton
+            label='Submit'
+            labelPosition='before'
+            icon={<ContentSend />}
+            primary
+            style={{
+              float: 'right'
+            }}
+          />
         </div>
       </div>
     </div>;

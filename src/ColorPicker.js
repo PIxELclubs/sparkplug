@@ -145,7 +145,7 @@ export default class ColorPicker extends React.Component {
         backgroundColor={value}
         style={styles.button}
         children={<div />}
-        hoverColor={darken(value, 0.15)}
+        hoverColor={fade(value, 0.4)}
         onTouchTap={this.handleTouchTap}
       />
     );

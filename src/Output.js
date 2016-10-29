@@ -105,8 +105,8 @@ export default class Output extends React.Component {
 
     return <div>
       <canvas ref={node => this.canvas = node} width={scaleFactor * width} height={scaleFactor * height} style={{
-        width,
-        maxWidth: '100%'
+        width: '100%',
+        maxWidth: `${width}px`
       }} />
 
       <svg className='hidden' ref={node => this.svg = node} xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 200'>
