@@ -2,11 +2,14 @@ import FontFaceObserver from 'fontfaceobserver';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import App from './App.js';
 
-// import generate, {init as initGenerator} from './generator';
+import reducers from './reducers';
+import App from './components/App';
+
 // import firebase, {toggleLogin, getUser, init as initFirebase} from './firebase';
 // import upload from './uploader';
 //
@@ -43,8 +46,6 @@ import App from './App.js';
 //   }
 // });
 
-// initDatePicker();
-// initGenerator();
 // initFirebase();
 
 injectTapEventPlugin();
@@ -53,10 +54,14 @@ const muiTheme = {
   fontFamily: 'Lato, sans-serif'
 };
 
+const store = createStore(reducers);
+
 ReactDOM.render(
-  <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
-    <App />
-  </MuiThemeProvider>,
+  <Provider store={store}>
+    <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
+      <App />
+    </MuiThemeProvider>
+  </Provider>,
   document.querySelector('.container')
 );
 

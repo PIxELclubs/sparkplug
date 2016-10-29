@@ -14,7 +14,9 @@
     "react": "^15.3.2",
     "react-color": "^2.4.0",
     "react-dom": "^15.3.2",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-redux": "^4.4.5",
+    "react-tap-event-plugin": "^1.0.0",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.2.0",

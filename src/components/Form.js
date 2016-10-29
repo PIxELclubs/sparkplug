@@ -1,8 +1,8 @@
 import React from 'react';
 import TextField from 'material-ui/TextField/TextField';
 import ColorPicker from './ColorPicker';
-import DatePicker, {formatDate} from './DatePicker';
-import {color} from './PropTypes.js';
+import DatePicker from './DatePicker';
+import {color} from '../PropTypes';
 
 export default class Form extends React.Component {
   constructor(props) {
@@ -16,6 +16,7 @@ export default class Form extends React.Component {
       };
     };
     this.handleName = createHandler('name');
+    this.handleDate = createHandler('date');
     this.handleHeadingColor = createHandler('headingColor');
     this.handleBackgroundColor = createHandler('backgroundColor');
     this.handleStop1 = createHandler('stop1');
@@ -30,13 +31,6 @@ export default class Form extends React.Component {
     stop1: color,
     stop2: color,
     onChange: React.PropTypes.func
-  };
-
-  handleDate = (e, date) => {
-    this.props.onChange && this.props.onChange(e, {
-      date,
-      formattedDate: formatDate(date)
-    });
   };
 
   shouldComponentUpdate(nextProps) {

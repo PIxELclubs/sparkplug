@@ -16,7 +16,7 @@ function svgToImage(svg) {
 
 const mediaQuery = scaleFactor => `screen and (resolution: ${scaleFactor}dppx)`;
 
-export default class HybridCanvas extends React.Component {
+export default class HybridCanvas extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

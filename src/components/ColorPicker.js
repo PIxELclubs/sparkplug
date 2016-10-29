@@ -4,7 +4,7 @@ import Popover from 'material-ui/Popover/Popover';
 import TextFieldLabel from 'material-ui/TextField/TextFieldLabel';
 import FlatButton from 'material-ui/FlatButton/FlatButton';
 import {fade, darken} from 'material-ui/utils/colorManipulator';
-import {color} from './PropTypes.js';
+import {color} from '../PropTypes';
 
 const getStyles = (props, context, state) => {
   const {
