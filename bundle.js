@@ -45521,16 +45521,20 @@ var Output = function (_React$Component) {
       });
     };
 
-    _this.toBlob = function () {
+    _this.toBlob = function (w, h) {
+      w = w || _this.props.width;
+      h = h || _this.props.height;
+
       var canvas = _this.canvas;
       var promise = Promise.resolve();
+      var reqScale = w / _this.props.width;
 
-      if (_this.state.scaleFactor !== 1) {
+      if (_this.state.scaleFactor !== reqScale) {
         canvas = document.createElement('canvas');
-        canvas.setAttribute('width', _this.props.width);
-        canvas.setAttribute('height', _this.props.height);
+        canvas.setAttribute('width', w);
+        canvas.setAttribute('height', h);
         var ctx = canvas.getContext('2d');
-        promise = _this.redraw(ctx, 1);
+        promise = _this.redraw(ctx, reqScale);
       }
 
       return promise.then(function () {

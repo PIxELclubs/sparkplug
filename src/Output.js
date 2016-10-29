@@ -79,16 +79,20 @@ export default class Output extends React.Component {
     });
   };
 
-  toBlob = () => {
+  toBlob = (w, h) => {
+    w = w || this.props.width;
+    h = h || this.props.height;
+
     let canvas = this.canvas;
     let promise = Promise.resolve();
+    let reqScale = w / this.props.width;
 
-    if (this.state.scaleFactor !== 1) {
+    if (this.state.scaleFactor !== reqScale) {
       canvas = document.createElement('canvas');
-      canvas.setAttribute('width', this.props.width);
-      canvas.setAttribute('height', this.props.height);
+      canvas.setAttribute('width', w);
+      canvas.setAttribute('height', h);
       const ctx = canvas.getContext('2d');
-      promise = this.redraw(ctx, 1);
+      promise = this.redraw(ctx, reqScale);
     }
 
     return promise.then(() => {
