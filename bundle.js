@@ -13,25 +13,14 @@ function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var webfontloader = createCommonjsModule(function (module) {
-/* Web Font Loader v1.6.26 - (c) Adobe Systems, Google. License: Apache 2.0 */(function(){function aa(a,b,c){return a.call.apply(a.bind,arguments)}function ba(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}}function p(a,b,c){p=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?aa:ba;return p.apply(null,arguments)}var q=Date.now||function(){return+new Date};function ca(a,b){this.a=a;this.m=b||a;this.c=this.m.document;}var da=!!window.FontFace;function t(a,b,c,d){b=a.c.createElement(b);if(c)for(var e in c)c.hasOwnProperty(e)&&("style"==e?b.style.cssText=c[e]:b.setAttribute(e,c[e]));d&&b.appendChild(a.c.createTextNode(d));return b}function u(a,b,c){a=a.c.getElementsByTagName(b)[0];a||(a=document.documentElement);a.insertBefore(c,a.lastChild);}function v(a){a.parentNode&&a.parentNode.removeChild(a);}
-function w(a,b,c){b=b||[];c=c||[];for(var d=a.className.split(/\s+/),e=0;e<b.length;e+=1){for(var f=!1,g=0;g<d.length;g+=1)if(b[e]===d[g]){f=!0;break}f||d.push(b[e]);}b=[];for(e=0;e<d.length;e+=1){f=!1;for(g=0;g<c.length;g+=1)if(d[e]===c[g]){f=!0;break}f||b.push(d[e]);}a.className=b.join(" ").replace(/\s+/g," ").replace(/^\s+|\s+$/,"");}function y(a,b){for(var c=a.className.split(/\s+/),d=0,e=c.length;d<e;d++)if(c[d]==b)return!0;return!1}
-function z(a){if("string"===typeof a.f)return a.f;var b=a.m.location.protocol;"about:"==b&&(b=a.a.location.protocol);return"https:"==b?"https:":"http:"}function ea(a){return a.m.location.hostname||a.a.location.hostname}
-function A(a,b,c){function d(){k&&e&&f&&(k(g),k=null);}b=t(a,"link",{rel:"stylesheet",href:b,media:"all"});var e=!1,f=!0,g=null,k=c||null;da?(b.onload=function(){e=!0;d();},b.onerror=function(){e=!0;g=Error("Stylesheet failed to load");d();}):setTimeout(function(){e=!0;d();},0);u(a,"head",b);}
-function B(a,b,c,d){var e=a.c.getElementsByTagName("head")[0];if(e){var f=t(a,"script",{src:b}),g=!1;f.onload=f.onreadystatechange=function(){g||this.readyState&&"loaded"!=this.readyState&&"complete"!=this.readyState||(g=!0,c&&c(null),f.onload=f.onreadystatechange=null,"HEAD"==f.parentNode.tagName&&e.removeChild(f));};e.appendChild(f);setTimeout(function(){g||(g=!0,c&&c(Error("Script load timeout")));},d||5E3);return f}return null}function C(){this.a=0;this.c=null;}function D(a){a.a++;return function(){a.a--;E(a);}}function F(a,b){a.c=b;E(a);}function E(a){0==a.a&&a.c&&(a.c(),a.c=null);}function G(a){this.a=a||"-";}G.prototype.c=function(a){for(var b=[],c=0;c<arguments.length;c++)b.push(arguments[c].replace(/[\W_]+/g,"").toLowerCase());return b.join(this.a)};function H(a,b){this.c=a;this.f=4;this.a="n";var c=(b||"n4").match(/^([nio])([1-9])$/i);c&&(this.a=c[1],this.f=parseInt(c[2],10));}function fa(a){return I(a)+" "+(a.f+"00")+" 300px "+J(a.c)}function J(a){var b=[];a=a.split(/,\s*/);for(var c=0;c<a.length;c++){var d=a[c].replace(/['"]/g,"");-1!=d.indexOf(" ")||/^\d/.test(d)?b.push("'"+d+"'"):b.push(d);}return b.join(",")}function K(a){return a.a+a.f}function I(a){var b="normal";"o"===a.a?b="oblique":"i"===a.a&&(b="italic");return b}
-function ga(a){var b=4,c="n",d=null;a&&((d=a.match(/(normal|oblique|italic)/i))&&d[1]&&(c=d[1].substr(0,1).toLowerCase()),(d=a.match(/([1-9]00|normal|bold)/i))&&d[1]&&(/bold/i.test(d[1])?b=7:/[1-9]00/.test(d[1])&&(b=parseInt(d[1].substr(0,1),10))));return c+b}function ha(a,b){this.c=a;this.f=a.m.document.documentElement;this.h=b;this.a=new G("-");this.j=!1!==b.events;this.g=!1!==b.classes;}function ia(a){a.g&&w(a.f,[a.a.c("wf","loading")]);L(a,"loading");}function M(a){if(a.g){var b=y(a.f,a.a.c("wf","active")),c=[],d=[a.a.c("wf","loading")];b||c.push(a.a.c("wf","inactive"));w(a.f,c,d);}L(a,"inactive");}function L(a,b,c){if(a.j&&a.h[b])if(c)a.h[b](c.c,K(c));else a.h[b]();}function ja(){this.c={};}function ka(a,b,c){var d=[],e;for(e in b)if(b.hasOwnProperty(e)){var f=a.c[e];f&&d.push(f(b[e],c));}return d}function N(a,b){this.c=a;this.f=b;this.a=t(this.c,"span",{"aria-hidden":"true"},this.f);}function O(a){u(a.c,"body",a.a);}function P(a){return"display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:"+J(a.c)+";"+("font-style:"+I(a)+";font-weight:"+(a.f+"00")+";")}function Q(a,b,c,d,e,f){this.g=a;this.j=b;this.a=d;this.c=c;this.f=e||3E3;this.h=f||void 0;}Q.prototype.start=function(){var a=this.c.m.document,b=this,c=q(),d=new Promise(function(d,e){function k(){q()-c>=b.f?e():a.fonts.load(fa(b.a),b.h).then(function(a){1<=a.length?d():setTimeout(k,25);},function(){e();});}k();}),e=new Promise(function(a,d){setTimeout(d,b.f);});Promise.race([e,d]).then(function(){b.g(b.a);},function(){b.j(b.a);});};function R(a,b,c,d,e,f,g){this.v=a;this.B=b;this.c=c;this.a=d;this.s=g||"BESbswy";this.f={};this.w=e||3E3;this.u=f||null;this.o=this.j=this.h=this.g=null;this.g=new N(this.c,this.s);this.h=new N(this.c,this.s);this.j=new N(this.c,this.s);this.o=new N(this.c,this.s);a=new H(this.a.c+",serif",K(this.a));a=P(a);this.g.a.style.cssText=a;a=new H(this.a.c+",sans-serif",K(this.a));a=P(a);this.h.a.style.cssText=a;a=new H("serif",K(this.a));a=P(a);this.j.a.style.cssText=a;a=new H("sans-serif",K(this.a));a=
-P(a);this.o.a.style.cssText=a;O(this.g);O(this.h);O(this.j);O(this.o);}var S={D:"serif",C:"sans-serif"},T=null;function U(){if(null===T){var a=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent);T=!!a&&(536>parseInt(a[1],10)||536===parseInt(a[1],10)&&11>=parseInt(a[2],10));}return T}R.prototype.start=function(){this.f.serif=this.j.a.offsetWidth;this.f["sans-serif"]=this.o.a.offsetWidth;this.A=q();la(this);};
-function ma(a,b,c){for(var d in S)if(S.hasOwnProperty(d)&&b===a.f[S[d]]&&c===a.f[S[d]])return!0;return!1}function la(a){var b=a.g.a.offsetWidth,c=a.h.a.offsetWidth,d;(d=b===a.f.serif&&c===a.f["sans-serif"])||(d=U()&&ma(a,b,c));d?q()-a.A>=a.w?U()&&ma(a,b,c)&&(null===a.u||a.u.hasOwnProperty(a.a.c))?V(a,a.v):V(a,a.B):na(a):V(a,a.v);}function na(a){setTimeout(p(function(){la(this);},a),50);}function V(a,b){setTimeout(p(function(){v(this.g.a);v(this.h.a);v(this.j.a);v(this.o.a);b(this.a);},a),0);}function W(a,b,c){this.c=a;this.a=b;this.f=0;this.o=this.j=!1;this.s=c;}var X=null;W.prototype.g=function(a){var b=this.a;b.g&&w(b.f,[b.a.c("wf",a.c,K(a).toString(),"active")],[b.a.c("wf",a.c,K(a).toString(),"loading"),b.a.c("wf",a.c,K(a).toString(),"inactive")]);L(b,"fontactive",a);this.o=!0;oa(this);};
-W.prototype.h=function(a){var b=this.a;if(b.g){var c=y(b.f,b.a.c("wf",a.c,K(a).toString(),"active")),d=[],e=[b.a.c("wf",a.c,K(a).toString(),"loading")];c||d.push(b.a.c("wf",a.c,K(a).toString(),"inactive"));w(b.f,d,e);}L(b,"fontinactive",a);oa(this);};function oa(a){0==--a.f&&a.j&&(a.o?(a=a.a,a.g&&w(a.f,[a.a.c("wf","active")],[a.a.c("wf","loading"),a.a.c("wf","inactive")]),L(a,"active")):M(a.a));}function pa(a){this.j=a;this.a=new ja;this.h=0;this.f=this.g=!0;}pa.prototype.load=function(a){this.c=new ca(this.j,a.context||this.j);this.g=!1!==a.events;this.f=!1!==a.classes;qa(this,new ha(this.c,a),a);};
-function ra(a,b,c,d,e){var f=0==--a.h;(a.f||a.g)&&setTimeout(function(){var a=e||null,k=d||null||{};if(0===c.length&&f)M(b.a);else{b.f+=c.length;f&&(b.j=f);var h,m=[];for(h=0;h<c.length;h++){var l=c[h],n=k[l.c],r=b.a,x=l;r.g&&w(r.f,[r.a.c("wf",x.c,K(x).toString(),"loading")]);L(r,"fontloading",x);r=null;null===X&&(X=window.FontFace?(x=/Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent))?42<parseInt(x[1],10):!0:!1);X?r=new Q(p(b.g,b),p(b.h,b),b.c,l,b.s,n):r=new R(p(b.g,b),p(b.h,b),b.c,l,b.s,a,
-n);m.push(r);}for(h=0;h<m.length;h++)m[h].start();}},0);}function qa(a,b,c){var d=[],e=c.timeout;ia(b);var d=ka(a.a,c,a.c),f=new W(a.c,b,e);a.h=d.length;b=0;for(c=d.length;b<c;b++)d[b].load(function(b,d,c){ra(a,f,b,d,c);});}function sa(a,b){this.c=a;this.a=b;}function ta(a,b,c){var d=z(a.c);a=(a.a.api||"fast.fonts.net/jsapi").replace(/^.*http(s?):(\/\/)?/,"");return d+"//"+a+"/"+b+".js"+(c?"?v="+c:"")}
-sa.prototype.load=function(a){function b(){if(f["__mti_fntLst"+d]){var c=f["__mti_fntLst"+d](),e=[],h;if(c)for(var m=0;m<c.length;m++){var l=c[m].fontfamily;void 0!=c[m].fontStyle&&void 0!=c[m].fontWeight?(h=c[m].fontStyle+c[m].fontWeight,e.push(new H(l,h))):e.push(new H(l));}a(e);}else setTimeout(function(){b();},50);}var c=this,d=c.a.projectId,e=c.a.version;if(d){var f=c.c.m;B(this.c,ta(c,d,e),function(e){e?a([]):(f["__MonotypeConfiguration__"+d]=function(){return c.a},b());}).id="__MonotypeAPIScript__"+
-d;}else a([]);};function ua(a,b){this.c=a;this.a=b;}ua.prototype.load=function(a){var b,c,d=this.a.urls||[],e=this.a.families||[],f=this.a.testStrings||{},g=new C;b=0;for(c=d.length;b<c;b++)A(this.c,d[b],D(g));var k=[];b=0;for(c=e.length;b<c;b++)if(d=e[b].split(":"),d[1])for(var h=d[1].split(","),m=0;m<h.length;m+=1)k.push(new H(d[0],h[m]));else k.push(new H(d[0]));F(g,function(){a(k,f);});};function va(a,b,c){a?this.c=a:this.c=b+wa;this.a=[];this.f=[];this.g=c||"";}var wa="//fonts.googleapis.com/css";function xa(a,b){for(var c=b.length,d=0;d<c;d++){var e=b[d].split(":");3==e.length&&a.f.push(e.pop());var f="";2==e.length&&""!=e[1]&&(f=":");a.a.push(e.join(f));}}
-function ya(a){if(0==a.a.length)throw Error("No fonts to load!");if(-1!=a.c.indexOf("kit="))return a.c;for(var b=a.a.length,c=[],d=0;d<b;d++)c.push(a.a[d].replace(/ /g,"+"));b=a.c+"?family="+c.join("%7C");0<a.f.length&&(b+="&subset="+a.f.join(","));0<a.g.length&&(b+="&text="+encodeURIComponent(a.g));return b}function za(a){this.f=a;this.a=[];this.c={};}
-var Aa={latin:"BESbswy","latin-ext":"\u00e7\u00f6\u00fc\u011f\u015f",cyrillic:"\u0439\u044f\u0416",greek:"\u03b1\u03b2\u03a3",khmer:"\u1780\u1781\u1782",Hanuman:"\u1780\u1781\u1782"},Ba={thin:"1",extralight:"2","extra-light":"2",ultralight:"2","ultra-light":"2",light:"3",regular:"4",book:"4",medium:"5","semi-bold":"6",semibold:"6","demi-bold":"6",demibold:"6",bold:"7","extra-bold":"8",extrabold:"8","ultra-bold":"8",ultrabold:"8",black:"9",heavy:"9",l:"3",r:"4",b:"7"},Ca={i:"i",italic:"i",n:"n",normal:"n"},
-Da=/^(thin|(?:(?:extra|ultra)-?)?light|regular|book|medium|(?:(?:semi|demi|extra|ultra)-?)?bold|black|heavy|l|r|b|[1-9]00)?(n|i|normal|italic)?$/;
-function Ea(a){for(var b=a.f.length,c=0;c<b;c++){var d=a.f[c].split(":"),e=d[0].replace(/\+/g," "),f=["n4"];if(2<=d.length){var g;var k=d[1];g=[];if(k)for(var k=k.split(","),h=k.length,m=0;m<h;m++){var l;l=k[m];if(l.match(/^[\w-]+$/)){var n=Da.exec(l.toLowerCase());if(null==n)l="";else{l=n[2];l=null==l||""==l?"n":Ca[l];n=n[1];if(null==n||""==n)n="4";else var r=Ba[n],n=r?r:isNaN(n)?"4":n.substr(0,1);l=[l,n].join("");}}else l="";l&&g.push(l);}0<g.length&&(f=g);3==d.length&&(d=d[2],g=[],d=d?d.split(","):
-g,0<d.length&&(d=Aa[d[0]])&&(a.c[e]=d));}a.c[e]||(d=Aa[e])&&(a.c[e]=d);for(d=0;d<f.length;d+=1)a.a.push(new H(e,f[d]));}}function Fa(a,b){this.c=a;this.a=b;}var Ga={Arimo:!0,Cousine:!0,Tinos:!0};Fa.prototype.load=function(a){var b=new C,c=this.c,d=new va(this.a.api,z(c),this.a.text),e=this.a.families;xa(d,e);var f=new za(e);Ea(f);A(c,ya(d),D(b));F(b,function(){a(f.a,f.c,Ga);});};function Ha(a,b){this.c=a;this.a=b;}Ha.prototype.load=function(a){var b=this.a.id,c=this.c.m;b?B(this.c,(this.a.api||"https://use.typekit.net")+"/"+b+".js",function(b){if(b)a([]);else if(c.Typekit&&c.Typekit.config&&c.Typekit.config.fn){b=c.Typekit.config.fn;for(var e=[],f=0;f<b.length;f+=2)for(var g=b[f],k=b[f+1],h=0;h<k.length;h++)e.push(new H(g,k[h]));try{c.Typekit.load({events:!1,classes:!1,async:!0});}catch(m){}a(e);}},2E3):a([]);};function Ia(a,b){this.c=a;this.f=b;this.a=[];}Ia.prototype.load=function(a){var b=this.f.id,c=this.c.m,d=this;b?(c.__webfontfontdeckmodule__||(c.__webfontfontdeckmodule__={}),c.__webfontfontdeckmodule__[b]=function(b,c){for(var g=0,k=c.fonts.length;g<k;++g){var h=c.fonts[g];d.a.push(new H(h.name,ga("font-weight:"+h.weight+";font-style:"+h.style)));}a(d.a);},B(this.c,z(this.c)+(this.f.api||"//f.fontdeck.com/s/css/js/")+ea(this.c)+"/"+b+".js",function(b){b&&a([]);})):a([]);};var Y=new pa(window);Y.a.c.custom=function(a,b){return new ua(b,a)};Y.a.c.fontdeck=function(a,b){return new Ia(b,a)};Y.a.c.monotype=function(a,b){return new sa(b,a)};Y.a.c.typekit=function(a,b){return new Ha(b,a)};Y.a.c.google=function(a,b){return new Fa(b,a)};var Z={load:p(Y.load,Y)};"function"===typeof define&&define.amd?define(function(){return Z}):"undefined"!==typeof module&&module.exports?module.exports=Z:(window.WebFont=Z,window.WebFontConfig&&Y.load(window.WebFontConfig));}());
+var fontfaceobserver_standalone = createCommonjsModule(function (module) {
+(function(){function l(a,b){document.addEventListener?a.addEventListener("scroll",b,!1):a.attachEvent("scroll",b);}function m(a){document.body?a():document.addEventListener?document.addEventListener("DOMContentLoaded",function c(){document.removeEventListener("DOMContentLoaded",c);a();}):document.attachEvent("onreadystatechange",function k(){if("interactive"==document.readyState||"complete"==document.readyState)document.detachEvent("onreadystatechange",k),a();});}function r(a){this.a=document.createElement("div");this.a.setAttribute("aria-hidden","true");this.a.appendChild(document.createTextNode(a));this.b=document.createElement("span");this.c=document.createElement("span");this.h=document.createElement("span");this.f=document.createElement("span");this.g=-1;this.b.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.c.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";
+this.f.style.cssText="max-width:none;display:inline-block;position:absolute;height:100%;width:100%;overflow:scroll;font-size:16px;";this.h.style.cssText="display:inline-block;width:200%;height:200%;font-size:16px;max-width:none;";this.b.appendChild(this.h);this.c.appendChild(this.f);this.a.appendChild(this.b);this.a.appendChild(this.c);}
+function x(a,b){a.a.style.cssText="max-width:none;min-width:20px;min-height:20px;display:inline-block;overflow:hidden;position:absolute;width:auto;margin:0;padding:0;top:-999px;left:-999px;white-space:nowrap;font:"+b+";";}function y(a){var b=a.a.offsetWidth,c=b+100;a.f.style.width=c+"px";a.c.scrollLeft=c;a.b.scrollLeft=a.b.scrollWidth+100;return a.g!==b?(a.g=b,!0):!1}function z(a,b){function c(){var a=k;y(a)&&null!==a.a.parentNode&&b(a.g);}var k=a;l(a.b,c);l(a.c,c);y(a);}function A(a,b){var c=b||{};this.family=a;this.style=c.style||"normal";this.weight=c.weight||"normal";this.stretch=c.stretch||"normal";}var B=null,D=null,E=null;function H(){if(null===D){var a=document.createElement("div");try{a.style.font="condensed 100px sans-serif";}catch(b){}D=""!==a.style.font;}return D}function I(a,b){return[a.style,a.weight,H()?a.stretch:"","100px",b].join(" ")}
+A.prototype.load=function(a,b){var c=this,k=a||"BESbswy",q=0,C=b||3E3,F=(new Date).getTime();return new Promise(function(a,b){null===E&&(E=!!document.fonts);if(E){var J=new Promise(function(a,b){function e(){(new Date).getTime()-F>=C?b():document.fonts.load(I(c,'"'+c.family+'"'),k).then(function(c){1<=c.length?a():setTimeout(e,25);},function(){b();});}e();}),K=new Promise(function(a,c){q=setTimeout(c,C);});Promise.race([K,J]).then(function(){clearTimeout(q);a(c);},function(){b(c);});}else m(function(){function t(){var b;
+if(b=-1!=f&&-1!=g||-1!=f&&-1!=h||-1!=g&&-1!=h)(b=f!=g&&f!=h&&g!=h)||(null===B&&(b=/AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(window.navigator.userAgent),B=!!b&&(536>parseInt(b[1],10)||536===parseInt(b[1],10)&&11>=parseInt(b[2],10))),b=B&&(f==u&&g==u&&h==u||f==v&&g==v&&h==v||f==w&&g==w&&h==w)),b=!b;b&&(null!==d.parentNode&&d.parentNode.removeChild(d),clearTimeout(q),a(c));}function G(){if((new Date).getTime()-F>=C)null!==d.parentNode&&d.parentNode.removeChild(d),b(c);else{var a=document.hidden;if(!0===
+a||void 0===a)f=e.a.offsetWidth,g=n.a.offsetWidth,h=p.a.offsetWidth,t();q=setTimeout(G,50);}}var e=new r(k),n=new r(k),p=new r(k),f=-1,g=-1,h=-1,u=-1,v=-1,w=-1,d=document.createElement("div");d.dir="ltr";x(e,I(c,"sans-serif"));x(n,I(c,"serif"));x(p,I(c,"monospace"));d.appendChild(e.a);d.appendChild(n.a);d.appendChild(p.a);document.body.appendChild(d);u=e.a.offsetWidth;v=n.a.offsetWidth;w=p.a.offsetWidth;G();z(e,function(a){f=a;t();});x(e,I(c,'"'+c.family+'",sans-serif'));z(n,function(a){g=a;t();});x(n,
+I(c,'"'+c.family+'",serif'));z(p,function(a){h=a;t();});x(p,I(c,'"'+c.family+'",monospace'));});})};"undefined"!==typeof module?module.exports=A:(window.FontFaceObserver=A,window.FontFaceObserver.prototype.load=A.prototype.load);}());
 });
 
 /* eslint-disable no-unused-vars */
@@ -22833,7 +22822,7 @@ function lighten(color, coefficient) {
 });
 
 
-var darken = colorManipulator.darken;
+
 var fade = colorManipulator.fade;
 
 var colors = createCommonjsModule(function (module, exports) {
@@ -25985,488 +25974,194 @@ var index$9 = function (target) {
   return target;
 };
 
-var dateUtils = createCommonjsModule(function (module, exports) {
+var transitions = createCommonjsModule(function (module, exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.dateTimeFormat = dateTimeFormat;
-exports.addDays = addDays;
-exports.addMonths = addMonths;
-exports.addYears = addYears;
-exports.cloneDate = cloneDate;
-exports.cloneAsDate = cloneAsDate;
-exports.getDaysInMonth = getDaysInMonth;
-exports.getFirstDayOfMonth = getFirstDayOfMonth;
-exports.getFirstDayOfWeek = getFirstDayOfWeek;
-exports.getWeekArray = getWeekArray;
-exports.localizedWeekday = localizedWeekday;
-exports.formatIso = formatIso;
-exports.isEqualDate = isEqualDate;
-exports.isBeforeDate = isBeforeDate;
-exports.isAfterDate = isAfterDate;
-exports.isBetweenDates = isBetweenDates;
-exports.monthDiff = monthDiff;
-exports.yearDiff = yearDiff;
+exports.default = {
 
-var _warning = browser;
+  easeOutFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+  easeInOutFunction: 'cubic-bezier(0.445, 0.05, 0.55, 0.95)',
 
-var _warning2 = _interopRequireDefault(_warning);
+  easeOut: function easeOut(duration, property, delay, easeFunction) {
+    easeFunction = easeFunction || this.easeOutFunction;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+    if (property && Object.prototype.toString.call(property) === '[object Array]') {
+      var transitions = '';
+      for (var i = 0; i < property.length; i++) {
+        if (transitions) transitions += ',';
+        transitions += this.create(duration, property[i], delay, easeFunction);
+      }
 
-var dayAbbreviation = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-var dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-var monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-var monthLongList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-function dateTimeFormat(locale, options) {
-  (0, _warning2.default)(locale === 'en-US', 'The ' + locale + ' locale is not supported by the built-in DateTimeFormat.\n  Use the `DateTimeFormat` prop to supply an alternative implementation.');
-
-  this.format = function (date) {
-    if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
-      return dayList[date.getDay()] + ', ' + monthList[date.getMonth()] + ' ' + date.getDate();
-    } else if (options.year === 'numeric' && options.month === 'numeric' && options.day === 'numeric') {
-      return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
-    } else if (options.year === 'numeric' && options.month === 'long') {
-      return monthLongList[date.getMonth()] + ' ' + date.getFullYear();
-    } else if (options.weekday === 'narrow') {
-      return dayAbbreviation[date.getDay()];
-    } else if (options.year === 'numeric') {
-      return date.getFullYear().toString();
-    } else if (options.day === 'numeric') {
-      return date.getDate();
+      return transitions;
     } else {
-      (0, _warning2.default)(false, 'Wrong usage of DateTimeFormat');
+      return this.create(duration, property, delay, easeFunction);
     }
-  };
-}
+  },
+  create: function create(duration, property, delay, easeFunction) {
+    duration = duration || '450ms';
+    property = property || 'all';
+    delay = delay || '0ms';
+    easeFunction = easeFunction || 'linear';
 
-function addDays(d, days) {
-  var newDate = cloneDate(d);
-  newDate.setDate(d.getDate() + days);
-  return newDate;
-}
-
-function addMonths(d, months) {
-  var newDate = cloneDate(d);
-  newDate.setMonth(d.getMonth() + months);
-  return newDate;
-}
-
-function addYears(d, years) {
-  var newDate = cloneDate(d);
-  newDate.setFullYear(d.getFullYear() + years);
-  return newDate;
-}
-
-function cloneDate(d) {
-  return new Date(d.getTime());
-}
-
-function cloneAsDate(d) {
-  var clonedDate = cloneDate(d);
-  clonedDate.setHours(0, 0, 0, 0);
-  return clonedDate;
-}
-
-function getDaysInMonth(d) {
-  var resultDate = getFirstDayOfMonth(d);
-
-  resultDate.setMonth(resultDate.getMonth() + 1);
-  resultDate.setDate(resultDate.getDate() - 1);
-
-  return resultDate.getDate();
-}
-
-function getFirstDayOfMonth(d) {
-  return new Date(d.getFullYear(), d.getMonth(), 1);
-}
-
-function getFirstDayOfWeek() {
-  var now = new Date();
-  return new Date(now.setDate(now.getDate() - now.getDay()));
-}
-
-function getWeekArray(d, firstDayOfWeek) {
-  var dayArray = [];
-  var daysInMonth = getDaysInMonth(d);
-  var weekArray = [];
-  var week = [];
-
-  for (var i = 1; i <= daysInMonth; i++) {
-    dayArray.push(new Date(d.getFullYear(), d.getMonth(), i));
+    return property + ' ' + duration + ' ' + easeFunction + ' ' + delay;
   }
-
-  var addWeek = function addWeek(week) {
-    var emptyDays = 7 - week.length;
-    for (var _i = 0; _i < emptyDays; ++_i) {
-      week[weekArray.length ? 'push' : 'unshift'](null);
-    }
-    weekArray.push(week);
-  };
-
-  dayArray.forEach(function (day) {
-    if (week.length > 0 && day.getDay() === firstDayOfWeek) {
-      addWeek(week);
-      week = [];
-    }
-    week.push(day);
-    if (dayArray.indexOf(day) === dayArray.length - 1) {
-      addWeek(week);
-    }
-  });
-
-  return weekArray;
-}
-
-function localizedWeekday(DateTimeFormat, locale, day, firstDayOfWeek) {
-  var weekdayFormatter = new DateTimeFormat(locale, { weekday: 'narrow' });
-  var firstDayDate = getFirstDayOfWeek();
-
-  return weekdayFormatter.format(addDays(firstDayDate, day + firstDayOfWeek));
-}
-
-// Convert date to ISO 8601 (YYYY-MM-DD) date string, accounting for current timezone
-function formatIso(date) {
-  return new Date(date.toDateString() + ' 12:00:00 +0000').toISOString().substring(0, 10);
-}
-
-function isEqualDate(d1, d2) {
-  return d1 && d2 && d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
-}
-
-function isBeforeDate(d1, d2) {
-  var date1 = cloneAsDate(d1);
-  var date2 = cloneAsDate(d2);
-
-  return date1.getTime() < date2.getTime();
-}
-
-function isAfterDate(d1, d2) {
-  var date1 = cloneAsDate(d1);
-  var date2 = cloneAsDate(d2);
-
-  return date1.getTime() > date2.getTime();
-}
-
-function isBetweenDates(dateToCheck, startDate, endDate) {
-  return !isBeforeDate(dateToCheck, startDate) && !isAfterDate(dateToCheck, endDate);
-}
-
-function monthDiff(d1, d2) {
-  var m = void 0;
-  m = (d1.getFullYear() - d2.getFullYear()) * 12;
-  m += d1.getMonth();
-  m -= d2.getMonth();
-  return m;
-}
-
-function yearDiff(d1, d2) {
-  return ~~(monthDiff(d1, d2) / 12);
-}
+};
 });
 
-var shallowEqual$4 = shallowEqual_1;
+var ReactChildren$3 = ReactChildren_1;
+var ReactElement$12 = ReactElement_1;
+
+var emptyFunction$12 = emptyFunction_1;
+var invariant$41 = invariant_1;
+var warning$40 = warning_1;
 
 /**
- * Does a shallow comparison for props and state.
- * See ReactComponentWithPureRenderMixin
- * See also https://facebook.github.io/react/docs/shallow-compare.html
+ * We used to allow keyed objects to serve as a collection of ReactElements,
+ * or nested sets. This allowed us a way to explicitly key a set or fragment of
+ * components. This is now being replaced with an opaque data structure.
+ * The upgrade path is to call React.addons.createFragment({ key: value }) to
+ * create a keyed fragment. The resulting data structure is an array.
  */
-function shallowCompare(instance, nextProps, nextState) {
-  return !shallowEqual$4(instance.props, nextProps) || !shallowEqual$4(instance.state, nextState);
-}
 
-var shallowCompare_1 = shallowCompare;
+var numericPropertyRegex = /^\d+$/;
 
-var index$13 = shallowCompare_1;
+var warnedAboutNumeric = false;
 
-var defineProperty_1 = createCommonjsModule(function (module, exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _defineProperty = defineProperty$1;
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-exports.default = defineProperty;
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//  weak
-
-function defineProperty(o, p, attr) {
-  return (0, _defineProperty2.default)(o, p, attr);
-}
-});
-
-var supports = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.passiveOption = exports.detachEvent = exports.attachEvent = exports.removeEventListener = exports.addEventListener = exports.canUseDOM = undefined;
-
-var _defineProperty = defineProperty_1;
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Inspired by https://github.com/facebook/fbjs/blob/master/packages/fbjs/src/core/ExecutionEnvironment.js
-var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-
-var addEventListener = exports.addEventListener = canUseDOM && 'addEventListener' in window;
-var removeEventListener = exports.removeEventListener = canUseDOM && 'removeEventListener' in window;
-
-// IE8+ Support
-var attachEvent = exports.attachEvent = canUseDOM && 'attachEvent' in window;
-var detachEvent = exports.detachEvent = canUseDOM && 'detachEvent' in window;
-
-// Passive options
-// Inspired by https://github.com/Modernizr/Modernizr/blob/master/feature-detects/dom/passiveeventlisteners.js
-var passiveOption = exports.passiveOption = function () {
-  var cache = null;
-
-  return function () {
-    if (cache !== null) {
-      return cache;
+var ReactFragment = {
+  /**
+   * Wrap a keyed object in an opaque proxy that warns you if you access any
+   * of its properties.
+   * See https://facebook.github.io/react/docs/create-fragment.html
+   */
+  create: function (object) {
+    if (typeof object !== 'object' || !object || Array.isArray(object)) {
+      warning$40(false, 'React.addons.createFragment only accepts a single object. Got: %s', object);
+      return object;
+    }
+    if (ReactElement$12.isValidElement(object)) {
+      warning$40(false, 'React.addons.createFragment does not accept a ReactElement ' + 'without a wrapper object.');
+      return object;
     }
 
-    var supportsPassiveOption = false;
+    !(object.nodeType !== 1) ? invariant$41(false, 'React.addons.createFragment(...): Encountered an invalid child; DOM elements are not valid children of React components.') : void 0;
 
-    try {
-      window.addEventListener('test', null, (0, _defineProperty2.default)({}, 'passive', {
-        get: function get() {
-          supportsPassiveOption = true;
+    var result = [];
+
+    for (var key in object) {
+      {
+        if (!warnedAboutNumeric && numericPropertyRegex.test(key)) {
+          warning$40(false, 'React.addons.createFragment(...): Child objects should have ' + 'non-numeric keys so ordering is preserved.');
+          warnedAboutNumeric = true;
         }
-      }));
-    } catch (e) {} // eslint-disable-line no-empty
+      }
+      ReactChildren$3.mapIntoWithKeyPrefixInternal(object[key], result, key, emptyFunction$12.thatReturnsArgument);
+    }
 
-    cache = supportsPassiveOption;
+    return result;
+  }
+};
 
-    return supportsPassiveOption;
-  }();
-}();
-});
+var ReactFragment_1 = ReactFragment;
 
-var index$11 = createCommonjsModule(function (module, exports) {
+var index$11 = ReactFragment_1.create;
+
+var childUtils = createCommonjsModule(function (module, exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _getPrototypeOf = getPrototypeOf$1;
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = classCallCheck;
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = createClass;
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = possibleConstructorReturn;
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = inherits;
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _typeof2 = _typeof_1;
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
-var _assign = assign$1;
-
-var _assign2 = _interopRequireDefault(_assign);
-
-exports.withOptions = withOptions;
+exports.createChildFragment = createChildFragment;
+exports.extendChildren = extendChildren;
 
 var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactAddonsShallowCompare = index$13;
+var _reactAddonsCreateFragment = index$11;
 
-var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
-
-var _warning = browser;
-
-var _warning2 = _interopRequireDefault(_warning);
-
-var _supports = supports;
-
-var supports$$1 = _interopRequireWildcard(_supports);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var defaultEventOptions = {
-  capture: false,
-  passive: false
-};
+function createChildFragment(fragments) {
+  var newFragments = {};
+  var validChildrenCount = 0;
+  var firstKey = void 0;
 
-function mergeDefaultEventOptions(options) {
-  return (0, _assign2.default)({}, defaultEventOptions, options);
-}
+  // Only create non-empty key fragments
+  for (var key in fragments) {
+    var currentChild = fragments[key];
 
-function getEventListenerArgs(eventName, callback, options) {
-  var args = [eventName, callback];
-  args.push(supports$$1.passiveOption ? options : options.capture);
-  return args;
-}
-
-function on(target, eventName, callback, options) {
-  if (supports$$1.addEventListener) {
-    target.addEventListener.apply(target, getEventListenerArgs(eventName, callback, options));
-  } else if (supports$$1.attachEvent) {
-    // IE8+ Support
-    target.attachEvent('on' + eventName, function () {
-      callback.call(target);
-    });
-  }
-}
-
-function off(target, eventName, callback, options) {
-  if (supports$$1.removeEventListener) {
-    target.removeEventListener.apply(target, getEventListenerArgs(eventName, callback, options));
-  } else if (supports$$1.detachEvent) {
-    // IE8+ Support
-    target.detachEvent('on' + eventName, callback);
-  }
-}
-
-var state = {};
-
-function forEachListener(props, iteratee) {
-  for (var name in props) {
-    if (name.substring(0, 2) !== 'on') continue;
-
-    var prop = props[name];
-    var type = typeof prop === 'undefined' ? 'undefined' : (0, _typeof3.default)(prop);
-    var isObject = type === 'object';
-    var isFunction = type === 'function';
-
-    if (!isObject && !isFunction) continue;
-
-    var _capture = name.substr(-7).toLowerCase() === 'capture';
-    var _eventName = name.substring(2).toLowerCase();
-    _eventName = _capture ? _eventName.substring(0, _eventName.length - 7) : _eventName;
-
-    if (isObject) {
-      iteratee(_eventName, prop.handler, prop.options);
-    } else {
-      iteratee(_eventName, prop, mergeDefaultEventOptions({ capture: _capture }));
+    if (currentChild) {
+      if (validChildrenCount === 0) firstKey = key;
+      newFragments[key] = currentChild;
+      validChildrenCount++;
     }
   }
+
+  if (validChildrenCount === 0) return undefined;
+  if (validChildrenCount === 1) return newFragments[firstKey];
+  return (0, _reactAddonsCreateFragment2.default)(newFragments);
 }
 
-function withOptions(handler, options) {
-  (0, _warning2.default)(options, '[react-event-listener] Should be specified options in withOptions.');
+function extendChildren(children, extendedProps, extendedChildren) {
+  return _react2.default.isValidElement(children) ? _react2.default.Children.map(children, function (child) {
+    var newProps = typeof extendedProps === 'function' ? extendedProps(child) : extendedProps;
 
-  return {
-    handler: handler,
-    options: mergeDefaultEventOptions(options)
-  };
+    var newChildren = typeof extendedChildren === 'function' ? extendedChildren(child) : extendedChildren ? extendedChildren : child.props.children;
+
+    return _react2.default.cloneElement(child, newProps, newChildren);
+  }) : children;
 }
-
-var EventListener = function (_Component) {
-  (0, _inherits3.default)(EventListener, _Component);
-
-  function EventListener() {
-    (0, _classCallCheck3.default)(this, EventListener);
-    return (0, _possibleConstructorReturn3.default)(this, (EventListener.__proto__ || (0, _getPrototypeOf2.default)(EventListener)).apply(this, arguments));
-  }
-
-  (0, _createClass3.default)(EventListener, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.addListeners();
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps) {
-      return (0, _reactAddonsShallowCompare2.default)({
-        props: this.props,
-        state: state
-      }, nextProps, state);
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      this.removeListeners();
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      this.addListeners();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      this.removeListeners();
-    }
-  }, {
-    key: 'addListeners',
-    value: function addListeners() {
-      this.applyListeners(on);
-    }
-  }, {
-    key: 'removeListeners',
-    value: function removeListeners() {
-      this.applyListeners(off);
-    }
-  }, {
-    key: 'applyListeners',
-    value: function applyListeners(onOrOff) {
-      var target = this.props.target;
-
-
-      if (target) {
-        var element = target;
-
-        if (typeof target === 'string') {
-          element = window[target];
-        }
-
-        forEachListener(this.props, onOrOff.bind(null, element));
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return this.props.children || null;
-    }
-  }]);
-  return EventListener;
-}(_react.Component);
-
-EventListener.propTypes = {
-  /**
-   * You can provide a children too.
-   */
-  children: _react.PropTypes.node,
-  /**
-   * The DOM target to listen to.
-   */
-  target: _react.PropTypes.oneOfType([_react.PropTypes.object, _react.PropTypes.string])
-};
-exports.default = EventListener;
 });
 
-var index$15 = createCommonjsModule(function (module, exports) {
+var events = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  once: function once(el, type, callback) {
+    var typeArray = type ? type.split(' ') : [];
+    var recursiveFunction = function recursiveFunction(event) {
+      event.target.removeEventListener(event.type, recursiveFunction);
+      return callback(event);
+    };
+
+    for (var i = typeArray.length - 1; i >= 0; i--) {
+      this.on(el, typeArray[i], recursiveFunction);
+    }
+  },
+  on: function on(el, type, callback) {
+    if (el.addEventListener) {
+      el.addEventListener(type, callback);
+    } else {
+      // IE8+ Support
+      el.attachEvent('on' + type, function () {
+        callback.call(el);
+      });
+    }
+  },
+  off: function off(el, type, callback) {
+    if (el.removeEventListener) {
+      el.removeEventListener(type, callback);
+    } else {
+      // IE8+ Support
+      el.detachEvent('on' + type, callback);
+    }
+  },
+  isKeyboard: function isKeyboard(event) {
+    return ['keydown', 'keypress', 'keyup'].indexOf(event.type) !== -1;
+  }
+};
+});
+
+var index$13 = createCommonjsModule(function (module, exports) {
 // Source: http://jsfiddle.net/vWx8V/
 // http://stackoverflow.com/questions/5603195/full-list-of-javascript-keycodes
 
@@ -26615,193 +26310,6 @@ for (var alias in aliases) {
 }
 });
 
-var transitions = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-
-  easeOutFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
-  easeInOutFunction: 'cubic-bezier(0.445, 0.05, 0.55, 0.95)',
-
-  easeOut: function easeOut(duration, property, delay, easeFunction) {
-    easeFunction = easeFunction || this.easeOutFunction;
-
-    if (property && Object.prototype.toString.call(property) === '[object Array]') {
-      var transitions = '';
-      for (var i = 0; i < property.length; i++) {
-        if (transitions) transitions += ',';
-        transitions += this.create(duration, property[i], delay, easeFunction);
-      }
-
-      return transitions;
-    } else {
-      return this.create(duration, property, delay, easeFunction);
-    }
-  },
-  create: function create(duration, property, delay, easeFunction) {
-    duration = duration || '450ms';
-    property = property || 'all';
-    delay = delay || '0ms';
-    easeFunction = easeFunction || 'linear';
-
-    return property + ' ' + duration + ' ' + easeFunction + ' ' + delay;
-  }
-};
-});
-
-var ReactChildren$3 = ReactChildren_1;
-var ReactElement$12 = ReactElement_1;
-
-var emptyFunction$12 = emptyFunction_1;
-var invariant$41 = invariant_1;
-var warning$40 = warning_1;
-
-/**
- * We used to allow keyed objects to serve as a collection of ReactElements,
- * or nested sets. This allowed us a way to explicitly key a set or fragment of
- * components. This is now being replaced with an opaque data structure.
- * The upgrade path is to call React.addons.createFragment({ key: value }) to
- * create a keyed fragment. The resulting data structure is an array.
- */
-
-var numericPropertyRegex = /^\d+$/;
-
-var warnedAboutNumeric = false;
-
-var ReactFragment = {
-  /**
-   * Wrap a keyed object in an opaque proxy that warns you if you access any
-   * of its properties.
-   * See https://facebook.github.io/react/docs/create-fragment.html
-   */
-  create: function (object) {
-    if (typeof object !== 'object' || !object || Array.isArray(object)) {
-      warning$40(false, 'React.addons.createFragment only accepts a single object. Got: %s', object);
-      return object;
-    }
-    if (ReactElement$12.isValidElement(object)) {
-      warning$40(false, 'React.addons.createFragment does not accept a ReactElement ' + 'without a wrapper object.');
-      return object;
-    }
-
-    !(object.nodeType !== 1) ? invariant$41(false, 'React.addons.createFragment(...): Encountered an invalid child; DOM elements are not valid children of React components.') : void 0;
-
-    var result = [];
-
-    for (var key in object) {
-      {
-        if (!warnedAboutNumeric && numericPropertyRegex.test(key)) {
-          warning$40(false, 'React.addons.createFragment(...): Child objects should have ' + 'non-numeric keys so ordering is preserved.');
-          warnedAboutNumeric = true;
-        }
-      }
-      ReactChildren$3.mapIntoWithKeyPrefixInternal(object[key], result, key, emptyFunction$12.thatReturnsArgument);
-    }
-
-    return result;
-  }
-};
-
-var ReactFragment_1 = ReactFragment;
-
-var index$19 = ReactFragment_1.create;
-
-var childUtils = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createChildFragment = createChildFragment;
-exports.extendChildren = extendChildren;
-
-var _react = react;
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactAddonsCreateFragment = index$19;
-
-var _reactAddonsCreateFragment2 = _interopRequireDefault(_reactAddonsCreateFragment);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function createChildFragment(fragments) {
-  var newFragments = {};
-  var validChildrenCount = 0;
-  var firstKey = void 0;
-
-  // Only create non-empty key fragments
-  for (var key in fragments) {
-    var currentChild = fragments[key];
-
-    if (currentChild) {
-      if (validChildrenCount === 0) firstKey = key;
-      newFragments[key] = currentChild;
-      validChildrenCount++;
-    }
-  }
-
-  if (validChildrenCount === 0) return undefined;
-  if (validChildrenCount === 1) return newFragments[firstKey];
-  return (0, _reactAddonsCreateFragment2.default)(newFragments);
-}
-
-function extendChildren(children, extendedProps, extendedChildren) {
-  return _react2.default.isValidElement(children) ? _react2.default.Children.map(children, function (child) {
-    var newProps = typeof extendedProps === 'function' ? extendedProps(child) : extendedProps;
-
-    var newChildren = typeof extendedChildren === 'function' ? extendedChildren(child) : extendedChildren ? extendedChildren : child.props.children;
-
-    return _react2.default.cloneElement(child, newProps, newChildren);
-  }) : children;
-}
-});
-
-var events = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  once: function once(el, type, callback) {
-    var typeArray = type ? type.split(' ') : [];
-    var recursiveFunction = function recursiveFunction(event) {
-      event.target.removeEventListener(event.type, recursiveFunction);
-      return callback(event);
-    };
-
-    for (var i = typeArray.length - 1; i >= 0; i--) {
-      this.on(el, typeArray[i], recursiveFunction);
-    }
-  },
-  on: function on(el, type, callback) {
-    if (el.addEventListener) {
-      el.addEventListener(type, callback);
-    } else {
-      // IE8+ Support
-      el.attachEvent('on' + type, function () {
-        callback.call(el);
-      });
-    }
-  },
-  off: function off(el, type, callback) {
-    if (el.removeEventListener) {
-      el.removeEventListener(type, callback);
-    } else {
-      // IE8+ Support
-      el.detachEvent('on' + type, callback);
-    }
-  },
-  isKeyboard: function isKeyboard(event) {
-    return ['keydown', 'keypress', 'keyup'].indexOf(event.type) !== -1;
-  }
-};
-});
-
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  * All rights reserved.
@@ -26840,7 +26348,7 @@ function is$3(x, y) {
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
  */
-function shallowEqual$7(objA, objB) {
+function shallowEqual$6(objA, objB) {
   if (is$3(objA, objB)) {
     return true;
   }
@@ -26866,9 +26374,9 @@ function shallowEqual$7(objA, objB) {
   return true;
 }
 
-var shallowEqual_1$2 = shallowEqual$7;
+var shallowEqual_1$2 = shallowEqual$6;
 
-var shallowEqual$5 = createCommonjsModule(function (module, exports) {
+var shallowEqual$4 = createCommonjsModule(function (module, exports) {
 'use strict';
 
 exports.__esModule = true;
@@ -27212,7 +26720,7 @@ var ReactTransitionGroup = React$2.createClass({
 
 var ReactTransitionGroup_1 = ReactTransitionGroup;
 
-var index$21 = ReactTransitionGroup_1;
+var index$15 = ReactTransitionGroup_1;
 
 var ScaleInChild_1 = createCommonjsModule(function (module, exports) {
 'use strict';
@@ -27426,7 +26934,7 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactAddonsTransitionGroup = index$21;
+var _reactAddonsTransitionGroup = index$15;
 
 var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransitionGroup);
 
@@ -27550,7 +27058,7 @@ var _reactDom = index$2;
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _shallowEqual = shallowEqual$5;
+var _shallowEqual = shallowEqual$4;
 
 var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
@@ -27799,7 +27307,7 @@ var _reactDom = index$2;
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _shallowEqual = shallowEqual$5;
+var _shallowEqual = shallowEqual$4;
 
 var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
@@ -27970,7 +27478,7 @@ var _reactDom = index$2;
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactAddonsTransitionGroup = index$21;
+var _reactAddonsTransitionGroup = index$15;
 
 var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransitionGroup);
 
@@ -28281,7 +27789,7 @@ var _events = events;
 
 var _events2 = _interopRequireDefault(_events);
 
-var _keycode = index$15;
+var _keycode = index$13;
 
 var _keycode2 = _interopRequireDefault(_keycode);
 
@@ -28641,6 +28149,1644 @@ EnhancedButton.propTypes = {
   type: _react.PropTypes.string
 };
 exports.default = EnhancedButton;
+});
+
+var propTypes$1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = react;
+
+var horizontal = _react.PropTypes.oneOf(['left', 'middle', 'right']);
+var vertical = _react.PropTypes.oneOf(['top', 'center', 'bottom']);
+
+exports.default = {
+
+  corners: _react.PropTypes.oneOf(['bottom-left', 'bottom-right', 'top-left', 'top-right']),
+
+  horizontal: horizontal,
+
+  vertical: vertical,
+
+  origin: _react.PropTypes.shape({
+    horizontal: horizontal,
+    vertical: vertical
+  }),
+
+  cornersAndCenter: _react.PropTypes.oneOf(['bottom-center', 'bottom-left', 'bottom-right', 'top-center', 'top-left', 'top-right']),
+
+  stringOrNumber: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
+
+  zDepth: _react.PropTypes.oneOf([0, 1, 2, 3, 4, 5])
+
+};
+});
+
+var Paper_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = _extends;
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _objectWithoutProperties2 = objectWithoutProperties;
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+var _getPrototypeOf = getPrototypeOf$1;
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = classCallCheck;
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = createClass;
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = possibleConstructorReturn;
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = inherits;
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _simpleAssign = index$9;
+
+var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+var _react = react;
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = propTypes$1;
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _transitions = transitions;
+
+var _transitions2 = _interopRequireDefault(_transitions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getStyles(props, context) {
+  var rounded = props.rounded;
+  var circle = props.circle;
+  var transitionEnabled = props.transitionEnabled;
+  var zDepth = props.zDepth;
+  var _context$muiTheme = context.muiTheme;
+  var baseTheme = _context$muiTheme.baseTheme;
+  var paper = _context$muiTheme.paper;
+
+
+  return {
+    root: {
+      color: paper.color,
+      backgroundColor: paper.backgroundColor,
+      transition: transitionEnabled && _transitions2.default.easeOut(),
+      boxSizing: 'border-box',
+      fontFamily: baseTheme.fontFamily,
+      WebkitTapHighlightColor: 'rgba(0,0,0,0)', // Remove mobile color flashing (deprecated)
+      boxShadow: paper.zDepthShadows[zDepth - 1], // No shadow for 0 depth papers
+      borderRadius: circle ? '50%' : rounded ? '2px' : '0px'
+    }
+  };
+}
+
+var Paper = function (_Component) {
+  (0, _inherits3.default)(Paper, _Component);
+
+  function Paper() {
+    (0, _classCallCheck3.default)(this, Paper);
+    return (0, _possibleConstructorReturn3.default)(this, (Paper.__proto__ || (0, _getPrototypeOf2.default)(Paper)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(Paper, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var children = _props.children;
+      var circle = _props.circle;
+      var rounded = _props.rounded;
+      var style = _props.style;
+      var transitionEnabled = _props.transitionEnabled;
+      var zDepth = _props.zDepth;
+      var other = (0, _objectWithoutProperties3.default)(_props, ['children', 'circle', 'rounded', 'style', 'transitionEnabled', 'zDepth']);
+      var prepareStyles = this.context.muiTheme.prepareStyles;
+
+      var styles = getStyles(this.props, this.context);
+
+      return _react2.default.createElement(
+        'div',
+        (0, _extends3.default)({}, other, { style: prepareStyles((0, _simpleAssign2.default)(styles.root, style)) }),
+        children
+      );
+    }
+  }]);
+  return Paper;
+}(_react.Component);
+
+Paper.defaultProps = {
+  circle: false,
+  rounded: true,
+  transitionEnabled: true,
+  zDepth: 1
+};
+Paper.contextTypes = {
+  muiTheme: _react.PropTypes.object.isRequired
+};
+Paper.propTypes = {
+  /**
+   * Children passed into the paper element.
+   */
+  children: _react.PropTypes.node,
+  /**
+   * Set to true to generate a circlular paper container.
+   */
+  circle: _react.PropTypes.bool,
+  /**
+   * By default, the paper container will have a border radius.
+   * Set this to false to generate a container with sharp corners.
+   */
+  rounded: _react.PropTypes.bool,
+  /**
+   * Override the inline-styles of the root element.
+   */
+  style: _react.PropTypes.object,
+  /**
+   * Set to false to disable CSS transitions for the paper element.
+   */
+  transitionEnabled: _react.PropTypes.bool,
+  /**
+   * This number represents the zDepth of the paper shadow.
+   */
+  zDepth: _propTypes2.default.zDepth
+};
+exports.default = Paper;
+});
+
+var index$17 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _Paper = Paper_1;
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Paper2.default;
+});
+
+var RaisedButton_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = _extends;
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _objectWithoutProperties2 = objectWithoutProperties;
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+var _getPrototypeOf = getPrototypeOf$1;
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = classCallCheck;
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = createClass;
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = possibleConstructorReturn;
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = inherits;
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _simpleAssign = index$9;
+
+var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+var _react = react;
+
+var _react2 = _interopRequireDefault(_react);
+
+var _transitions = transitions;
+
+var _transitions2 = _interopRequireDefault(_transitions);
+
+var _colorManipulator = colorManipulator;
+
+var _childUtils = childUtils;
+
+var _EnhancedButton = EnhancedButton_1;
+
+var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
+
+var _Paper = index$17;
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function validateLabel(props, propName, componentName) {
+  {
+    if (!props.children && props.label !== 0 && !props.label && !props.icon) {
+      return new Error('Required prop label or children or icon was not specified in ' + componentName + '.');
+    }
+  }
+}
+
+function getStyles(props, context, state) {
+  var _context$muiTheme = context.muiTheme;
+  var baseTheme = _context$muiTheme.baseTheme;
+  var button = _context$muiTheme.button;
+  var raisedButton = _context$muiTheme.raisedButton;
+  var disabled = props.disabled;
+  var disabledBackgroundColor = props.disabledBackgroundColor;
+  var disabledLabelColor = props.disabledLabelColor;
+  var fullWidth = props.fullWidth;
+  var icon = props.icon;
+  var label = props.label;
+  var labelPosition = props.labelPosition;
+  var primary = props.primary;
+  var secondary = props.secondary;
+  var style = props.style;
+
+
+  var amount = primary || secondary ? 0.4 : 0.08;
+
+  var backgroundColor = raisedButton.color;
+  var labelColor = raisedButton.textColor;
+
+  if (disabled) {
+    backgroundColor = disabledBackgroundColor || raisedButton.disabledColor;
+    labelColor = disabledLabelColor || raisedButton.disabledTextColor;
+  } else if (primary) {
+    backgroundColor = raisedButton.primaryColor;
+    labelColor = raisedButton.primaryTextColor;
+  } else if (secondary) {
+    backgroundColor = raisedButton.secondaryColor;
+    labelColor = raisedButton.secondaryTextColor;
+  } else {
+    if (props.backgroundColor) {
+      backgroundColor = props.backgroundColor;
+    }
+    if (props.labelColor) {
+      labelColor = props.labelColor;
+    }
+  }
+
+  var buttonHeight = style && style.height || button.height;
+  var borderRadius = 2;
+
+  return {
+    root: {
+      display: 'inline-block',
+      transition: _transitions2.default.easeOut(),
+      minWidth: fullWidth ? '100%' : button.minWidth
+    },
+    button: {
+      position: 'relative',
+      height: buttonHeight,
+      lineHeight: buttonHeight + 'px',
+      width: '100%',
+      padding: 0,
+      borderRadius: borderRadius,
+      transition: _transitions2.default.easeOut(),
+      backgroundColor: backgroundColor,
+      // That's the default value for a button but not a link
+      textAlign: 'center'
+    },
+    label: {
+      position: 'relative',
+      opacity: 1,
+      fontSize: raisedButton.fontSize,
+      letterSpacing: 0,
+      textTransform: raisedButton.textTransform || button.textTransform || 'uppercase',
+      fontWeight: raisedButton.fontWeight,
+      margin: 0,
+      userSelect: 'none',
+      paddingLeft: icon && labelPosition !== 'before' ? 8 : baseTheme.spacing.desktopGutterLess,
+      paddingRight: icon && labelPosition === 'before' ? 8 : baseTheme.spacing.desktopGutterLess,
+      color: labelColor
+    },
+    icon: {
+      verticalAlign: 'middle',
+      marginLeft: label && labelPosition !== 'before' ? 12 : 0,
+      marginRight: label && labelPosition === 'before' ? 12 : 0
+    },
+    overlay: {
+      height: buttonHeight,
+      borderRadius: borderRadius,
+      backgroundColor: (state.keyboardFocused || state.hovered) && !disabled && (0, _colorManipulator.fade)(labelColor, amount),
+      transition: _transitions2.default.easeOut(),
+      top: 0
+    },
+    ripple: {
+      color: labelColor,
+      opacity: !(primary || secondary) ? 0.1 : 0.16
+    }
+  };
+}
+
+var RaisedButton = function (_Component) {
+  (0, _inherits3.default)(RaisedButton, _Component);
+
+  function RaisedButton() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, RaisedButton);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = RaisedButton.__proto__ || (0, _getPrototypeOf2.default)(RaisedButton)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      hovered: false,
+      keyboardFocused: false,
+      touched: false,
+      initialZDepth: 0,
+      zDepth: 0
+    }, _this.handleMouseDown = function (event) {
+      // only listen to left clicks
+      if (event.button === 0) {
+        _this.setState({
+          zDepth: _this.state.initialZDepth + 1
+        });
+      }
+      if (_this.props.onMouseDown) {
+        _this.props.onMouseDown(event);
+      }
+    }, _this.handleMouseUp = function (event) {
+      _this.setState({
+        zDepth: _this.state.initialZDepth
+      });
+      if (_this.props.onMouseUp) {
+        _this.props.onMouseUp(event);
+      }
+    }, _this.handleMouseLeave = function (event) {
+      if (!_this.state.keyboardFocused) {
+        _this.setState({
+          zDepth: _this.state.initialZDepth,
+          hovered: false
+        });
+      }
+      if (_this.props.onMouseLeave) {
+        _this.props.onMouseLeave(event);
+      }
+    }, _this.handleMouseEnter = function (event) {
+      if (!_this.state.keyboardFocused && !_this.state.touched) {
+        _this.setState({
+          hovered: true
+        });
+      }
+      if (_this.props.onMouseEnter) {
+        _this.props.onMouseEnter(event);
+      }
+    }, _this.handleTouchStart = function (event) {
+      _this.setState({
+        touched: true,
+        zDepth: _this.state.initialZDepth + 1
+      });
+
+      if (_this.props.onTouchStart) {
+        _this.props.onTouchStart(event);
+      }
+    }, _this.handleTouchEnd = function (event) {
+      _this.setState({
+        zDepth: _this.state.initialZDepth
+      });
+
+      if (_this.props.onTouchEnd) {
+        _this.props.onTouchEnd(event);
+      }
+    }, _this.handleKeyboardFocus = function (event, keyboardFocused) {
+      var zDepth = keyboardFocused && !_this.props.disabled ? _this.state.initialZDepth + 1 : _this.state.initialZDepth;
+
+      _this.setState({
+        zDepth: zDepth,
+        keyboardFocused: keyboardFocused
+      });
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
+
+  (0, _createClass3.default)(RaisedButton, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var zDepth = this.props.disabled ? 0 : 1;
+      this.setState({
+        zDepth: zDepth,
+        initialZDepth: zDepth
+      });
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var zDepth = nextProps.disabled ? 0 : 1;
+      var nextState = {
+        zDepth: zDepth,
+        initialZDepth: zDepth
+      };
+
+      if (nextProps.disabled) {
+        nextState.hovered = false;
+      }
+
+      this.setState(nextState);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var backgroundColor = _props.backgroundColor;
+      var buttonStyle = _props.buttonStyle;
+      var children = _props.children;
+      var className = _props.className;
+      var disabled = _props.disabled;
+      var disabledBackgroundColor = _props.disabledBackgroundColor;
+      var disabledLabelColor = _props.disabledLabelColor;
+      var fullWidth = _props.fullWidth;
+      var icon = _props.icon;
+      var label = _props.label;
+      var labelColor = _props.labelColor;
+      var labelPosition = _props.labelPosition;
+      var labelStyle = _props.labelStyle;
+      var overlayStyle = _props.overlayStyle;
+      var primary = _props.primary;
+      var rippleStyle = _props.rippleStyle;
+      var secondary = _props.secondary;
+      var style = _props.style;
+      var other = (0, _objectWithoutProperties3.default)(_props, ['backgroundColor', 'buttonStyle', 'children', 'className', 'disabled', 'disabledBackgroundColor', 'disabledLabelColor', 'fullWidth', 'icon', 'label', 'labelColor', 'labelPosition', 'labelStyle', 'overlayStyle', 'primary', 'rippleStyle', 'secondary', 'style']);
+      var prepareStyles = this.context.muiTheme.prepareStyles;
+
+      var styles = getStyles(this.props, this.context, this.state);
+      var mergedRippleStyles = (0, _simpleAssign2.default)({}, styles.ripple, rippleStyle);
+
+      var buttonEventHandlers = disabled ? {} : {
+        onMouseDown: this.handleMouseDown,
+        onMouseUp: this.handleMouseUp,
+        onMouseLeave: this.handleMouseLeave,
+        onMouseEnter: this.handleMouseEnter,
+        onTouchStart: this.handleTouchStart,
+        onTouchEnd: this.handleTouchEnd,
+        onKeyboardFocus: this.handleKeyboardFocus
+      };
+
+      var labelElement = label && _react2.default.createElement(
+        'span',
+        { style: prepareStyles((0, _simpleAssign2.default)(styles.label, labelStyle)) },
+        label
+      );
+
+      var iconCloned = icon && (0, _react.cloneElement)(icon, {
+        color: icon.props.color || styles.label.color,
+        style: (0, _simpleAssign2.default)(styles.icon, icon.props.style)
+      });
+
+      // Place label before or after children.
+      var childrenFragment = labelPosition === 'before' ? {
+        labelElement: labelElement,
+        iconCloned: iconCloned,
+        children: children
+      } : {
+        children: children,
+        iconCloned: iconCloned,
+        labelElement: labelElement
+      };
+
+      var enhancedButtonChildren = (0, _childUtils.createChildFragment)(childrenFragment);
+
+      return _react2.default.createElement(
+        _Paper2.default,
+        {
+          className: className,
+          style: (0, _simpleAssign2.default)(styles.root, style),
+          zDepth: this.state.zDepth
+        },
+        _react2.default.createElement(
+          _EnhancedButton2.default,
+          (0, _extends3.default)({}, other, buttonEventHandlers, {
+            ref: 'container',
+            disabled: disabled,
+            style: (0, _simpleAssign2.default)(styles.button, buttonStyle),
+            focusRippleColor: mergedRippleStyles.color,
+            touchRippleColor: mergedRippleStyles.color,
+            focusRippleOpacity: mergedRippleStyles.opacity,
+            touchRippleOpacity: mergedRippleStyles.opacity
+          }),
+          _react2.default.createElement(
+            'div',
+            {
+              ref: 'overlay',
+              style: prepareStyles((0, _simpleAssign2.default)(styles.overlay, overlayStyle))
+            },
+            enhancedButtonChildren
+          )
+        )
+      );
+    }
+  }]);
+  return RaisedButton;
+}(_react.Component);
+
+RaisedButton.muiName = 'RaisedButton';
+RaisedButton.defaultProps = {
+  disabled: false,
+  labelPosition: 'after',
+  fullWidth: false,
+  primary: false,
+  secondary: false
+};
+RaisedButton.contextTypes = {
+  muiTheme: _react.PropTypes.object.isRequired
+};
+RaisedButton.propTypes = {
+  /**
+   * Override the default background color for the button,
+   * but not the default disabled background color
+   * (use `disabledBackgroundColor` for this).
+   */
+  backgroundColor: _react.PropTypes.string,
+  /**
+   * Override the inline-styles of the button element.
+   */
+  buttonStyle: _react.PropTypes.object,
+  /**
+   * The content of the button.
+   * If a label is provided via the `label` prop, the text within the label
+   * will be displayed in addition to the content provided here.
+   */
+  children: _react.PropTypes.node,
+  /**
+   * The CSS class name of the root element.
+   */
+  className: _react.PropTypes.string,
+  /**
+   * If true, the button will be disabled.
+   */
+  disabled: _react.PropTypes.bool,
+  /**
+   * Override the default background color for the button
+   * when it is disabled.
+   */
+  disabledBackgroundColor: _react.PropTypes.string,
+  /**
+   * The color of the button's label when the button is disabled.
+   */
+  disabledLabelColor: _react.PropTypes.string,
+  /**
+   * If true, the button will take up the full width of its container.
+   */
+  fullWidth: _react.PropTypes.bool,
+  /**
+   * The URL to link to when the button is clicked.
+   */
+  href: _react.PropTypes.string,
+  /**
+   * An icon to be displayed within the button.
+   */
+  icon: _react.PropTypes.node,
+  /**
+   * The label to be displayed within the button.
+   * If content is provided via the `children` prop, that content will be
+   * displayed in addition to the label provided here.
+   */
+  label: validateLabel,
+  /**
+   * The color of the button's label.
+   */
+  labelColor: _react.PropTypes.string,
+  /**
+   * The position of the button's label relative to the button's `children`.
+   */
+  labelPosition: _react.PropTypes.oneOf(['before', 'after']),
+  /**
+   * Override the inline-styles of the button's label element.
+   */
+  labelStyle: _react.PropTypes.object,
+  /** @ignore */
+  onMouseDown: _react.PropTypes.func,
+  /** @ignore */
+  onMouseEnter: _react.PropTypes.func,
+  /** @ignore */
+  onMouseLeave: _react.PropTypes.func,
+  /** @ignore */
+  onMouseUp: _react.PropTypes.func,
+  /** @ignore */
+  onTouchEnd: _react.PropTypes.func,
+  /** @ignore */
+  onTouchStart: _react.PropTypes.func,
+  /**
+   * Override the inline style of the button overlay.
+   */
+  overlayStyle: _react.PropTypes.object,
+  /**
+   * If true, the button will use the theme's primary color.
+   */
+  primary: _react.PropTypes.bool,
+  /**
+   * Override the inline style of the ripple element.
+   */
+  rippleStyle: _react.PropTypes.object,
+  /**
+   * If true, the button will use the theme's secondary color.
+   * If both `secondary` and `primary` are true, the button will use
+   * the theme's primary color.
+   */
+  secondary: _react.PropTypes.bool,
+  /**
+   * Override the inline-styles of the root element.
+   */
+  style: _react.PropTypes.object
+};
+exports.default = RaisedButton;
+});
+
+var RaisedButton = unwrapExports(RaisedButton_1);
+
+var getDisplayName_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+var getDisplayName = function getDisplayName(Component) {
+  if (typeof Component === 'string') {
+    return Component;
+  }
+
+  if (!Component) {
+    return undefined;
+  }
+
+  return Component.displayName || Component.name || 'Component';
+};
+
+exports.default = getDisplayName;
+});
+
+var wrapDisplayName_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+
+var _getDisplayName = getDisplayName_1;
+
+var _getDisplayName2 = _interopRequireDefault(_getDisplayName);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var wrapDisplayName = function wrapDisplayName(BaseComponent, hocName) {
+  return hocName + '(' + (0, _getDisplayName2.default)(BaseComponent) + ')';
+};
+
+exports.default = wrapDisplayName;
+});
+
+var createHelper_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+var createHelper = function createHelper(func, helperName) {
+  var setDisplayName = arguments.length <= 2 || arguments[2] === undefined ? true : arguments[2];
+  var noArgs = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];
+
+  if ("development" !== 'production' && setDisplayName) {
+    var _ret = function () {
+      /* eslint-disable global-require */
+      var wrapDisplayName = wrapDisplayName_1.default;
+      /* eslint-enable global-require */
+
+      if (noArgs) {
+        return {
+          v: function v(BaseComponent) {
+            var Component = func(BaseComponent);
+            Component.displayName = wrapDisplayName(BaseComponent, helperName);
+            return Component;
+          }
+        };
+      }
+
+      return {
+        v: function v() {
+          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          if (args.length > func.length) {
+            /* eslint-disable */
+            console.error(
+            /* eslint-enable */
+            'Too many arguments passed to ' + helperName + '(). It should called ' + ('like so: ' + helperName + '(...args)(BaseComponent).'));
+          }
+
+          return function (BaseComponent) {
+            var Component = func.apply(undefined, args)(BaseComponent);
+            Component.displayName = wrapDisplayName(BaseComponent, helperName);
+            return Component;
+          };
+        }
+      };
+    }();
+
+    if (typeof _ret === "object") return _ret.v;
+  }
+
+  return func;
+};
+
+exports.default = createHelper;
+});
+
+var createEagerElementUtil_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = react;
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var createEagerElementUtil = function createEagerElementUtil(hasKey, isReferentiallyTransparent, type, props, children) {
+  if (!hasKey && isReferentiallyTransparent) {
+    if (children) {
+      return type(_extends({}, props, { children: children }));
+    }
+    return type(props);
+  }
+
+  var Component = type;
+
+  if (children) {
+    return _react2.default.createElement(
+      Component,
+      props,
+      children
+    );
+  }
+
+  return _react2.default.createElement(Component, props);
+};
+
+exports.default = createEagerElementUtil;
+});
+
+var isClassComponent_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+var isClassComponent = function isClassComponent(Component) {
+  return Boolean(Component && Component.prototype && typeof Component.prototype.isReactComponent === 'object');
+};
+
+exports.default = isClassComponent;
+});
+
+var isReferentiallyTransparentFunctionComponent_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+
+var _isClassComponent = isClassComponent_1;
+
+var _isClassComponent2 = _interopRequireDefault(_isClassComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var isReferentiallyTransparentFunctionComponent = function isReferentiallyTransparentFunctionComponent(Component) {
+  return Boolean(typeof Component === 'function' && !(0, _isClassComponent2.default)(Component) && !Component.defaultProps && !Component.contextTypes && !Component.propTypes);
+};
+
+exports.default = isReferentiallyTransparentFunctionComponent;
+});
+
+var createEagerFactory = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+
+var _createEagerElementUtil = createEagerElementUtil_1;
+
+var _createEagerElementUtil2 = _interopRequireDefault(_createEagerElementUtil);
+
+var _isReferentiallyTransparentFunctionComponent = isReferentiallyTransparentFunctionComponent_1;
+
+var _isReferentiallyTransparentFunctionComponent2 = _interopRequireDefault(_isReferentiallyTransparentFunctionComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var createFactory = function createFactory(type) {
+  var isReferentiallyTransparent = (0, _isReferentiallyTransparentFunctionComponent2.default)(type);
+  return function (p, c) {
+    return (0, _createEagerElementUtil2.default)(false, isReferentiallyTransparent, type, p, c);
+  };
+};
+
+exports.default = createFactory;
+});
+
+var shouldUpdate_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+
+var _react = react;
+
+var _createHelper = createHelper_1;
+
+var _createHelper2 = _interopRequireDefault(_createHelper);
+
+var _createEagerFactory = createEagerFactory;
+
+var _createEagerFactory2 = _interopRequireDefault(_createEagerFactory);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var shouldUpdate = function shouldUpdate(test) {
+  return function (BaseComponent) {
+    var factory = (0, _createEagerFactory2.default)(BaseComponent);
+    return function (_Component) {
+      _inherits(_class, _Component);
+
+      function _class() {
+        _classCallCheck(this, _class);
+
+        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
+      }
+
+      _class.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
+        return test(this.props, nextProps);
+      };
+
+      _class.prototype.render = function render() {
+        return factory(this.props);
+      };
+
+      return _class;
+    }(_react.Component);
+  };
+};
+
+exports.default = (0, _createHelper2.default)(shouldUpdate, 'shouldUpdate');
+});
+
+var pure_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+exports.__esModule = true;
+
+var _shouldUpdate = shouldUpdate_1;
+
+var _shouldUpdate2 = _interopRequireDefault(_shouldUpdate);
+
+var _shallowEqual = shallowEqual$4;
+
+var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
+
+var _createHelper = createHelper_1;
+
+var _createHelper2 = _interopRequireDefault(_createHelper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var pure = (0, _shouldUpdate2.default)(function (props, nextProps) {
+  return !(0, _shallowEqual2.default)(props, nextProps);
+});
+
+exports.default = (0, _createHelper2.default)(pure, 'pure', true, true);
+});
+
+var SvgIcon_1 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = _extends;
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _objectWithoutProperties2 = objectWithoutProperties;
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+var _getPrototypeOf = getPrototypeOf$1;
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = classCallCheck;
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = createClass;
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = possibleConstructorReturn;
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = inherits;
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _simpleAssign = index$9;
+
+var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
+
+var _react = react;
+
+var _react2 = _interopRequireDefault(_react);
+
+var _transitions = transitions;
+
+var _transitions2 = _interopRequireDefault(_transitions);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SvgIcon = function (_Component) {
+  (0, _inherits3.default)(SvgIcon, _Component);
+
+  function SvgIcon() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    (0, _classCallCheck3.default)(this, SvgIcon);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = SvgIcon.__proto__ || (0, _getPrototypeOf2.default)(SvgIcon)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      hovered: false
+    }, _this.handleMouseLeave = function (event) {
+      _this.setState({ hovered: false });
+      _this.props.onMouseLeave(event);
+    }, _this.handleMouseEnter = function (event) {
+      _this.setState({ hovered: true });
+      _this.props.onMouseEnter(event);
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
+
+  (0, _createClass3.default)(SvgIcon, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var children = _props.children;
+      var color = _props.color;
+      var hoverColor = _props.hoverColor;
+      var onMouseEnter = _props.onMouseEnter;
+      var onMouseLeave = _props.onMouseLeave;
+      var style = _props.style;
+      var viewBox = _props.viewBox;
+      var other = (0, _objectWithoutProperties3.default)(_props, ['children', 'color', 'hoverColor', 'onMouseEnter', 'onMouseLeave', 'style', 'viewBox']);
+      var _context$muiTheme = this.context.muiTheme;
+      var svgIcon = _context$muiTheme.svgIcon;
+      var prepareStyles = _context$muiTheme.prepareStyles;
+
+
+      var offColor = color ? color : 'currentColor';
+      var onColor = hoverColor ? hoverColor : offColor;
+
+      var mergedStyles = (0, _simpleAssign2.default)({
+        display: 'inline-block',
+        color: svgIcon.color,
+        fill: this.state.hovered ? onColor : offColor,
+        height: 24,
+        width: 24,
+        userSelect: 'none',
+        transition: _transitions2.default.easeOut()
+      }, style);
+
+      return _react2.default.createElement(
+        'svg',
+        (0, _extends3.default)({}, other, {
+          onMouseEnter: this.handleMouseEnter,
+          onMouseLeave: this.handleMouseLeave,
+          style: prepareStyles(mergedStyles),
+          viewBox: viewBox
+        }),
+        children
+      );
+    }
+  }]);
+  return SvgIcon;
+}(_react.Component);
+
+SvgIcon.muiName = 'SvgIcon';
+SvgIcon.defaultProps = {
+  onMouseEnter: function onMouseEnter() {},
+  onMouseLeave: function onMouseLeave() {},
+  viewBox: '0 0 24 24'
+};
+SvgIcon.contextTypes = {
+  muiTheme: _react.PropTypes.object.isRequired
+};
+SvgIcon.propTypes = {
+  /**
+   * Elements passed into the SVG Icon.
+   */
+  children: _react.PropTypes.node,
+  /**
+   * This is the fill color of the svg icon.
+   * If not specified, this component will default
+   * to muiTheme.palette.textColor.
+   */
+  color: _react.PropTypes.string,
+  /**
+   * This is the icon color when the mouse hovers over the icon.
+   */
+  hoverColor: _react.PropTypes.string,
+  /** @ignore */
+  onMouseEnter: _react.PropTypes.func,
+  /** @ignore */
+  onMouseLeave: _react.PropTypes.func,
+  /**
+   * Override the inline-styles of the root element.
+   */
+  style: _react.PropTypes.object,
+  /**
+   * Allows you to redefine what the coordinates
+   * without units mean inside an svg element. For example,
+   * if the SVG element is 500 (width) by 200 (height), and you
+   * pass viewBox="0 0 50 20", this means that the coordinates inside
+   * the svg will go from the top left corner (0,0) to bottom right (50,20)
+   * and each unit will be worth 10px.
+   */
+  viewBox: _react.PropTypes.string
+};
+exports.default = SvgIcon;
+});
+
+var index$19 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _SvgIcon = SvgIcon_1;
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _SvgIcon2.default;
+});
+
+var send = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = react;
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pure = pure_1;
+
+var _pure2 = _interopRequireDefault(_pure);
+
+var _SvgIcon = index$19;
+
+var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ContentSend = function ContentSend(props) {
+  return _react2.default.createElement(
+    _SvgIcon2.default,
+    props,
+    _react2.default.createElement('path', { d: 'M2.01 21L23 12 2.01 3 2 10l15 2-15 2z' })
+  );
+};
+ContentSend = (0, _pure2.default)(ContentSend);
+ContentSend.displayName = 'ContentSend';
+ContentSend.muiName = 'SvgIcon';
+
+exports.default = ContentSend;
+});
+
+var ContentSend = unwrapExports(send);
+
+var dateUtils = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.dateTimeFormat = dateTimeFormat;
+exports.addDays = addDays;
+exports.addMonths = addMonths;
+exports.addYears = addYears;
+exports.cloneDate = cloneDate;
+exports.cloneAsDate = cloneAsDate;
+exports.getDaysInMonth = getDaysInMonth;
+exports.getFirstDayOfMonth = getFirstDayOfMonth;
+exports.getFirstDayOfWeek = getFirstDayOfWeek;
+exports.getWeekArray = getWeekArray;
+exports.localizedWeekday = localizedWeekday;
+exports.formatIso = formatIso;
+exports.isEqualDate = isEqualDate;
+exports.isBeforeDate = isBeforeDate;
+exports.isAfterDate = isAfterDate;
+exports.isBetweenDates = isBetweenDates;
+exports.monthDiff = monthDiff;
+exports.yearDiff = yearDiff;
+
+var _warning = browser;
+
+var _warning2 = _interopRequireDefault(_warning);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var dayAbbreviation = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+var dayList = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+var monthLongList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+function dateTimeFormat(locale, options) {
+  (0, _warning2.default)(locale === 'en-US', 'The ' + locale + ' locale is not supported by the built-in DateTimeFormat.\n  Use the `DateTimeFormat` prop to supply an alternative implementation.');
+
+  this.format = function (date) {
+    if (options.month === 'short' && options.weekday === 'short' && options.day === '2-digit') {
+      return dayList[date.getDay()] + ', ' + monthList[date.getMonth()] + ' ' + date.getDate();
+    } else if (options.year === 'numeric' && options.month === 'numeric' && options.day === 'numeric') {
+      return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+    } else if (options.year === 'numeric' && options.month === 'long') {
+      return monthLongList[date.getMonth()] + ' ' + date.getFullYear();
+    } else if (options.weekday === 'narrow') {
+      return dayAbbreviation[date.getDay()];
+    } else if (options.year === 'numeric') {
+      return date.getFullYear().toString();
+    } else if (options.day === 'numeric') {
+      return date.getDate();
+    } else {
+      (0, _warning2.default)(false, 'Wrong usage of DateTimeFormat');
+    }
+  };
+}
+
+function addDays(d, days) {
+  var newDate = cloneDate(d);
+  newDate.setDate(d.getDate() + days);
+  return newDate;
+}
+
+function addMonths(d, months) {
+  var newDate = cloneDate(d);
+  newDate.setMonth(d.getMonth() + months);
+  return newDate;
+}
+
+function addYears(d, years) {
+  var newDate = cloneDate(d);
+  newDate.setFullYear(d.getFullYear() + years);
+  return newDate;
+}
+
+function cloneDate(d) {
+  return new Date(d.getTime());
+}
+
+function cloneAsDate(d) {
+  var clonedDate = cloneDate(d);
+  clonedDate.setHours(0, 0, 0, 0);
+  return clonedDate;
+}
+
+function getDaysInMonth(d) {
+  var resultDate = getFirstDayOfMonth(d);
+
+  resultDate.setMonth(resultDate.getMonth() + 1);
+  resultDate.setDate(resultDate.getDate() - 1);
+
+  return resultDate.getDate();
+}
+
+function getFirstDayOfMonth(d) {
+  return new Date(d.getFullYear(), d.getMonth(), 1);
+}
+
+function getFirstDayOfWeek() {
+  var now = new Date();
+  return new Date(now.setDate(now.getDate() - now.getDay()));
+}
+
+function getWeekArray(d, firstDayOfWeek) {
+  var dayArray = [];
+  var daysInMonth = getDaysInMonth(d);
+  var weekArray = [];
+  var week = [];
+
+  for (var i = 1; i <= daysInMonth; i++) {
+    dayArray.push(new Date(d.getFullYear(), d.getMonth(), i));
+  }
+
+  var addWeek = function addWeek(week) {
+    var emptyDays = 7 - week.length;
+    for (var _i = 0; _i < emptyDays; ++_i) {
+      week[weekArray.length ? 'push' : 'unshift'](null);
+    }
+    weekArray.push(week);
+  };
+
+  dayArray.forEach(function (day) {
+    if (week.length > 0 && day.getDay() === firstDayOfWeek) {
+      addWeek(week);
+      week = [];
+    }
+    week.push(day);
+    if (dayArray.indexOf(day) === dayArray.length - 1) {
+      addWeek(week);
+    }
+  });
+
+  return weekArray;
+}
+
+function localizedWeekday(DateTimeFormat, locale, day, firstDayOfWeek) {
+  var weekdayFormatter = new DateTimeFormat(locale, { weekday: 'narrow' });
+  var firstDayDate = getFirstDayOfWeek();
+
+  return weekdayFormatter.format(addDays(firstDayDate, day + firstDayOfWeek));
+}
+
+// Convert date to ISO 8601 (YYYY-MM-DD) date string, accounting for current timezone
+function formatIso(date) {
+  return new Date(date.toDateString() + ' 12:00:00 +0000').toISOString().substring(0, 10);
+}
+
+function isEqualDate(d1, d2) {
+  return d1 && d2 && d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate();
+}
+
+function isBeforeDate(d1, d2) {
+  var date1 = cloneAsDate(d1);
+  var date2 = cloneAsDate(d2);
+
+  return date1.getTime() < date2.getTime();
+}
+
+function isAfterDate(d1, d2) {
+  var date1 = cloneAsDate(d1);
+  var date2 = cloneAsDate(d2);
+
+  return date1.getTime() > date2.getTime();
+}
+
+function isBetweenDates(dateToCheck, startDate, endDate) {
+  return !isBeforeDate(dateToCheck, startDate) && !isAfterDate(dateToCheck, endDate);
+}
+
+function monthDiff(d1, d2) {
+  var m = void 0;
+  m = (d1.getFullYear() - d2.getFullYear()) * 12;
+  m += d1.getMonth();
+  m -= d2.getMonth();
+  return m;
+}
+
+function yearDiff(d1, d2) {
+  return ~~(monthDiff(d1, d2) / 12);
+}
+});
+
+var shallowEqual$7 = shallowEqual_1;
+
+/**
+ * Does a shallow comparison for props and state.
+ * See ReactComponentWithPureRenderMixin
+ * See also https://facebook.github.io/react/docs/shallow-compare.html
+ */
+function shallowCompare(instance, nextProps, nextState) {
+  return !shallowEqual$7(instance.props, nextProps) || !shallowEqual$7(instance.state, nextState);
+}
+
+var shallowCompare_1 = shallowCompare;
+
+var index$23 = shallowCompare_1;
+
+var defineProperty_1 = createCommonjsModule(function (module, exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _defineProperty = defineProperty$1;
+
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+exports.default = defineProperty;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//  weak
+
+function defineProperty(o, p, attr) {
+  return (0, _defineProperty2.default)(o, p, attr);
+}
+});
+
+var supports = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.passiveOption = exports.detachEvent = exports.attachEvent = exports.removeEventListener = exports.addEventListener = exports.canUseDOM = undefined;
+
+var _defineProperty = defineProperty_1;
+
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Inspired by https://github.com/facebook/fbjs/blob/master/packages/fbjs/src/core/ExecutionEnvironment.js
+var canUseDOM = exports.canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+var addEventListener = exports.addEventListener = canUseDOM && 'addEventListener' in window;
+var removeEventListener = exports.removeEventListener = canUseDOM && 'removeEventListener' in window;
+
+// IE8+ Support
+var attachEvent = exports.attachEvent = canUseDOM && 'attachEvent' in window;
+var detachEvent = exports.detachEvent = canUseDOM && 'detachEvent' in window;
+
+// Passive options
+// Inspired by https://github.com/Modernizr/Modernizr/blob/master/feature-detects/dom/passiveeventlisteners.js
+var passiveOption = exports.passiveOption = function () {
+  var cache = null;
+
+  return function () {
+    if (cache !== null) {
+      return cache;
+    }
+
+    var supportsPassiveOption = false;
+
+    try {
+      window.addEventListener('test', null, (0, _defineProperty2.default)({}, 'passive', {
+        get: function get() {
+          supportsPassiveOption = true;
+        }
+      }));
+    } catch (e) {} // eslint-disable-line no-empty
+
+    cache = supportsPassiveOption;
+
+    return supportsPassiveOption;
+  }();
+}();
+});
+
+var index$21 = createCommonjsModule(function (module, exports) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getPrototypeOf = getPrototypeOf$1;
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = classCallCheck;
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = createClass;
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = possibleConstructorReturn;
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = inherits;
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _typeof2 = _typeof_1;
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
+var _assign = assign$1;
+
+var _assign2 = _interopRequireDefault(_assign);
+
+exports.withOptions = withOptions;
+
+var _react = react;
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactAddonsShallowCompare = index$23;
+
+var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
+
+var _warning = browser;
+
+var _warning2 = _interopRequireDefault(_warning);
+
+var _supports = supports;
+
+var supports$$1 = _interopRequireWildcard(_supports);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var defaultEventOptions = {
+  capture: false,
+  passive: false
+};
+
+function mergeDefaultEventOptions(options) {
+  return (0, _assign2.default)({}, defaultEventOptions, options);
+}
+
+function getEventListenerArgs(eventName, callback, options) {
+  var args = [eventName, callback];
+  args.push(supports$$1.passiveOption ? options : options.capture);
+  return args;
+}
+
+function on(target, eventName, callback, options) {
+  if (supports$$1.addEventListener) {
+    target.addEventListener.apply(target, getEventListenerArgs(eventName, callback, options));
+  } else if (supports$$1.attachEvent) {
+    // IE8+ Support
+    target.attachEvent('on' + eventName, function () {
+      callback.call(target);
+    });
+  }
+}
+
+function off(target, eventName, callback, options) {
+  if (supports$$1.removeEventListener) {
+    target.removeEventListener.apply(target, getEventListenerArgs(eventName, callback, options));
+  } else if (supports$$1.detachEvent) {
+    // IE8+ Support
+    target.detachEvent('on' + eventName, callback);
+  }
+}
+
+var state = {};
+
+function forEachListener(props, iteratee) {
+  for (var name in props) {
+    if (name.substring(0, 2) !== 'on') continue;
+
+    var prop = props[name];
+    var type = typeof prop === 'undefined' ? 'undefined' : (0, _typeof3.default)(prop);
+    var isObject = type === 'object';
+    var isFunction = type === 'function';
+
+    if (!isObject && !isFunction) continue;
+
+    var _capture = name.substr(-7).toLowerCase() === 'capture';
+    var _eventName = name.substring(2).toLowerCase();
+    _eventName = _capture ? _eventName.substring(0, _eventName.length - 7) : _eventName;
+
+    if (isObject) {
+      iteratee(_eventName, prop.handler, prop.options);
+    } else {
+      iteratee(_eventName, prop, mergeDefaultEventOptions({ capture: _capture }));
+    }
+  }
+}
+
+function withOptions(handler, options) {
+  (0, _warning2.default)(options, '[react-event-listener] Should be specified options in withOptions.');
+
+  return {
+    handler: handler,
+    options: mergeDefaultEventOptions(options)
+  };
+}
+
+var EventListener = function (_Component) {
+  (0, _inherits3.default)(EventListener, _Component);
+
+  function EventListener() {
+    (0, _classCallCheck3.default)(this, EventListener);
+    return (0, _possibleConstructorReturn3.default)(this, (EventListener.__proto__ || (0, _getPrototypeOf2.default)(EventListener)).apply(this, arguments));
+  }
+
+  (0, _createClass3.default)(EventListener, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.addListeners();
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps) {
+      return (0, _reactAddonsShallowCompare2.default)({
+        props: this.props,
+        state: state
+      }, nextProps, state);
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      this.removeListeners();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      this.addListeners();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.removeListeners();
+    }
+  }, {
+    key: 'addListeners',
+    value: function addListeners() {
+      this.applyListeners(on);
+    }
+  }, {
+    key: 'removeListeners',
+    value: function removeListeners() {
+      this.applyListeners(off);
+    }
+  }, {
+    key: 'applyListeners',
+    value: function applyListeners(onOrOff) {
+      var target = this.props.target;
+
+
+      if (target) {
+        var element = target;
+
+        if (typeof target === 'string') {
+          element = window[target];
+        }
+
+        forEachListener(this.props, onOrOff.bind(null, element));
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.props.children || null;
+    }
+  }]);
+  return EventListener;
+}(_react.Component);
+
+EventListener.propTypes = {
+  /**
+   * You can provide a children too.
+   */
+  children: _react.PropTypes.node,
+  /**
+   * The DOM target to listen to.
+   */
+  target: _react.PropTypes.oneOfType([_react.PropTypes.object, _react.PropTypes.string])
+};
+exports.default = EventListener;
 });
 
 var FlatButtonLabel_1 = createCommonjsModule(function (module, exports) {
@@ -29062,7 +30208,7 @@ exports.default = FlatButton;
 
 var FlatButton = unwrapExports(FlatButton_1);
 
-var index$17 = createCommonjsModule(function (module, exports) {
+var index$25 = createCommonjsModule(function (module, exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -29110,7 +30256,7 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _FlatButton = index$17;
+var _FlatButton = index$25;
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
 
@@ -29898,40 +31044,6 @@ CalendarYear.propTypes = {
 exports.default = CalendarYear;
 });
 
-var propTypes$1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = react;
-
-var horizontal = _react.PropTypes.oneOf(['left', 'middle', 'right']);
-var vertical = _react.PropTypes.oneOf(['top', 'center', 'bottom']);
-
-exports.default = {
-
-  corners: _react.PropTypes.oneOf(['bottom-left', 'bottom-right', 'top-left', 'top-right']),
-
-  horizontal: horizontal,
-
-  vertical: vertical,
-
-  origin: _react.PropTypes.shape({
-    horizontal: horizontal,
-    vertical: vertical
-  }),
-
-  cornersAndCenter: _react.PropTypes.oneOf(['bottom-center', 'bottom-left', 'bottom-right', 'top-center', 'top-left', 'top-right']),
-
-  stringOrNumber: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.number]),
-
-  zDepth: _react.PropTypes.oneOf([0, 1, 2, 3, 4, 5])
-
-};
-});
-
 var FontIcon_1 = createCommonjsModule(function (module, exports) {
 'use strict';
 
@@ -30089,7 +31201,7 @@ FontIcon.propTypes = {
 exports.default = FontIcon;
 });
 
-var index$25 = createCommonjsModule(function (module, exports) {
+var index$29 = createCommonjsModule(function (module, exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30387,7 +31499,7 @@ var _EnhancedButton = EnhancedButton_1;
 
 var _EnhancedButton2 = _interopRequireDefault(_EnhancedButton);
 
-var _FontIcon = index$25;
+var _FontIcon = index$29;
 
 var _FontIcon2 = _interopRequireDefault(_FontIcon);
 
@@ -30655,7 +31767,7 @@ IconButton.propTypes = {
 exports.default = IconButton;
 });
 
-var index$23 = createCommonjsModule(function (module, exports) {
+var index$27 = createCommonjsModule(function (module, exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -30670,447 +31782,6 @@ var _IconButton2 = _interopRequireDefault(_IconButton);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _IconButton2.default;
-});
-
-var getDisplayName_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-var getDisplayName = function getDisplayName(Component) {
-  if (typeof Component === 'string') {
-    return Component;
-  }
-
-  if (!Component) {
-    return undefined;
-  }
-
-  return Component.displayName || Component.name || 'Component';
-};
-
-exports.default = getDisplayName;
-});
-
-var wrapDisplayName_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-
-var _getDisplayName = getDisplayName_1;
-
-var _getDisplayName2 = _interopRequireDefault(_getDisplayName);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var wrapDisplayName = function wrapDisplayName(BaseComponent, hocName) {
-  return hocName + '(' + (0, _getDisplayName2.default)(BaseComponent) + ')';
-};
-
-exports.default = wrapDisplayName;
-});
-
-var createHelper_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-var createHelper = function createHelper(func, helperName) {
-  var setDisplayName = arguments.length <= 2 || arguments[2] === undefined ? true : arguments[2];
-  var noArgs = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];
-
-  if ("development" !== 'production' && setDisplayName) {
-    var _ret = function () {
-      /* eslint-disable global-require */
-      var wrapDisplayName = wrapDisplayName_1.default;
-      /* eslint-enable global-require */
-
-      if (noArgs) {
-        return {
-          v: function v(BaseComponent) {
-            var Component = func(BaseComponent);
-            Component.displayName = wrapDisplayName(BaseComponent, helperName);
-            return Component;
-          }
-        };
-      }
-
-      return {
-        v: function v() {
-          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
-
-          if (args.length > func.length) {
-            /* eslint-disable */
-            console.error(
-            /* eslint-enable */
-            'Too many arguments passed to ' + helperName + '(). It should called ' + ('like so: ' + helperName + '(...args)(BaseComponent).'));
-          }
-
-          return function (BaseComponent) {
-            var Component = func.apply(undefined, args)(BaseComponent);
-            Component.displayName = wrapDisplayName(BaseComponent, helperName);
-            return Component;
-          };
-        }
-      };
-    }();
-
-    if (typeof _ret === "object") return _ret.v;
-  }
-
-  return func;
-};
-
-exports.default = createHelper;
-});
-
-var createEagerElementUtil_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = react;
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var createEagerElementUtil = function createEagerElementUtil(hasKey, isReferentiallyTransparent, type, props, children) {
-  if (!hasKey && isReferentiallyTransparent) {
-    if (children) {
-      return type(_extends({}, props, { children: children }));
-    }
-    return type(props);
-  }
-
-  var Component = type;
-
-  if (children) {
-    return _react2.default.createElement(
-      Component,
-      props,
-      children
-    );
-  }
-
-  return _react2.default.createElement(Component, props);
-};
-
-exports.default = createEagerElementUtil;
-});
-
-var isClassComponent_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-var isClassComponent = function isClassComponent(Component) {
-  return Boolean(Component && Component.prototype && typeof Component.prototype.isReactComponent === 'object');
-};
-
-exports.default = isClassComponent;
-});
-
-var isReferentiallyTransparentFunctionComponent_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-
-var _isClassComponent = isClassComponent_1;
-
-var _isClassComponent2 = _interopRequireDefault(_isClassComponent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var isReferentiallyTransparentFunctionComponent = function isReferentiallyTransparentFunctionComponent(Component) {
-  return Boolean(typeof Component === 'function' && !(0, _isClassComponent2.default)(Component) && !Component.defaultProps && !Component.contextTypes && !Component.propTypes);
-};
-
-exports.default = isReferentiallyTransparentFunctionComponent;
-});
-
-var createEagerFactory = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-
-var _createEagerElementUtil = createEagerElementUtil_1;
-
-var _createEagerElementUtil2 = _interopRequireDefault(_createEagerElementUtil);
-
-var _isReferentiallyTransparentFunctionComponent = isReferentiallyTransparentFunctionComponent_1;
-
-var _isReferentiallyTransparentFunctionComponent2 = _interopRequireDefault(_isReferentiallyTransparentFunctionComponent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var createFactory = function createFactory(type) {
-  var isReferentiallyTransparent = (0, _isReferentiallyTransparentFunctionComponent2.default)(type);
-  return function (p, c) {
-    return (0, _createEagerElementUtil2.default)(false, isReferentiallyTransparent, type, p, c);
-  };
-};
-
-exports.default = createFactory;
-});
-
-var shouldUpdate_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-
-var _react = react;
-
-var _createHelper = createHelper_1;
-
-var _createHelper2 = _interopRequireDefault(_createHelper);
-
-var _createEagerFactory = createEagerFactory;
-
-var _createEagerFactory2 = _interopRequireDefault(_createEagerFactory);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var shouldUpdate = function shouldUpdate(test) {
-  return function (BaseComponent) {
-    var factory = (0, _createEagerFactory2.default)(BaseComponent);
-    return function (_Component) {
-      _inherits(_class, _Component);
-
-      function _class() {
-        _classCallCheck(this, _class);
-
-        return _possibleConstructorReturn(this, _Component.apply(this, arguments));
-      }
-
-      _class.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps) {
-        return test(this.props, nextProps);
-      };
-
-      _class.prototype.render = function render() {
-        return factory(this.props);
-      };
-
-      return _class;
-    }(_react.Component);
-  };
-};
-
-exports.default = (0, _createHelper2.default)(shouldUpdate, 'shouldUpdate');
-});
-
-var pure_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-exports.__esModule = true;
-
-var _shouldUpdate = shouldUpdate_1;
-
-var _shouldUpdate2 = _interopRequireDefault(_shouldUpdate);
-
-var _shallowEqual = shallowEqual$5;
-
-var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
-
-var _createHelper = createHelper_1;
-
-var _createHelper2 = _interopRequireDefault(_createHelper);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var pure = (0, _shouldUpdate2.default)(function (props, nextProps) {
-  return !(0, _shallowEqual2.default)(props, nextProps);
-});
-
-exports.default = (0, _createHelper2.default)(pure, 'pure', true, true);
-});
-
-var SvgIcon_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = _extends;
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _objectWithoutProperties2 = objectWithoutProperties;
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-var _getPrototypeOf = getPrototypeOf$1;
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = classCallCheck;
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = createClass;
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = possibleConstructorReturn;
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = inherits;
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _simpleAssign = index$9;
-
-var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
-
-var _react = react;
-
-var _react2 = _interopRequireDefault(_react);
-
-var _transitions = transitions;
-
-var _transitions2 = _interopRequireDefault(_transitions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var SvgIcon = function (_Component) {
-  (0, _inherits3.default)(SvgIcon, _Component);
-
-  function SvgIcon() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    (0, _classCallCheck3.default)(this, SvgIcon);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = SvgIcon.__proto__ || (0, _getPrototypeOf2.default)(SvgIcon)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      hovered: false
-    }, _this.handleMouseLeave = function (event) {
-      _this.setState({ hovered: false });
-      _this.props.onMouseLeave(event);
-    }, _this.handleMouseEnter = function (event) {
-      _this.setState({ hovered: true });
-      _this.props.onMouseEnter(event);
-    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
-  }
-
-  (0, _createClass3.default)(SvgIcon, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props;
-      var children = _props.children;
-      var color = _props.color;
-      var hoverColor = _props.hoverColor;
-      var onMouseEnter = _props.onMouseEnter;
-      var onMouseLeave = _props.onMouseLeave;
-      var style = _props.style;
-      var viewBox = _props.viewBox;
-      var other = (0, _objectWithoutProperties3.default)(_props, ['children', 'color', 'hoverColor', 'onMouseEnter', 'onMouseLeave', 'style', 'viewBox']);
-      var _context$muiTheme = this.context.muiTheme;
-      var svgIcon = _context$muiTheme.svgIcon;
-      var prepareStyles = _context$muiTheme.prepareStyles;
-
-
-      var offColor = color ? color : 'currentColor';
-      var onColor = hoverColor ? hoverColor : offColor;
-
-      var mergedStyles = (0, _simpleAssign2.default)({
-        display: 'inline-block',
-        color: svgIcon.color,
-        fill: this.state.hovered ? onColor : offColor,
-        height: 24,
-        width: 24,
-        userSelect: 'none',
-        transition: _transitions2.default.easeOut()
-      }, style);
-
-      return _react2.default.createElement(
-        'svg',
-        (0, _extends3.default)({}, other, {
-          onMouseEnter: this.handleMouseEnter,
-          onMouseLeave: this.handleMouseLeave,
-          style: prepareStyles(mergedStyles),
-          viewBox: viewBox
-        }),
-        children
-      );
-    }
-  }]);
-  return SvgIcon;
-}(_react.Component);
-
-SvgIcon.muiName = 'SvgIcon';
-SvgIcon.defaultProps = {
-  onMouseEnter: function onMouseEnter() {},
-  onMouseLeave: function onMouseLeave() {},
-  viewBox: '0 0 24 24'
-};
-SvgIcon.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
-};
-SvgIcon.propTypes = {
-  /**
-   * Elements passed into the SVG Icon.
-   */
-  children: _react.PropTypes.node,
-  /**
-   * This is the fill color of the svg icon.
-   * If not specified, this component will default
-   * to muiTheme.palette.textColor.
-   */
-  color: _react.PropTypes.string,
-  /**
-   * This is the icon color when the mouse hovers over the icon.
-   */
-  hoverColor: _react.PropTypes.string,
-  /** @ignore */
-  onMouseEnter: _react.PropTypes.func,
-  /** @ignore */
-  onMouseLeave: _react.PropTypes.func,
-  /**
-   * Override the inline-styles of the root element.
-   */
-  style: _react.PropTypes.object,
-  /**
-   * Allows you to redefine what the coordinates
-   * without units mean inside an svg element. For example,
-   * if the SVG element is 500 (width) by 200 (height), and you
-   * pass viewBox="0 0 50 20", this means that the coordinates inside
-   * the svg will go from the top left corner (0,0) to bottom right (50,20)
-   * and each unit will be worth 10px.
-   */
-  viewBox: _react.PropTypes.string
-};
-exports.default = SvgIcon;
-});
-
-var index$27 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _SvgIcon = SvgIcon_1;
-
-var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _SvgIcon2.default;
 });
 
 var chevronLeft = createCommonjsModule(function (module, exports) {
@@ -31128,7 +31799,7 @@ var _pure = pure_1;
 
 var _pure2 = _interopRequireDefault(_pure);
 
-var _SvgIcon = index$27;
+var _SvgIcon = index$19;
 
 var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
@@ -31163,7 +31834,7 @@ var _pure = pure_1;
 
 var _pure2 = _interopRequireDefault(_pure);
 
-var _SvgIcon = index$27;
+var _SvgIcon = index$19;
 
 var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
@@ -31377,7 +32048,7 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactAddonsTransitionGroup = index$21;
+var _reactAddonsTransitionGroup = index$15;
 
 var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransitionGroup);
 
@@ -31502,7 +32173,7 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _IconButton = index$23;
+var _IconButton = index$27;
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
@@ -31917,11 +32588,11 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactEventListener = index$11;
+var _reactEventListener = index$21;
 
 var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
 
-var _keycode = index$15;
+var _keycode = index$13;
 
 var _keycode2 = _interopRequireDefault(_keycode);
 
@@ -32780,172 +33451,6 @@ RenderToLayer.propTypes = {
 exports.default = RenderToLayer;
 });
 
-var Paper_1 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends2 = _extends;
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _objectWithoutProperties2 = objectWithoutProperties;
-
-var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
-
-var _getPrototypeOf = getPrototypeOf$1;
-
-var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-var _classCallCheck2 = classCallCheck;
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = createClass;
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _possibleConstructorReturn2 = possibleConstructorReturn;
-
-var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-var _inherits2 = inherits;
-
-var _inherits3 = _interopRequireDefault(_inherits2);
-
-var _simpleAssign = index$9;
-
-var _simpleAssign2 = _interopRequireDefault(_simpleAssign);
-
-var _react = react;
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = propTypes$1;
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _transitions = transitions;
-
-var _transitions2 = _interopRequireDefault(_transitions);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function getStyles(props, context) {
-  var rounded = props.rounded;
-  var circle = props.circle;
-  var transitionEnabled = props.transitionEnabled;
-  var zDepth = props.zDepth;
-  var _context$muiTheme = context.muiTheme;
-  var baseTheme = _context$muiTheme.baseTheme;
-  var paper = _context$muiTheme.paper;
-
-
-  return {
-    root: {
-      color: paper.color,
-      backgroundColor: paper.backgroundColor,
-      transition: transitionEnabled && _transitions2.default.easeOut(),
-      boxSizing: 'border-box',
-      fontFamily: baseTheme.fontFamily,
-      WebkitTapHighlightColor: 'rgba(0,0,0,0)', // Remove mobile color flashing (deprecated)
-      boxShadow: paper.zDepthShadows[zDepth - 1], // No shadow for 0 depth papers
-      borderRadius: circle ? '50%' : rounded ? '2px' : '0px'
-    }
-  };
-}
-
-var Paper = function (_Component) {
-  (0, _inherits3.default)(Paper, _Component);
-
-  function Paper() {
-    (0, _classCallCheck3.default)(this, Paper);
-    return (0, _possibleConstructorReturn3.default)(this, (Paper.__proto__ || (0, _getPrototypeOf2.default)(Paper)).apply(this, arguments));
-  }
-
-  (0, _createClass3.default)(Paper, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props;
-      var children = _props.children;
-      var circle = _props.circle;
-      var rounded = _props.rounded;
-      var style = _props.style;
-      var transitionEnabled = _props.transitionEnabled;
-      var zDepth = _props.zDepth;
-      var other = (0, _objectWithoutProperties3.default)(_props, ['children', 'circle', 'rounded', 'style', 'transitionEnabled', 'zDepth']);
-      var prepareStyles = this.context.muiTheme.prepareStyles;
-
-      var styles = getStyles(this.props, this.context);
-
-      return _react2.default.createElement(
-        'div',
-        (0, _extends3.default)({}, other, { style: prepareStyles((0, _simpleAssign2.default)(styles.root, style)) }),
-        children
-      );
-    }
-  }]);
-  return Paper;
-}(_react.Component);
-
-Paper.defaultProps = {
-  circle: false,
-  rounded: true,
-  transitionEnabled: true,
-  zDepth: 1
-};
-Paper.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
-};
-Paper.propTypes = {
-  /**
-   * Children passed into the paper element.
-   */
-  children: _react.PropTypes.node,
-  /**
-   * Set to true to generate a circlular paper container.
-   */
-  circle: _react.PropTypes.bool,
-  /**
-   * By default, the paper container will have a border radius.
-   * Set this to false to generate a container with sharp corners.
-   */
-  rounded: _react.PropTypes.bool,
-  /**
-   * Override the inline-styles of the root element.
-   */
-  style: _react.PropTypes.object,
-  /**
-   * Set to false to disable CSS transitions for the paper element.
-   */
-  transitionEnabled: _react.PropTypes.bool,
-  /**
-   * This number represents the zDepth of the paper shadow.
-   */
-  zDepth: _propTypes2.default.zDepth
-};
-exports.default = Paper;
-});
-
-var index$31 = createCommonjsModule(function (module, exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _Paper = Paper_1;
-
-var _Paper2 = _interopRequireDefault(_Paper);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Paper2.default;
-});
-
 var Dialog_1 = createCommonjsModule(function (module, exports) {
 'use strict';
 
@@ -32993,11 +33498,11 @@ var _reactDom = index$2;
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactEventListener = index$11;
+var _reactEventListener = index$21;
 
 var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
 
-var _keycode = index$15;
+var _keycode = index$13;
 
 var _keycode2 = _interopRequireDefault(_keycode);
 
@@ -33013,11 +33518,11 @@ var _RenderToLayer = RenderToLayer_1;
 
 var _RenderToLayer2 = _interopRequireDefault(_RenderToLayer);
 
-var _Paper = index$31;
+var _Paper = index$17;
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
-var _reactAddonsTransitionGroup = index$21;
+var _reactAddonsTransitionGroup = index$15;
 
 var _reactAddonsTransitionGroup2 = _interopRequireDefault(_reactAddonsTransitionGroup);
 
@@ -33536,7 +34041,7 @@ Dialog.propTypes = {
 exports.default = Dialog;
 });
 
-var index$29 = createCommonjsModule(function (module, exports) {
+var index$31 = createCommonjsModule(function (module, exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -34036,7 +34541,7 @@ var _propTypes = propTypes$1;
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Paper = index$31;
+var _Paper = index$17;
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -34211,7 +34716,7 @@ var _reactDom = index$2;
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactEventListener = index$11;
+var _reactEventListener = index$21;
 
 var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
 
@@ -34223,7 +34728,7 @@ var _propTypes = propTypes$1;
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Paper = index$31;
+var _Paper = index$17;
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -34693,7 +35198,7 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Paper = index$31;
+var _Paper = index$17;
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -34847,11 +35352,11 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactEventListener = index$11;
+var _reactEventListener = index$21;
 
 var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
 
-var _keycode = index$15;
+var _keycode = index$13;
 
 var _keycode2 = _interopRequireDefault(_keycode);
 
@@ -34859,7 +35364,7 @@ var _Calendar = Calendar_1;
 
 var _Calendar2 = _interopRequireDefault(_Calendar);
 
-var _Dialog = index$29;
+var _Dialog = index$31;
 
 var _Dialog2 = _interopRequireDefault(_Dialog);
 
@@ -35096,7 +35601,7 @@ var _react = react;
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactEventListener = index$11;
+var _reactEventListener = index$21;
 
 var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
 
@@ -35674,7 +36179,7 @@ var _reactDom = index$2;
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _shallowEqual = shallowEqual$5;
+var _shallowEqual = shallowEqual$4;
 
 var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
@@ -41539,7 +42044,7 @@ var _reactcss = reactcss;
 
 var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _reactAddonsShallowCompare = index$13;
+var _reactAddonsShallowCompare = index$23;
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
@@ -41689,7 +42194,7 @@ var _reactcss = reactcss;
 
 var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _reactAddonsShallowCompare = index$13;
+var _reactAddonsShallowCompare = index$23;
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
@@ -41939,7 +42444,7 @@ var _reactcss = reactcss;
 
 var _reactcss2 = _interopRequireDefault(_reactcss);
 
-var _reactAddonsShallowCompare = index$13;
+var _reactAddonsShallowCompare = index$23;
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
@@ -42408,7 +42913,7 @@ var _throttle = throttle_1;
 
 var _throttle2 = _interopRequireDefault(_throttle);
 
-var _reactAddonsShallowCompare = index$13;
+var _reactAddonsShallowCompare = index$23;
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
@@ -43836,7 +44341,7 @@ var _color = color;
 
 var _color2 = _interopRequireDefault(_color);
 
-var _reactAddonsShallowCompare = index$13;
+var _reactAddonsShallowCompare = index$23;
 
 var _reactAddonsShallowCompare2 = _interopRequireDefault(_reactAddonsShallowCompare);
 
@@ -44769,7 +45274,7 @@ var ColorPicker = function (_React$Component) {
         backgroundColor: value,
         style: styles.button,
         children: react.createElement('div', null),
-        hoverColor: darken(value, 0.15),
+        hoverColor: fade(value, 0.4),
         onTouchTap: this.handleTouchTap
       });
 
@@ -45061,8 +45566,8 @@ var Output = function (_React$Component) {
         react.createElement('canvas', { ref: function ref(node) {
             return _this2.canvas = node;
           }, width: scaleFactor * width, height: scaleFactor * height, style: {
-            width: width,
-            maxWidth: '100%'
+            width: '100%',
+            maxWidth: width + 'px'
           } }),
         react.createElement(
           'svg',
@@ -45094,10 +45599,10 @@ var Output = function (_React$Component) {
       this.ctx = this.canvas.getContext('2d');
       this.ctx.imageSmoothingQuality = 'high';
       this.ctx.imageSmoothingEnabled = true;
-      window.addEventListener('fontsloaded', function () {
+      new fontfaceobserver_standalone('Lato', {
+        weight: 700
+      }).load().catch(function () {}).then(function () {
         _this3.redraw();
-      }, {
-        once: true
       });
     }
   }, {
@@ -45165,8 +45670,21 @@ var App = function (_React$Component) {
           { className: 'row' },
           react.createElement(
             'div',
-            { className: 'col m9 s12' },
+            { className: 'col l10 m9 s12' },
             react.createElement(Output, _extends$2({}, this.state.form, { ref: 'output' }))
+          ),
+          react.createElement(
+            'div',
+            { className: 'col l2 m3 s12' },
+            react.createElement(RaisedButton, {
+              label: 'Submit',
+              labelPosition: 'before',
+              icon: react.createElement(ContentSend, null),
+              primary: true,
+              style: {
+                float: 'right'
+              }
+            })
           )
         )
       );
@@ -45228,15 +45746,6 @@ var _initialiseProps = function _initialiseProps() {
 
 injectTapEventPlugin();
 
-webfontloader.load({
-  google: {
-    families: ['Lato', 'Lato:bold']
-  },
-  active: function active() {
-    window.dispatchEvent(new Event('fontsloaded'));
-  }
-});
-
 var muiTheme = {
   fontFamily: 'Lato, sans-serif'
 };
@@ -45246,5 +45755,9 @@ index$2.render(react.createElement(
   { muiTheme: getMuiTheme(muiTheme) },
   react.createElement(App, null)
 ), document.querySelector('.container'));
+
+new fontfaceobserver_standalone('Lato').load().catch(function () {}).then(function () {
+  document.body.classList.add('fontsloaded');
+});
 
 }());

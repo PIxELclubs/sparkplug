@@ -937,7 +937,7 @@ body {
   font-family: 'Lato', sans-serif;
   transition: opacity 0.5s;
   opacity: 0; }
-  .wf-active body {
+  body.fontsloaded {
     opacity: 1; }
 
 label {

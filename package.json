@@ -8,13 +8,13 @@
     "build": "node-sass styles/index.scss > index.css && rollup -c"
   },
   "dependencies": {
+    "fontfaceobserver": "^2.0.5",
     "material-ui": "^0.16.1",
     "materialize-css": "^0.97.7",
     "react": "^15.3.2",
     "react-color": "^2.4.0",
     "react-dom": "^15.3.2",
-    "react-tap-event-plugin": "^1.0.0",
-    "webfontloader": "^1.6.26"
+    "react-tap-event-plugin": "^1.0.0"
   },
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.2.0",

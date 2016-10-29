@@ -1,3 +1,4 @@
+import FontFaceObserver from 'fontfaceobserver';
 import React from 'react';
 
 const DOMURL = window.URL || window.webkitURL || window;
@@ -138,10 +139,10 @@ export default class Output extends React.Component {
     this.ctx = this.canvas.getContext('2d');
     this.ctx.imageSmoothingQuality = 'high';
     this.ctx.imageSmoothingEnabled = true;
-    window.addEventListener('fontsloaded', () => {
+    new FontFaceObserver('Lato', {
+      weight: 700
+    }).load().catch(() => {}).then(() => {
       this.redraw();
-    }, {
-      once: true
     });
   }
 

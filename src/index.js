@@ -1,4 +1,4 @@
-import WebFont from 'webfontloader';
+import FontFaceObserver from 'fontfaceobserver';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -49,15 +49,6 @@ import App from './App.js';
 
 injectTapEventPlugin();
 
-WebFont.load({
-  google: {
-    families: ['Lato', 'Lato:bold']
-  },
-  active: () => {
-    window.dispatchEvent(new Event('fontsloaded'));
-  }
-});
-
 const muiTheme = {
   fontFamily: 'Lato, sans-serif'
 };
@@ -68,3 +59,7 @@ ReactDOM.render(
   </MuiThemeProvider>,
   document.querySelector('.container')
 );
+
+new FontFaceObserver('Lato').load().catch(() => {}).then(() => {
+  document.body.classList.add('fontsloaded');
+});
