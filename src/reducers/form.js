@@ -1,4 +1,4 @@
-import {CHANGE_FORM} from '../actionTypes';
+import {CHANGE_FORM} from '../actions';
 import formatDate from '../format-date';
 
 const date = new Date();

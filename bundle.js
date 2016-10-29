@@ -27373,6 +27373,21 @@ var MuiThemeProvider = unwrapExports(MuiThemeProvider_1);
 var CHANGE_FORM = Symbol('CHANGE_FORM');
 var SUBMIT = Symbol('SUBMIT');
 
+
+
+function changeForm(delta) {
+  return {
+    type: CHANGE_FORM,
+    payload: delta
+  };
+}
+
+function submit() {
+  return {
+    type: SUBMIT
+  };
+}
+
 var dtf = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'long',
@@ -27683,19 +27698,6 @@ var app = combineReducers({
   form: form,
   login: login
 });
-
-function changeForm(delta) {
-  return {
-    type: CHANGE_FORM,
-    payload: delta
-  };
-}
-
-function submit() {
-  return {
-    type: SUBMIT
-  };
-}
 
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys$3  = _objectKeys;
