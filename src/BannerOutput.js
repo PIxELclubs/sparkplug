@@ -3,7 +3,7 @@ import React from 'react';
 import HybridCanvas from './HybridCanvas.js';
 import {color} from './PropTypes.js';
 
-export default class Output extends React.Component {
+export default class BannerOutput extends React.Component {
   static propTypes = {
     formattedDate: React.PropTypes.string.isRequired,
     name: React.PropTypes.string.isRequired,
@@ -32,9 +32,8 @@ export default class Output extends React.Component {
     ctx.fillText(name, s(350), s(118));
   };
 
-  toBlob = (...args) => {
-    return this.hybridCanvas.toBlob(...args);
-  };
+  redraw = (...args) => this.hybridCanvas.redraw(...args);
+  toBlob = (...args) => this.hybridCanvas.toBlob(...args);
 
   render() {
     const logoPath1 = 'M86.54 122.58v-10.45h13.91l9.37 10.45h13.54V119l4.24 3.58h10.8V119l4.24 3.58h16.23v-3.22l4.24 3.22h29.17v-3.22l4.23 3.22h39.07v-13.55L223.32 96.3V73.46L209.39 58.5H98.93l-4.84 5.74-6.97-5.74h-28.7v52.31l12.37 11.78z';

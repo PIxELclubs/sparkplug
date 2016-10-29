@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton/RaisedButton';
 import ContentSend from 'material-ui/svg-icons/content/send';
 import {formatDate} from './DatePicker';
 import Form from './Form';
-import Output from './Output';
+import BannerOutput from './BannerOutput';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ export default class App extends React.Component {
       <Form onChange={this.handleChange} {...this.state.form} />
       <div className='row'>
         <div className='col l10 m9 s12'>
-          <Output {...this.state.form} ref='output' />
+          <BannerOutput {...this.state.form} ref='output' />
         </div>
         <div className='col l2 m3 s12'>
           <RaisedButton

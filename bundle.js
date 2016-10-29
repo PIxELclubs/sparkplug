@@ -45644,24 +45644,24 @@ HybridCanvas.defaultProps = {
   height: 150
 };
 
-var Output = function (_React$Component) {
-  inherits$2(Output, _React$Component);
+var BannerOutput = function (_React$Component) {
+  inherits$2(BannerOutput, _React$Component);
 
-  function Output() {
+  function BannerOutput() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    classCallCheck$2(this, Output);
+    classCallCheck$2(this, BannerOutput);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = possibleConstructorReturn$2(this, (_ref = Output.__proto__ || Object.getPrototypeOf(Output)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$1.call(_this), _temp), possibleConstructorReturn$2(_this, _ret);
+    return _ret = (_temp = (_this = possibleConstructorReturn$2(this, (_ref = BannerOutput.__proto__ || Object.getPrototypeOf(BannerOutput)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$1.call(_this), _temp), possibleConstructorReturn$2(_this, _ret);
   }
 
-  createClass$2(Output, [{
+  createClass$2(BannerOutput, [{
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -45707,10 +45707,10 @@ var Output = function (_React$Component) {
       });
     }
   }]);
-  return Output;
+  return BannerOutput;
 }(react.Component);
 
-Output.propTypes = {
+BannerOutput.propTypes = {
   formattedDate: react.PropTypes.string.isRequired,
   name: react.PropTypes.string.isRequired,
   headingColor: color$2,
@@ -45743,10 +45743,16 @@ var _initialiseProps$1 = function _initialiseProps$1() {
     ctx.fillText(name, s(350), s(118));
   };
 
-  this.toBlob = function () {
+  this.redraw = function () {
     var _hybridCanvas;
 
-    return (_hybridCanvas = _this4.hybridCanvas).toBlob.apply(_hybridCanvas, arguments);
+    return (_hybridCanvas = _this4.hybridCanvas).redraw.apply(_hybridCanvas, arguments);
+  };
+
+  this.toBlob = function () {
+    var _hybridCanvas2;
+
+    return (_hybridCanvas2 = _this4.hybridCanvas).toBlob.apply(_hybridCanvas2, arguments);
   };
 };
 
@@ -45798,7 +45804,7 @@ var App = function (_React$Component) {
           react.createElement(
             'div',
             { className: 'col l10 m9 s12' },
-            react.createElement(Output, _extends$2({}, this.state.form, { ref: 'output' }))
+            react.createElement(BannerOutput, _extends$2({}, this.state.form, { ref: 'output' }))
           ),
           react.createElement(
             'div',
