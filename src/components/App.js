@@ -1,6 +1,8 @@
 import React from 'react';
 import MainForm from '../containers/MainForm';
+import ConnectedSnackbar from '../containers/Snackbar.js';
 import ConnectedBannerOutput from '../containers/ConnectedBannerOutput';
+import ConnectedLogInButton from '../containers/ConnectedLogInButton';
 import ConnectedSubmitButton from '../containers/ConnectedSubmitButton';
 
 export default class App extends React.Component {
@@ -15,6 +17,7 @@ export default class App extends React.Component {
 
   render() {
     return <div>
+      <ConnectedLogInButton />
       <h1>Sparkplug</h1>
       <p>Enter color values and Workshop details below.</p>
       <MainForm />
@@ -22,6 +25,7 @@ export default class App extends React.Component {
         <ConnectedBannerOutput ref={this.outputRefFunc} />
         <ConnectedSubmitButton outputRefPromise={this.outputRefPromise} />
       </div>
+      <ConnectedSnackbar />
     </div>;
   }
 }

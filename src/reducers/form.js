@@ -1,3 +1,4 @@
+import {handleActions} from 'redux-actions';
 import {CHANGE_FORM} from '../actions';
 import formatDate from '../format-date';
 
@@ -12,22 +13,18 @@ const initialState = {
   stop2: '#fad38d'
 };
 
-export default (state = initialState, {type, payload}) => {
-  switch (type) {
-    case CHANGE_FORM:
-      if (payload.date) {
-        payload = {
-          ...payload,
-          formattedDate: formatDate(payload.date)
-        };
-      }
-
-      return {
-        ...state,
-        ...payload
+export default handleActions({
+  [CHANGE_FORM]: (state, {payload}) => {
+    if (payload.date) {
+      payload = {
+        ...payload,
+        formattedDate: formatDate(payload.date)
       };
+    }
 
-    default:
-      return state;
+    return {
+      ...state,
+      ...payload
+    };
   }
-};
+}, initialState);
