@@ -5,6 +5,7 @@
   "author": "The PIxEL Foundation",
   "license": "MIT",
   "scripts": {
+    "watch": "rollup -c -w",
     "build": "node-sass styles/index.scss > index.css && rollup -c"
   },
   "dependencies": {
@@ -22,6 +23,8 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
     "babel-preset-es2015-rollup": "^1.2.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",

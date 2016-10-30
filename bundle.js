@@ -32778,6 +32778,10 @@ var _createActions = createActions({}, CHANGE_FORM, SUBMIT);
 var changeForm = _createActions.changeForm;
 var submit = _createActions.submit;
 
+const isBrowser = typeof window === "object"
+    && typeof document === 'object'
+    && document.nodeType === 9;
+
 var asyncGenerator = function () {
   function AwaitValue(value) {
     this.value = value;
@@ -33039,7 +33043,7 @@ var LOG_IN_START = 'LOG_IN_START';
 var LOG_IN_COMPLETE = 'LOG_IN_COMPLETE';
 var LOG_OUT = 'LOG_OUT';
 
-var firebase = window.firebase;
+var firebase = isBrowser && window.firebase;
 
 var config = Object.freeze({
   apiKey: 'AIzaSyB_NVhYdoJVw1xAhQvX7opeXo6OIgKJNQs',
@@ -49501,7 +49505,7 @@ var ConnectedSnackbar = connect(mapStateToProps$1, mapDispatchToProps$1, undefin
   pure: true
 })(Snackbar);
 
-var DOMURL = window.URL || window.webkitURL || window;
+var DOMURL = isBrowser && (window.URL || window.webkitURL || window);
 
 function svgToImage(svg) {
   return new Promise(function (resolve) {
@@ -49531,7 +49535,7 @@ var HybridCanvas = function (_React$PureComponent) {
       if (!e.match) {
         _this.mediaQueryList.removeListener(_this.mediaQueryListener);
         _this.setState({
-          scaleFactor: window.devicePixelRatio || 1
+          scaleFactor: isBrowser && window.devicePixelRatio || 1
         });
         _this.listenMediaQuery();
       }
@@ -49586,9 +49590,8 @@ var HybridCanvas = function (_React$PureComponent) {
     };
 
     _this.state = {
-      scaleFactor: window.devicePixelRatio || 1
+      scaleFactor: isBrowser && window.devicePixelRatio || 1
     };
-    _this.listenMediaQuery();
     return _this;
   }
 
@@ -49625,6 +49628,7 @@ var HybridCanvas = function (_React$PureComponent) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      this.listenMediaQuery();
       this.ctx = this.canvas.getContext('2d');
       this.ctx.imageSmoothingQuality = 'high';
       this.ctx.imageSmoothingEnabled = true;
@@ -50681,7 +50685,8 @@ var App = function (_React$Component) {
 injectTapEventPlugin();
 
 var muiTheme = {
-  fontFamily: 'Lato, sans-serif'
+  fontFamily: 'Lato, sans-serif',
+  userAgent: 'all'
 };
 
 var loggerMiddleware = createLogger();

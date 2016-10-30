@@ -1,6 +1,7 @@
 import React from 'react';
+import isBrowser from 'is-in-browser';
 
-const DOMURL = window.URL || window.webkitURL || window;
+const DOMURL = isBrowser && (window.URL || window.webkitURL || window);
 
 function svgToImage(svg) {
   return new Promise(resolve => {
@@ -20,9 +21,8 @@ export default class HybridCanvas extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      scaleFactor: window.devicePixelRatio || 1
+      scaleFactor: isBrowser && window.devicePixelRatio || 1
     };
-    this.listenMediaQuery();
   }
 
   static propTypes = {
@@ -39,7 +39,7 @@ export default class HybridCanvas extends React.PureComponent {
     if (!e.match) {
       this.mediaQueryList.removeListener(this.mediaQueryListener);
       this.setState({
-        scaleFactor: window.devicePixelRatio || 1
+        scaleFactor: isBrowser && window.devicePixelRatio || 1
       });
       this.listenMediaQuery();
     }
@@ -108,6 +108,7 @@ export default class HybridCanvas extends React.PureComponent {
   }
 
   componentDidMount() {
+    this.listenMediaQuery();
     this.ctx = this.canvas.getContext('2d');
     this.ctx.imageSmoothingQuality = 'high';
     this.ctx.imageSmoothingEnabled = true;

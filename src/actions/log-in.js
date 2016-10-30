@@ -1,10 +1,11 @@
 import {createActions} from 'redux-actions';
+import isBrowser from 'is-in-browser';
 
 export const LOG_IN_START = 'LOG_IN_START';
 export const LOG_IN_COMPLETE = 'LOG_IN_COMPLETE';
 export const LOG_OUT = 'LOG_OUT';
 
-const firebase = window.firebase;
+const firebase = isBrowser && window.firebase;
 
 const config = Object.freeze({
   apiKey: 'AIzaSyB_NVhYdoJVw1xAhQvX7opeXo6OIgKJNQs',

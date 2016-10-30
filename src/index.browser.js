@@ -1,5 +1,6 @@
+import FontFaceObserver from 'fontfaceobserver';
 import React from 'react';
-import {renderToString} from 'react-dom/server';
+import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
@@ -19,12 +20,22 @@ const muiTheme = {
   userAgent: 'all'
 };
 
-const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
+const loggerMiddleware = createLogger();
+const composeDevTools =
+  process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeDevTools(applyMiddleware(thunkMiddleware, loggerMiddleware)));
 
-console.log(renderToString(
+store.dispatch(initializeLogIn());
+
+ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
       <App />
     </MuiThemeProvider>
-  </Provider>
-));
+  </Provider>,
+  document.querySelector('.container')
+);
+
+new FontFaceObserver('Lato').load().catch(() => {}).then(() => {
+  document.body.classList.add('fontsloaded');
+});
