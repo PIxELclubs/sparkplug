@@ -12,6 +12,7 @@ export default props => (
       style={{
         float: 'right'
       }}
+      disabled={props.disabled}
       onTouchTap={props.onTouchTap}
     />
   </div>

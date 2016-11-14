@@ -1,4 +1,4 @@
-import {handleActions} from 'redux-actions';
+import handleActions from 'redux-actions/lib/handleActions';
 import {CHANGE_FORM} from '../actions';
 import formatDate from '../format-date';
 

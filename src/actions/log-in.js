@@ -1,8 +1,9 @@
-import {createActions} from 'redux-actions';
+import createActions from 'redux-actions/lib/createActions';
 import isBrowser from 'is-in-browser';
 
 export const LOG_IN_START = 'LOG_IN_START';
 export const LOG_IN_COMPLETE = 'LOG_IN_COMPLETE';
+export const ADD_TOKENS = 'ADD_TOKENS';
 export const LOG_OUT = 'LOG_OUT';
 
 const firebase = isBrowser && window.firebase;
@@ -17,7 +18,8 @@ const config = Object.freeze({
 
 export const {
   logInStart,
-  logInComplete
+  logInComplete,
+  addTokens
 } = createActions(
   {
     [LOG_IN_START]: [
@@ -25,7 +27,8 @@ export const {
       (initial = false) => ({initial})
     ]
   },
-  LOG_IN_COMPLETE
+  LOG_IN_COMPLETE,
+  ADD_TOKENS
 );
 
 export function logIn() {
@@ -49,7 +52,7 @@ export function logOut() {
 
 export function toggleLogIn() {
   return (dispatch, getState) => (
-    dispatch((getState().login.user ? logOut : logIn)())
+    dispatch((getState().logIn.user ? logOut : logIn)())
   );
 }
 
@@ -80,5 +83,13 @@ export function initializeLogIn() {
       // - Logging out (handled by logOut())
       // - Initialization (handled by getRedirectResult() handler)
     });
+  }
+}
+
+export function getTokens() {
+  return dispatch => {
+    return firebase.database().ref('/tokens').once('value')
+      .then(r => r.val())
+      .then(tokens => dispatch(addTokens(tokens)));
   }
 }

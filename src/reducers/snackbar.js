@@ -1,8 +1,9 @@
-import {handleActions} from 'redux-actions';
-import {LOG_IN_COMPLETE, LOG_OUT, RESET_SNACKBAR} from '../actions';
+import handleActions from 'redux-actions/lib/handleActions';
+import {LOG_IN_COMPLETE, LOG_OUT, RESET_SNACKBAR, UPLOAD_COMPLETE} from '../actions';
 
 const whitelist = [
-  LOG_IN_COMPLETE
+  LOG_IN_COMPLETE,
+  UPLOAD_COMPLETE
 ];
 
 const initialState = {
@@ -13,20 +14,31 @@ const initialState = {
 const specifics = handleActions({
   [RESET_SNACKBAR]: () => initialState,
 
-  [LOG_IN_COMPLETE]: (state, {payload}) => {
-    if (payload) {
-      return {
-        open: true,
-        message: `Signed in as ${payload.displayName}`
-      };
-    }
+  [LOG_IN_COMPLETE]: {
+    next(state, {payload}) {
+      if (payload) {
+        return {
+          open: true,
+          message: `Signed in as ${payload.displayName}`
+        };
+      }
 
-    return state;
+      return state;
+    }
   },
   [LOG_OUT]: () => ({
     open: true,
     message: 'You have signed out'
-  })
+  }),
+
+  [UPLOAD_COMPLETE]: {
+    next(state, {payload}) {
+      return {
+        open: true,
+        message: 'Upload succeeded'
+      };
+    }
+  }
 }, initialState);
 
 export default (state, action) => {

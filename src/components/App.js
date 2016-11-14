@@ -4,6 +4,7 @@ import ConnectedSnackbar from '../containers/Snackbar.js';
 import ConnectedBannerOutput from '../containers/ConnectedBannerOutput';
 import ConnectedLogInButton from '../containers/ConnectedLogInButton';
 import ConnectedSubmitButton from '../containers/ConnectedSubmitButton';
+import ConnectedUploadProgress from '../containers/ConnectedUploadProgress';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ export default class App extends React.Component {
         <ConnectedBannerOutput ref={this.outputRefFunc} />
         <ConnectedSubmitButton outputRefPromise={this.outputRefPromise} />
       </div>
+      <ConnectedUploadProgress />
       <ConnectedSnackbar />
     </div>;
   }

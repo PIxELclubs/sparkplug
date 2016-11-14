@@ -1,13 +1,15 @@
 import {combineReducers} from 'redux';
 
 import form from './form';
-import login from './login';
+import logIn from './log-in';
 import snackbar from './snackbar';
+import upload from './upload';
 
 const app = combineReducers({
   form,
-  login,
-  snackbar
+  logIn,
+  snackbar,
+  upload
 });
 
 export default app;

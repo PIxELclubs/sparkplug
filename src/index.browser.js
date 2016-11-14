@@ -16,8 +16,7 @@ import App from './components/App';
 injectTapEventPlugin();
 
 const muiTheme = {
-  fontFamily: 'Lato, sans-serif',
-  userAgent: 'all'
+  fontFamily: 'Lato, sans-serif'
 };
 
 const loggerMiddleware = createLogger();

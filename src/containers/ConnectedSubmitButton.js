@@ -3,10 +3,15 @@ import {connect} from 'react-redux';
 import {submit} from '../actions';
 import SubmitButton from '../components/SubmitButton';
 
-const mapStateToProps = ({form}) => form;
+const mapStateToProps = ({form, logIn}) => ({
+  ...form,
+  disabled: !logIn.user
+});
 const mapDispatchToProps = (dispatch, {outputRefPromise}) => ({
   onTouchTap: e => {
-    dispatch(submit(outputRefPromise));
+    dispatch(submit({
+      emailBannerPromise: outputRefPromise
+    }));
   }
 });
 

@@ -7,7 +7,9 @@ const LongMonthDatePicker = props => (
 );
 
 LongMonthDatePicker.defaultProps = {
-  formatDate
+  formatDate,
+  firstDayOfWeek: 0,
+  locale: 'en-US'
 };
 
 export default LongMonthDatePicker;
