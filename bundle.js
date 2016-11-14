@@ -32723,10 +32723,6 @@ function upload$1(path, blob, _ref) {
   var user = _ref.user,
       token = _ref.token;
 
-  return new Promise(function (r) {
-    setTimeout(r, 6000);
-  });
-
   return blobToBase64(blob).then(function (b64) {
     var auth = btoa(user + ':' + token);
 

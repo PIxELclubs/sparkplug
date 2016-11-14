@@ -15,10 +15,6 @@ function blobToBase64(blob) {
 }
 
 export default function upload(path, blob, {user, token}) {
-  return new Promise(r => {
-    setTimeout(r, 6000);
-  });
-
   return blobToBase64(blob).then(b64 => {
     const auth = btoa(`${user}:${token}`);
 
