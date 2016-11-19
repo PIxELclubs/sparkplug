@@ -18,18 +18,24 @@ export default function upload(path, blob, {user, token}) {
   return blobToBase64(blob).then(b64 => {
     const auth = btoa(`${user}:${token}`);
 
-    return fetch(`${root}${path}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `Basic ${auth}`,
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-      body: JSON.stringify({
-        path,
-        message: `Create ${path}`,
-        content: b64
-      })
-    });
+    if (process.env.NODE_ENV === 'production') {
+      return fetch(`${root}${path}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Basic ${auth}`,
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: JSON.stringify({
+          path,
+          message: `Create ${path}`,
+          content: b64
+        })
+      });
+    } else {
+      return new Promise(r => {
+        setTimeout(r, 6000, { ok: true });
+      });
+    }
   }).then(res => {
     if (!res.ok) {
       if (res.status === 422) {
