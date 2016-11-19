@@ -57,19 +57,22 @@ export function toggleLogIn() {
 }
 
 export function initializeLogIn() {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch(logInStart(true));
 
     firebase.initializeApp(config);
-    firebase.auth().getRedirectResult().then(({user}) => {
+
+    try {
+      const {user} = await firebase.auth().getRedirectResult();
+      
       // If user is now logged in, the action will be dispatched
       // by the onAuthStateChanged listener below.
       if (!user) {
         dispatch(logInComplete(null));
       }
-    }).catch(err => {
+    } catch (err) {
       dispatch(logInComplete(err));
-    });
+    };
 
     firebase.auth().onAuthStateChanged(user => {
       if (user && !user.email.endsWith('@pixelclubs.org')) {

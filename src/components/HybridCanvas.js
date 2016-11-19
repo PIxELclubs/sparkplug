@@ -50,7 +50,7 @@ export default class HybridCanvas extends React.PureComponent {
     this.mediaQueryList.addListener(this.mediaQueryListener);
   };
 
-  redraw = (ctx, scaleFactor) => {
+  redraw = async (ctx, scaleFactor) => {
     ctx = ctx || this.ctx;
     scaleFactor = scaleFactor || this.state.scaleFactor;
 
@@ -61,19 +61,16 @@ export default class HybridCanvas extends React.PureComponent {
 
     const s = num => num * scaleFactor;
 
-    return svgToImage(this.svg.outerHTML).then(img => {
-      ctx.drawImage(img, 0, 0, s(width), s(height));
-
-      this.props.draw && this.props.draw(ctx, scaleFactor);
-    });
+    const img = await svgToImage(this.svg.outerHTML);
+    ctx.drawImage(img, 0, 0, s(width), s(height));
+    this.props.draw && this.props.draw(ctx, scaleFactor);
   };
 
-  toBlob = (w, h) => {
+  toBlob = async (w, h) => {
     w = w || this.props.width;
     h = h || this.props.height;
 
     let canvas = this.canvas;
-    let promise = Promise.resolve();
     let reqScale = w / this.props.width;
 
     if (this.state.scaleFactor !== reqScale) {
@@ -81,13 +78,11 @@ export default class HybridCanvas extends React.PureComponent {
       canvas.setAttribute('width', w);
       canvas.setAttribute('height', h);
       const ctx = canvas.getContext('2d');
-      promise = this.redraw(ctx, reqScale);
+      await this.redraw(ctx, reqScale);
     }
 
-    return promise.then(() => {
-      return new Promise(resolve => {
-        canvas.toBlob(resolve);
-      });
+    return await new Promise(resolve => {
+      canvas.toBlob(resolve);
     });
   };
 

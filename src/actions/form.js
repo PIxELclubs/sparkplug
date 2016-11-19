@@ -13,11 +13,11 @@ export const {
 export function submit({
   emailBannerPromise
 }) {
-  return (dispatch, getState) => {
-    return Promise.all([emailBannerPromise]).then(([emailBanner]) => {
-      return dispatch(upload(getState().form, {
-        [FILES.EMAIL_BANNER]: emailBanner
-      }));
-    });
+  return async (dispatch, getState) => {
+    const [emailBanner] = await Promise.all([emailBannerPromise]);
+    
+    await dispatch(upload(getState().form, {
+      [FILES.EMAIL_BANNER]: emailBanner
+    }));
   }
 }

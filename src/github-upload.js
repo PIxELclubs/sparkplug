@@ -14,12 +14,12 @@ function blobToBase64(blob) {
   });
 }
 
-export default function upload(path, blob, {user, token}) {
-  return blobToBase64(blob).then(b64 => {
-    const auth = btoa(`${user}:${token}`);
-
-    if (process.env.NODE_ENV === 'production') {
-      return fetch(`${root}${path}`, {
+export default async function upload(path, blob, {user, token}) {
+  const b64 = await blobToBase64(blob);
+  const auth = btoa(`${user}:${token}`);
+  const res = await (
+    process.env.NODE_ENV === 'production' ?
+      fetch(`${root}${path}`, {
         method: 'PUT',
         headers: {
           'Authorization': `Basic ${auth}`,
@@ -30,28 +30,25 @@ export default function upload(path, blob, {user, token}) {
           message: `Create ${path}`,
           content: b64
         })
-      });
-    } else {
-      return new Promise(r => {
+      }) :
+      new Promise(r => {
         setTimeout(r, 6000, { ok: true });
-      });
-    }
-  }).then(res => {
-    if (!res.ok) {
-      if (res.status === 422) {
-        throw new Error('Target file already exists on the server');
-      }
+      })
+  );
 
-      let errMsg = res.statusText;
-      return res.json().then(({message}) => {
-        if (message) {
-          errMsg += `; ${message}`;
-        }
-      }, err => {
-        // ignored
-      }).then(() => {
-        throw new Error(errMsg);
-      });
+  if (!res.ok) {
+    if (res.status === 422) {
+      throw new Error('Target file already exists on the server');
     }
-  });
+
+    let errMsg = res.statusText;
+    try {
+      const {message} = await res.json();
+      if (message) {
+        errMsg += `; ${message}`;
+      }
+    } catch (err) {}
+
+    throw new Error(errMsg);
+  }
 };

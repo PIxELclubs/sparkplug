@@ -70,11 +70,12 @@ export default class BannerOutput extends React.PureComponent {
     </div>;
   }
 
-  componentDidMount() {
-    new FontFaceObserver('Lato', {
-      weight: 700
-    }).load().catch(() => {}).then(() => {
-      this.hybridCanvas.redraw();
-    });
+  async componentDidMount() {
+    try {
+      await new FontFaceObserver('Lato', {
+        weight: 700
+      }).load();
+    } catch (err) {}
+    this.hybridCanvas.redraw();
   }
 }

@@ -368,12 +368,6 @@ babel-plugin-check-es2015-constants@^6.3.13:
   dependencies:
     babel-runtime "^6.0.0"
 
-babel-plugin-external-helpers@^6.18.0:
-  version "6.18.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-external-helpers/-/babel-plugin-external-helpers-6.18.0.tgz#c6bbf87a4448eb49616f24a8b8088503863488da"
-  dependencies:
-    babel-runtime "^6.0.0"
-
 babel-plugin-minify-constant-folding@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-minify-constant-folding/-/babel-plugin-minify-constant-folding-0.0.1.tgz#d4abb5b62ccfc094bdce2a318b2f94fda5a73e29"
@@ -758,6 +752,12 @@ babel-plugin-transform-regexp-constructors@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-regexp-constructors/-/babel-plugin-transform-regexp-constructors-0.0.1.tgz#c5878cc4d78437e99d02790d325f163741741ff5"
 
+babel-plugin-transform-runtime@^6.15.0:
+  version "6.15.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.15.0.tgz#3d75b4d949ad81af157570273846fb59aeb0d57c"
+  dependencies:
+    babel-runtime "^6.9.0"
+
 babel-plugin-transform-simplify-comparison-operators@^6.8.0:
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-simplify-comparison-operators/-/babel-plugin-transform-simplify-comparison-operators-6.8.0.tgz#0183d65bfdc54c80d922a3a9b3008e25fa9d32a7"
@@ -883,7 +883,7 @@ babel-register@^6.18.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.2"
 
-babel-runtime@^6.0.0, babel-runtime@^6.11.6, babel-runtime@^6.9.0, babel-runtime@^6.9.1:
+babel-runtime@^6.0.0, babel-runtime@^6.11.6, babel-runtime@^6.18.0, babel-runtime@^6.9.0, babel-runtime@^6.9.1:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.18.0.tgz#0f4177ffd98492ef13b9f823e9994a02584c9078"
   dependencies:
