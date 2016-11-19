@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware, compose} from 'redux';
 import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -15,16 +16,14 @@ import App from './components/App';
 
 injectTapEventPlugin();
 
+const loggerMiddleware = createLogger();
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunkMiddleware, loggerMiddleware)));
+
+store.dispatch(initializeLogIn());
+
 const muiTheme = {
   fontFamily: 'Lato, sans-serif'
 };
-
-const loggerMiddleware = createLogger();
-const composeDevTools =
-  process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeDevTools(applyMiddleware(thunkMiddleware, loggerMiddleware)));
-
-store.dispatch(initializeLogIn());
 
 ReactDOM.render(
   <Provider store={store}>
